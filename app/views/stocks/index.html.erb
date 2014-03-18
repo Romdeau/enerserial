@@ -1,39 +1,40 @@
-<h1>Listing stocks</h1>
+<div class="page-header">
+  <h1>Listing stocks</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Serial number</th>
-      <th>Job</th>
-      <th>Detail</th>
-      <th>Status</th>
-      <th>Status detail</th>
-      <th>Gesan number</th>
-      <th>Ppsr</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div id="content">
+  <div class="paragraph">
+    <div class="row">
+      <div class="col-sm-2">Serial number</div>
+      <div class="col-sm-2">Job</div>
+      <div class="col-sm-2">Detail</div>
+      <div class="col-sm-1">Status</div>
+      <div class="col-sm-1">Status detail</div>
+      <div class="col-sm-1">Gesan number</div>
+      <div class="col-sm-1">Ppsr</div>
+      <div class="col-sm-2 btn-group"></div>
+    </div>
 
-  <tbody>
     <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.serial_number %></td>
-        <td><%= stock.job %></td>
-        <td><%= stock.detail %></td>
-        <td><%= stock.status %></td>
-        <td><%= stock.status_detail %></td>
-        <td><%= stock.gesan_number %></td>
-        <td><%= stock.ppsr %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="row">
+      <div class="col-sm-2"><%= stock.serial_number %></div>
+      <div class="col-sm-2"><%= stock.job %></div>
+      <div class="col-sm-2"><%= stock.detail %></div>
+      <div class="col-sm-1"><%= stock.status %></div>
+      <div class="col-sm-1"><%= stock.status_detail %></div>
+      <div class="col-sm-1"><%= stock.gesan_number %></div>
+      <div class="col-sm-1"><%= stock.ppsr %></div>
+      <div class="col-sm-2 btn-group">
+        <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
+        <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
+        <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-info" %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Stock', new_stock_path %>
+  <br>
+  <div class="paragraph" >
+    <%= link_to 'New Stock', new_stock_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>

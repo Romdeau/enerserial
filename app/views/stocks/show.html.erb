@@ -1,49 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= "Detail for Serial \##{@stock.serial_number}; Job #{format_job(@stock.job)}." %> </h1>
+</div>
 
-<p>
-  <strong>Serial number:</strong>
-  <%= @stock.serial_number %>
-</p>
+<div id="content">
+  <div class="paragraph">
+    <p>
+      <strong>Serial number:</strong>
+      <%= @stock.serial_number %>
+    </p>
 
-<p>
-  <strong>Job:</strong>
-  <%= @stock.job %>
-</p>
+    <p>
+      <strong>Job:</strong>
+      <%= format_job(@stock.job) %>
+    </p>
 
-<p>
-  <strong>Engine:</strong>
-  <%= @stock.engine %>
-</p>
+    <p>
+      <strong>Engine:</strong>
+      <%= @stock.engine %>
+    </p>
 
-<p>
-  <strong>Alternator:</strong>
-  <%= @stock.alternator %>
-</p>
+    <p>
+      <strong>Alternator:</strong>
+      <%= @stock.alternator %>
+    </p>
 
-<p>
-  <strong>Detail:</strong>
-  <%= @stock.detail %>
-</p>
+    <p>
+      <strong>Detail:</strong>
+      <%= @stock.detail %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @stock.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @stock.status %>
+    </p>
 
-<p>
-  <strong>Status detail:</strong>
-  <%= @stock.status_detail %>
-</p>
+    <p>
+      <strong>Status detail:</strong>
+      <%= @stock.status_detail %>
+    </p>
 
-<p>
-  <strong>Gesan number:</strong>
-  <%= @stock.gesan_number %>
-</p>
+    <p>
+      <strong>Gesan number:</strong>
+      <%= @stock.gesan_number %>
+    </p>
 
-<p>
-  <strong>Ppsr:</strong>
-  <%= @stock.ppsr %>
-</p>
-
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+    <p>
+      <strong>Ppsr:</strong>
+      <%= @stock.ppsr %>
+    </p>
+    <div class="btn-group">
+      <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
+</div>

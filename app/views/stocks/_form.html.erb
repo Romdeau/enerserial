@@ -20,14 +20,6 @@
     <%= f.text_field :job_id %>
   </div>
   <div class="field">
-    <%= f.label :engine_id %><br>
-    <%= f.text_field :engine_id %>
-  </div>
-  <div class="field">
-    <%= f.label :alternator_id %><br>
-    <%= f.text_field :alternator_id %>
-  </div>
-  <div class="field">
     <%= f.label :detail %><br>
     <%= f.text_field :detail %>
   </div>
@@ -48,6 +40,6 @@
     <%= f.number_field :ppsr %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-sm btn-success" %>
   </div>
 <% end %>
