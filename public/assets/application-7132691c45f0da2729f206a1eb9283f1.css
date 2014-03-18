@@ -1,0 +1,207 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+@import "bootstrap";
+/* @import "bootstrap/theme";
+*/
+body {
+  background: #ecf1f5 !important;
+}
+
+.main-body {
+  background-color: #f9fafc;
+}
+
+.eneraque-table {
+  background-color: #ecf1f5;
+}
+
+.paragraph {
+  border-color: #f8fcfd;
+}
+
+.rails-form {
+  border-style:solid;
+  border-width:2px;
+}
+
+.navbar {
+  	background-color: #263746;
+  	border-color: #385167;
+  	margin-bottom: 0px;
+  	.navbar-brand {
+	  color: #dedede;
+	}
+	.navbar-brand:hover, .navbar-brand:focus {
+	  color: #fff;
+	  background-color: transparent;
+	}
+	.navbar-text {
+	  color: #dedede;
+	}
+  .navbar-nav > li > a {
+    color: #dedede;
+  }
+  .navbar-nav > li > a:hover,
+  .navbar-nav > li > a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  .navbar-nav > .active > a,
+  .navbar-nav > .active > a:hover,
+  .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #385167;
+  }
+  .navbar-nav > .disabled > a,
+  .navbar-nav > .disabled > a:hover,
+  .navbar-nav > .disabled > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+  .navbar-toggle {
+    border-color: #333;
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background-color: #333;
+  }
+  .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: #101010;
+  }
+  .navbar-nav > .open > a,
+  .navbar-nav > .open > a:hover,
+  .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #385167;
+  }
+  .navbar-link {
+    color: #dedede;
+  }
+  .navbar-link:hover {
+    color: #fff;
+  }
+}
+@media (max-width: 767px) {
+  .navbar .navbar-nav .open .dropdown-menu > .dropdown-header {
+    border-color: #385167;
+  }
+  .navbar .navbar-nav .open .dropdown-menu .divider {
+    background-color: #385167;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > li > a {
+    color: #dedede;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #385167;
+  }
+  .navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+}
+/* line 1, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, /Users/thomastaege/rails_projects/enerserial/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
