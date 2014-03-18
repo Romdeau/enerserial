@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+// Loads all Boostrap javascritps
+//= require bootstrap
+//= require moment.min.js
+//= require fullcalendar.min.js
+// require_tree .
