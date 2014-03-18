@@ -1,0 +1,53 @@
+<%= form_for(@stock) do |f| %>
+  <% if @stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+      <ul>
+      <% @stock.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :serial_number %><br>
+    <%= f.number_field :serial_number %>
+  </div>
+  <div class="field">
+    <%= f.label :job_id %><br>
+    <%= f.text_field :job_id %>
+  </div>
+  <div class="field">
+    <%= f.label :engine_id %><br>
+    <%= f.text_field :engine_id %>
+  </div>
+  <div class="field">
+    <%= f.label :alternator_id %><br>
+    <%= f.text_field :alternator_id %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_field :detail %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :status_detail %><br>
+    <%= f.text_field :status_detail %>
+  </div>
+  <div class="field">
+    <%= f.label :gesan_number %><br>
+    <%= f.text_field :gesan_number %>
+  </div>
+  <div class="field">
+    <%= f.label :ppsr %><br>
+    <%= f.number_field :ppsr %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

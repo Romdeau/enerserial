@@ -1,0 +1,2 @@
+module AlternatorsHelper
+end

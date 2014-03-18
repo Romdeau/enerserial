@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Alternator:</strong>
+  <%= @alternator.alternator %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @alternator.type %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @alternator.serial %>
+</p>
+
+<%= link_to 'Edit', edit_alternator_path(@alternator) %> |
+<%= link_to 'Back', alternators_path %>

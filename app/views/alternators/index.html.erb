@@ -1,0 +1,31 @@
+<h1>Listing alternators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternator</th>
+      <th>Type</th>
+      <th>Serial</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alternators.each do |alternator| %>
+      <tr>
+        <td><%= alternator.alternator %></td>
+        <td><%= alternator.type %></td>
+        <td><%= alternator.serial %></td>
+        <td><%= link_to 'Show', alternator %></td>
+        <td><%= link_to 'Edit', edit_alternator_path(alternator) %></td>
+        <td><%= link_to 'Destroy', alternator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alternator', new_alternator_path %>
