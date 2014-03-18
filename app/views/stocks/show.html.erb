@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @stock.serial_number %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @stock.job %>
+</p>
+
+<p>
+  <strong>Engine:</strong>
+  <%= @stock.engine %>
+</p>
+
+<p>
+  <strong>Alternator:</strong>
+  <%= @stock.alternator %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @stock.detail %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @stock.status %>
+</p>
+
+<p>
+  <strong>Status detail:</strong>
+  <%= @stock.status_detail %>
+</p>
+
+<p>
+  <strong>Gesan number:</strong>
+  <%= @stock.gesan_number %>
+</p>
+
+<p>
+  <strong>Ppsr:</strong>
+  <%= @stock.ppsr %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

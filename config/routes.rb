@@ -1,4 +1,16 @@
 Enerserial::Application.routes.draw do
+  root 'stocks#index'
+
+  resources :stocks
+
+  resources :jobs
+
+  resources :customers
+
+  resources :alternators
+
+  resources :engines
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
