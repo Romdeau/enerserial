@@ -16,7 +16,7 @@
     <% @engines.each do |engine| %>
       <tr>
         <td><%= engine.engine %></td>
-        <td><%= engine.type %></td>
+        <td><%= engine.engine_type %></td>
         <td><%= engine.serial %></td>
         <td><%= link_to 'Show', engine %></td>
         <td><%= link_to 'Edit', edit_engine_path(engine) %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Engine', new_engine_path %>
+<%= link_to 'Stock', stocks_path %>

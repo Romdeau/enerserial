@@ -69,6 +69,6 @@ class AlternatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alternator_params
-      params.require(:alternator).permit(:alternator, :type, :serial)
+      params.require(:alternator).permit(:alternator, :alternator_type, :serial)
     end
 end
