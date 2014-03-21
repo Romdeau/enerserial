@@ -10,25 +10,29 @@ class EnginesController < ApplicationController
   # GET /engines/1
   # GET /engines/1.json
   def show
+    @engine = Engine.find(params[:id])
+    @stock = @engine.stock
   end
 
   # GET /engines/new
   def new
     @engine = Engine.new
+    @stock = Stock.find(params[:stock_id])
   end
 
   # GET /engines/1/edit
   def edit
+    @engine = Engine.find(params[:id])
   end
 
   # POST /engines
   # POST /engines.json
   def create
     @engine = Engine.new(engine_params)
-
+    @engine.stock_id = params[:stock_id]
     respond_to do |format|
       if @engine.save
-        format.html { redirect_to @engine, notice: 'Engine was successfully created.' }
+        format.html { redirect_to engines_path, notice: 'Engine was successfully created.' }
         format.json { render action: 'show', status: :created, location: @engine }
       else
         format.html { render action: 'new' }
@@ -69,6 +73,6 @@ class EnginesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def engine_params
-      params.require(:engine).permit(:engine, :type, :serial)
+      params.require(:engine).permit(:engine, :engine_type, :serial)
     end
 end

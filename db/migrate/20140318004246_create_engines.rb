@@ -3,7 +3,7 @@ class CreateEngines < ActiveRecord::Migration
     create_table :engines do |t|
       t.belongs_to :stock
       t.string :engine
-      t.string :type
+      t.string :engine_type
       t.string :serial
 
       t.timestamps

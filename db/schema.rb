@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140318004902) do
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
     t.string   "alternator"
-    t.string   "type"
+    t.string   "alternator_type"
     t.string   "serial"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140318004902) do
   create_table "engines", force: true do |t|
     t.integer  "stock_id"
     t.string   "engine"
-    t.string   "type"
+    t.string   "engine_type"
     t.string   "serial"
     t.datetime "created_at"
     t.datetime "updated_at"

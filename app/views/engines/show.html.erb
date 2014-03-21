@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Engine Installed In:</strong>
+  <%= @engine.stock.serial_number %>
+</p>
+
+<p>
   <strong>Engine:</strong>
   <%= @engine.engine %>
 </p>
 
 <p>
   <strong>Type:</strong>
-  <%= @engine.type %>
+  <%= @engine.engine_type %>
 </p>
 
 <p>
@@ -16,4 +21,4 @@
 </p>
 
 <%= link_to 'Edit', edit_engine_path(@engine) %> |
-<%= link_to 'Back', engines_path %>
+<%= link_to 'Show ALl Engines', engines_path %>
