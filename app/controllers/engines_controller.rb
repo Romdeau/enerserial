@@ -28,15 +28,20 @@ class EnginesController < ApplicationController
   # POST /engines
   # POST /engines.json
   def create
-    @engine = Engine.new(engine_params)
-    @engine.stock_id = params[:stock_id]
-    respond_to do |format|
-      if @engine.save
-        format.html { redirect_to engines_path, notice: 'Engine was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @engine }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @engine.errors, status: :unprocessable_entity }
+    stock = Stock.find(params[:stock_id])
+    if stock.engine != nil
+      redirect_to stock_path(stock), alert: 'This Stock item already has an engine'
+    else
+      @engine = Engine.new(engine_params)
+      @engine.stock_id = params[:stock_id]
+      respond_to do |format|
+        if @engine.save
+          format.html { redirect_to engines_path, notice: 'Engine was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @engine }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @engine.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

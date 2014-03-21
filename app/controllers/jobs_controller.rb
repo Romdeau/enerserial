@@ -10,11 +10,14 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @job = Job.find(params[:id])
+    @customer = @job.customer
   end
 
   # GET /jobs/new
   def new
     @job = Job.new
+    @customer = Customer.find(params[:customer_id])
   end
 
   # GET /jobs/1/edit
@@ -25,10 +28,10 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-
+    @job.customer_id = params[:customer_id]
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to jobs_path, notice: 'Job was successfully created.' }
         format.json { render action: 'show', status: :created, location: @job }
       else
         format.html { render action: 'new' }

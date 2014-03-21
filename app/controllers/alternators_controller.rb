@@ -15,20 +15,22 @@ class AlternatorsController < ApplicationController
   # GET /alternators/new
   def new
     @alternator = Alternator.new
+    @stock = Stock.find(params[:stock_id])
   end
 
   # GET /alternators/1/edit
   def edit
+    @engine = Engine.find(params[:id])
   end
 
   # POST /alternators
   # POST /alternators.json
   def create
     @alternator = Alternator.new(alternator_params)
-
+    @alternator.stock_id = params[:stock_id]
     respond_to do |format|
       if @alternator.save
-        format.html { redirect_to @alternator, notice: 'Alternator was successfully created.' }
+        format.html { redirect_to alternators_path, notice: 'Alternator was successfully created.' }
         format.json { render action: 'show', status: :created, location: @alternator }
       else
         format.html { render action: 'new' }

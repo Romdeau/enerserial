@@ -1,31 +1,28 @@
-<h1>Listing engines</h1>
+<div class="page-header">
+  <h1>Listing engines</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Engine</th>
-      <th>Type</th>
-      <th>Serial</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="container">
+  <div class="paragraph">
+    <div class="row">
+      <div class="col-sm-3">Engine</div>
+      <div class="col-sm-3">Type</div>
+      <div class="col-sm-3">Serial</div>
+      <div class="col-sm-3"></div>
+    </div>
     <% @engines.each do |engine| %>
-      <tr>
-        <td><%= engine.engine %></td>
-        <td><%= engine.engine_type %></td>
-        <td><%= engine.serial %></td>
-        <td><%= link_to 'Show', engine %></td>
-        <td><%= link_to 'Edit', edit_engine_path(engine) %></td>
-        <td><%= link_to 'Destroy', engine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="row">
+        <div class="col-sm-3"><%= engine.engine %></div>
+        <div class="col-sm-3"><%= engine.engine_type %></div>
+        <div class="col-sm-3"><%= engine.serial %></div>
+        <div class="col-sm-3 btn-group">
+          <%= link_to 'Show', engine, class: "btn btn-xs btn-info" %>
+          <%= link_to 'Edit', edit_engine_path(engine), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', engine, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Stock', stocks_path %>
+  </div>
+  <br>
+  <%= link_to 'Stock', stocks_path, class: "btn btn-sm btn-primary" %>
+</div>

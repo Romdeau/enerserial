@@ -16,12 +16,20 @@
 
     <p>
       <strong>Engine:</strong>
-      <%= @stock.engine %>
+      <% if @stock.engine != nil %>
+        <%= @stock.engine.serial %>
+      <% else %>
+        No Engine Found
+      <% end %>
     </p>
 
     <p>
       <strong>Alternator:</strong>
-      <%= @stock.alternator %>
+      <% if @stock.alternator != nil %>
+        <%= @stock.alternator.serial %>
+      <% else %>
+        No Alternator Found
+      <% end %>
     </p>
 
     <p>
@@ -51,7 +59,9 @@
     <div class="btn-group">
       <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
       <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
-      <%= link_to 'New Engine', new_stock_engine_path(@stock), class: "btn btn-sm btn-primary" %>
+    </div>
+      <%= link_to 'New Engine', new_stock_engine_path(@stock), class: "btn btn-sm btn-success" %>
+      <%= link_to 'New Alternator', new_stock_alternator_path(@stock), class: "btn btn-sm btn-success" %>
     </div>
   </div>
 </div>

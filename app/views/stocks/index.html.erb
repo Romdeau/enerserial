@@ -5,11 +5,11 @@
 <div id="content">
   <div class="paragraph">
     <div class="row">
-      <div class="col-sm-2">Serial number</div>
+      <div class="col-sm-1">Serial number</div>
       <div class="col-sm-2">Job</div>
       <div class="col-sm-2">Detail</div>
       <div class="col-sm-1">Status</div>
-      <div class="col-sm-1">Status detail</div>
+      <div class="col-sm-2">Status detail</div>
       <div class="col-sm-1">Gesan number</div>
       <div class="col-sm-1">Ppsr</div>
       <div class="col-sm-2 btn-group"></div>
@@ -17,11 +17,11 @@
 
     <% @stocks.each do |stock| %>
     <div class="row">
-      <div class="col-sm-2"><%= stock.serial_number %></div>
+      <div class="col-sm-1"><%= stock.serial_number %></div>
       <div class="col-sm-2"><%= stock.job %></div>
       <div class="col-sm-2"><%= stock.detail %></div>
       <div class="col-sm-1"><%= stock.status %></div>
-      <div class="col-sm-1"><%= stock.status_detail %></div>
+      <div class="col-sm-2"><%= stock.status_detail %></div>
       <div class="col-sm-1"><%= stock.gesan_number %></div>
       <div class="col-sm-1"><%= stock.ppsr %></div>
       <div class="col-sm-2 btn-group">
