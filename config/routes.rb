@@ -6,8 +6,11 @@ Enerserial::Application.routes.draw do
     resources :engines, only: [:new, :create]
   end
 
-  resources :jobs
-  resources :customers
+  resources :customers do
+    resources :jobs, only: [:new, :create]
+  end
+
+  resources :jobs, only: [:index, :show, :edit, :update, :destroy]
 
   resources :alternators, only: [:index, :show, :edit, :update, :destroy]
   resources :engines, only: [:index, :show, :edit, :update, :destroy]

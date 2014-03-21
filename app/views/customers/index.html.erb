@@ -1,27 +1,24 @@
-<h1>Listing customers</h1>
+<div class="page-header">
+  <h1>Listing customers</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="content">
+  <div class="paragraph">
+    <div class="row">
+      <div class="col-sm-4">Name</div>
+      <div class="col-sm-4"></div>
+    </div>
     <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.name %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="row">
+        <div class="col-sm-4"><%= customer.name %></div>
+        <div class="col-sm-4 btn-group">
+          <%= link_to 'Show', customer, class: "btn btn-xs btn-info" %>
+          <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-info" %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Customer', new_customer_path %>
+  </div>
+  <br>
+  <%= link_to 'New Customer', new_customer_path, class: "btn btn-sm btn-primary" %>
+</div>

@@ -15,6 +15,23 @@
 @import "bootstrap";
 /* @import "bootstrap/theme";
 */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #263746;
+  margin: 1em 0; padding: 0;
+  background-color: #263746;
+  color: #263746;
+  border-color: #263746;
+}
+
+footer {
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+}
+
 body {
   background: #ecf1f5 !important;
 }

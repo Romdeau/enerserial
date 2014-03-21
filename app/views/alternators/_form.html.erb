@@ -1,4 +1,4 @@
-<%= form_for(@alternator) do |f| %>
+<%= form_for [@stock, @alternator] do |f| %>
   <% if @alternator.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@alternator.errors.count, "error") %> prohibited this alternator from being saved:</h2>

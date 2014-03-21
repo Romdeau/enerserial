@@ -1,0 +1,19 @@
+  <div class="paragraph">
+    <div class="row">
+      <div class="col-sm-4">Job number</div>
+      <div class="col-sm-4">Customer</div>
+      <div class="col-sm-4"></div>
+    </div>
+    <% @jobs.each do |job| %>
+      <div class="row">
+        <div class="col-sm-4"><%= job.job_number %></div>
+        <div class="col-sm-4"><%= job.customer.name %></div>
+        <div class="col-sm-4 btn-group">
+          <%= link_to 'Show', job, class: "btn btn-xs btn-info" %>
+          <%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
