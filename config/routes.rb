@@ -3,8 +3,10 @@ Enerserial::Application.routes.draw do
 
   get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine
   post 'engines' => 'engines#create_floor_engine', :as => :create_floor_engine
+  get '/engines/floor_stock' => 'engines#floor_stock', :as => :engines_floor_stock
   get '/alternators/new_floor_alternator' => 'alternators#new_floor_alternator', :as => :new_floor_alternator
   post 'alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
+  get '/alternators/floor_stock' => 'alternators#floor_stock', :as => :alternators_floor_stock
 
   resources :stocks do
     resources :alternators, only: [:new, :create]

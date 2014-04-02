@@ -7,6 +7,10 @@ class AlternatorsController < ApplicationController
     @alternators = Alternator.all
   end
 
+  def floor_stock
+    @alternators = Alternator.floor_stock
+  end
+
   # GET /alternators/1
   # GET /alternators/1.json
   def show
