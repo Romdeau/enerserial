@@ -4,5 +4,5 @@ class Alternator < ActiveRecord::Base
   validate :serial, :alternator, presence: true
 
   scope :floor_stock, -> { where stock_id: nil }
-	scope :assigned_stock, -> { where approved: !nil}
+	scope :assigned_stock, -> { where stock_id: !nil}
 end
