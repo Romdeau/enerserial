@@ -60,8 +60,16 @@
       <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
       <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
     </div>
+    <% if @stock.engine == nil%>
       <%= link_to 'New Engine', new_stock_engine_path(@stock), class: "btn btn-sm btn-success" %>
+    <% else %>
+      <%= link_to 'View Engine', engine_path(@stock.engine), class: "btn btn-sm btn-primary" %>
+    <% end %>
+    <% if @stock.alternator == nil %>
       <%= link_to 'New Alternator', new_stock_alternator_path(@stock), class: "btn btn-sm btn-success" %>
+    <% else %>
+      <%= link_to 'View Alternator', alternator_path(@stock.alternator), class: "btn btn-sm btn-primary"%>
+    <% end %>
     </div>
   </div>
 </div>
