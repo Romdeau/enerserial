@@ -10,14 +10,13 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :serial_number %><br>
     <%= f.number_field :serial_number %>
   </div>
   <div class="field">
     <%= f.label :job_id %><br>
-    <%= f.text_field :job_id %>
+    <%= f.text_field :job_id, :value => check_job(@stock) %>
   </div>
   <div class="field">
     <%= f.label :detail %><br>

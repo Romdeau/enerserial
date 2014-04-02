@@ -18,7 +18,7 @@
     <% @stocks.each do |stock| %>
     <div class="row">
       <div class="col-sm-1"><%= stock.serial_number %></div>
-      <div class="col-sm-2"><%= stock.job %></div>
+      <div class="col-sm-2"><%= check_job(stock) %></div>
       <div class="col-sm-2"><%= stock.detail %></div>
       <div class="col-sm-1"><%= stock.status %></div>
       <div class="col-sm-2"><%= stock.status_detail %></div>
