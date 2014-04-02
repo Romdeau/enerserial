@@ -1,5 +1,5 @@
 class Engine < ActiveRecord::Base
-  belongs_to :stock
+  has_one :stock
 
   validate :serial, :engine, presence: true
 end

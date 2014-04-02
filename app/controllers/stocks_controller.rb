@@ -25,7 +25,8 @@ class StocksController < ApplicationController
   # POST /stocks.json
   def create
     @stock = Stock.new(stock_params)
-
+    @job = Job.find_by job_number: stock_params[:job_id]
+    @stock.job_id = @job.id
     respond_to do |format|
       if @stock.save
         format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
@@ -40,8 +41,11 @@ class StocksController < ApplicationController
   # PATCH/PUT /stocks/1
   # PATCH/PUT /stocks/1.json
   def update
+    @stock.update(stock_params)
+    @job = Job.find_by job_number: stock_params[:job_id]
+    @stock.job_id = @job.id
     respond_to do |format|
-      if @stock.update(stock_params)
+      if @stock.save
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
