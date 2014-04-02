@@ -13,35 +13,49 @@
  */
 
 @import "bootstrap";
-/* @import "bootstrap/theme";
+/* Remember that theres CSS is the scaffolds file as well.
+*  @import "bootstrap/theme";
 */
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #263746;
-  margin: 1em 0; padding: 0;
-  background-color: #263746;
-  color: #263746;
-  border-color: #263746;
-}
-
-footer {
-            width: 100%;
-            bottom: 0;
-            position: fixed;
-}
-
 body {
   background: #ecf1f5 !important;
+}
+
+h1 {
+  font-family: 'Istok Web', sans-serif;
+  font-size: 24px;
+  color: #263746;
+}
+h2 {
+  font-family: 'Istok Web', sans-serif;
+}
+h3 {
+  font-family: 'Istok Web', sans-serif;
+}
+h4 {
+  font-family: 'Istok Web', sans-serif;
+}
+
+.paragraph {
+  font-size: 12px;
+  color: #263746;
+}
+
+.page-header hr {
+  width: 100%;
+  height: 1px;
+  background-color: #e7e7e7;
 }
 
 .main-body {
   background-color: #f9fafc;
 }
 
-.eneraque-table {
-  background-color: #ecf1f5;
+.ener-header {
+  color: #afbc21;
+}
+
+.ener-highlight {
+  color: #4fb2ce;
 }
 
 .paragraph {
