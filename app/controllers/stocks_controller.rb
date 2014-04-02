@@ -43,15 +43,19 @@ class StocksController < ApplicationController
   def update
     @stock.update(stock_params)
     @job = Job.find_by job_number: stock_params[:job_id]
-    @stock.job_id = @job.id
-    respond_to do |format|
-      if @stock.save
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+    if @job != nil
+      @stock.job_id = @job.id
+      respond_to do |format|
+        if @stock.save
+          format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @stock.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render action: 'edit', alert: "Failed to update: #{@stock.job_id} is not a valid job number"
     end
   end
 
