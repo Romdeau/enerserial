@@ -1,6 +1,11 @@
 Enerserial::Application.routes.draw do
   root 'stocks#index'
 
+  get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine
+  post 'engines' => 'engines#create_floor_engine', :as => :create_floor_engine
+  get '/alternators/new_floor_alternator' => 'alternators#new_floor_alternator', :as => :new_floor_alternator
+  post 'alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
+
   resources :stocks do
     resources :alternators, only: [:new, :create]
     resources :engines, only: [:new, :create]
@@ -13,7 +18,9 @@ Enerserial::Application.routes.draw do
   resources :jobs, only: [:index, :show, :edit, :update, :destroy]
 
   resources :alternators, only: [:index, :show, :edit, :update, :destroy]
+
   resources :engines, only: [:index, :show, :edit, :update, :destroy]
+
 
 
 

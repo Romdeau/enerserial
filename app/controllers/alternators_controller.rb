@@ -63,6 +63,23 @@ class AlternatorsController < ApplicationController
     end
   end
 
+  def new_floor_alternator
+    @alternator = Alternator.new
+  end
+
+  def create_floor_alternator
+    @alternator = Alternator.new(alternator_params)
+    respond_to do |format|
+      if @alternator.save
+        format.html { redirect_to alternators_path, notice: 'Alternator was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @alternator }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @alternator.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_alternator
