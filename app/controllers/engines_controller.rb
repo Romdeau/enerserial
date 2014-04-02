@@ -7,6 +7,10 @@ class EnginesController < ApplicationController
     @engines = Engine.all
   end
 
+  def floor_stock
+    @engines = Engine.floor_stock
+  end
+
   # GET /engines/1
   # GET /engines/1.json
   def show
