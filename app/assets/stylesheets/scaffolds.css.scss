@@ -19,13 +19,19 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #afbc21;
   &:visited {
-    color: #666;
+    color: #9fab1e;
+    &.btn {
+      color: #fff;
+    }
+    &.fc-event {
+      color: #fff;
+    }
   }
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #afbc21;
   }
 }
 
