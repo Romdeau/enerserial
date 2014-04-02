@@ -1,0 +1,33 @@
+<h1>New engine for Floor Stock</h1>
+
+<%= form_for(@engine) do |f| %>
+  <% if @engine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@engine.errors.count, "error") %> prohibited this engine from being saved:</h2>
+
+      <ul>
+      <% @engine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :engine %><br>
+    <%= f.text_field :engine %>
+  </div>
+  <div class="field">
+    <%= f.label :engine_type %><br>
+    <%= f.text_field :engine_type %>
+  </div>
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', engines_path %>
