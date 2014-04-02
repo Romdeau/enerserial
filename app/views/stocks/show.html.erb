@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= "Detail for Serial \##{@stock.serial_number}; Job #{format_job(@stock.job)}." %> </h1>
+  <h1><%= "Detail for Serial \##{@stock.serial_number}; Job #{format_job(@stock.job.job_number)} (#{format_company(@stock.job)})." %> </h1>
 </div>
 
 <div id="content">
@@ -11,7 +11,7 @@
 
     <p>
       <strong>Job:</strong>
-      <%= format_job(@stock.job) %>
+      <%= format_job(@stock.job.job_number) %>
     </p>
 
     <p>

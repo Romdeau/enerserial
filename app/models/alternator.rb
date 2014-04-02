@@ -1,5 +1,5 @@
 class Alternator < ActiveRecord::Base
-  belongs_to :stock
+  has_one :stock
 
   validate :serial, :alternator, presence: true
 end

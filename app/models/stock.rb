@@ -3,7 +3,7 @@ class Stock < ActiveRecord::Base
   has_one :engine
   has_one :alternator
 
-  STATUS_TYPES = %w[preproduction building testing ready\ to\ ship shipping delivered]
+  STATUS_TYPES = %w[New\ Stock Job\ Allocated Manufacturing Ready\ to\ Ship On\ the\ Water]
 
   validate :serial_number, presence: true
 end
