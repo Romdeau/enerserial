@@ -34,8 +34,9 @@
     <%= f.label :gesan_number %><br>
     <%= f.text_field :gesan_number %>
   </div>
+
   <div class="field">
-    <%= f.label :ppsr %><br>
+    <%= f.label :ppsr %> <%= f.check_box :needs_ppsr %><br>
     <%= f.number_field :ppsr %>
   </div>
   <div class="actions">
