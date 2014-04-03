@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= "Detail for Serial \##{@stock.serial_number}; Job #{format_job(@stock.job.job_number)} (#{format_company(@stock.job)})." %> </h1>
+  <h1><%= "Detail for Serial \##{@stock.serial_number}; Job #{format_job(@stock.job.job_number)} for #{format_company(@stock.job)}." %> </h1>
 </div>
 
 <div id="content">
@@ -17,7 +17,7 @@
     <p>
       <strong>Engine:</strong>
       <% if @stock.engine != nil %>
-        <%= @stock.engine.serial %>
+        <%= link_to @stock.engine.serial, engine_path(@stock.engine) %>
       <% else %>
         No Engine Found
       <% end %>
@@ -26,7 +26,7 @@
     <p>
       <strong>Alternator:</strong>
       <% if @stock.alternator != nil %>
-        <%= @stock.alternator.serial %>
+        <%= link_to @stock.alternator.serial, alternator_path(@stock.alternator) %>
       <% else %>
         No Alternator Found
       <% end %>
