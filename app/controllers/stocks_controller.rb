@@ -24,9 +24,12 @@ class StocksController < ApplicationController
   # POST /stocks
   # POST /stocks.json
   def create
+    @job = Job.find_by job_number: stock_params[:job_number]
+    params[:stock].delete :job_number
     @stock = Stock.new(stock_params)
-    @job = Job.find_by job_number: stock_params[:job_id]
-    @stock.job_id = @job.id
+    if @job != nil
+      @stock.job_id = @job.id
+    end
     respond_to do |format|
       if @stock.save
         format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
@@ -36,7 +39,7 @@ class StocksController < ApplicationController
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
     end
-  end
+end
 
   # PATCH/PUT /stocks/1
   # PATCH/PUT /stocks/1.json
@@ -58,7 +61,7 @@ class StocksController < ApplicationController
     else
       redirect_to edit_stock_path(@stock), alert: "Invalid Job Entry, all other changes were saved."
     end
-  end
+end
 
   # DELETE /stocks/1
   # DELETE /stocks/1.json
