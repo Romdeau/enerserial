@@ -14,6 +14,7 @@
   <strong>Serial:</strong>
   <%= @alternator.serial %>
 </p>
-
-<%= link_to 'Edit', edit_alternator_path(@alternator) %> |
-<%= link_to 'Back', alternators_path %>
+<div class="btn-group">
+  <%= link_to 'Edit', edit_alternator_path(@alternator), class: "btn btn-sm btn-primary" %>
+  <%= link_to 'Back', alternators_path, class: "btn btn-sm btn-primary" %>
+</div>

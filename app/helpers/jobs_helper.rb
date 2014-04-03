@@ -1,17 +1,17 @@
 module JobsHelper
-  def format_job(job)
-    if job == nil
+  def format_job(stock)
+    if stock.job == nil
       "pending"
     else
-      job
+      stock.job.job_number
     end
   end
 
-  def format_company(job)
-    if job.customer == nil
+  def format_company(stock)
+    if stock.job.customer == nil
       "Unnamed Company"
     else
-      job.customer.name
+      stock.job.customer.name
     end
   end
 end

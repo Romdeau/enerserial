@@ -1,5 +1,10 @@
 <div class="page-header">
-  <h1><%= "Detail for Serial \##{@stock.serial_number}: Job #{format_job(@stock.job.job_number)} for #{format_company(@stock.job)}." %> </h1>
+  <h1>
+    <%= "Detail for Serial \##{@stock.serial_number}" %>
+    <% if @stock.job != nil %>
+      <%= ": Job #{format_job(@stock)} for #{format_company(@stock)}." %>
+    <% end %>
+  </h1>
 </div>
 
 <div id="content">
@@ -11,7 +16,7 @@
 
     <p>
       <strong>Job:</strong>
-      <%= format_job(@stock.job.job_number) %>
+      <%= format_job(@stock) %>
     </p>
 
     <p>
