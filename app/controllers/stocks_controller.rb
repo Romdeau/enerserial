@@ -41,8 +41,9 @@ class StocksController < ApplicationController
   # PATCH/PUT /stocks/1
   # PATCH/PUT /stocks/1.json
   def update
+    @job = Job.find_by job_number: stock_params[:job_number]
+    params[:stock].delete :job_number
     @stock.update(stock_params)
-    @job = Job.find_by job_number: stock_params[:job_id]
     if @job != nil
       @stock.job_id = @job.id
       respond_to do |format|
@@ -55,7 +56,7 @@ class StocksController < ApplicationController
         end
       end
     else
-      render action: 'edit', alert: "Failed to update: #{@stock.job_id} is not a valid job number"
+      redirect_to edit_stock_path(@stock), alert: "Invalid Job Entry, all other changes were saved."
     end
   end
 
@@ -77,6 +78,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:serial_number, :job_id, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr)
+      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr)
     end
 end
