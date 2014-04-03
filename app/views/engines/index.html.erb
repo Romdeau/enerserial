@@ -6,8 +6,10 @@
   <%= render 'engines' %>
   <br>
   <div class="btn-group">
-    <%= link_to 'Show Floor Stock', engines_floor_stock_path, class: "btn btn-sm btn-primary" %>
-    <%= link_to 'Stock', stocks_path, class: "btn btn-sm btn-primary" %>
     <%= link_to 'Create Engine as Floor Stock', new_floor_engine_path, class: "btn btn-sm btn-success" %>
+  </div> <br>
+  <div class="btn-group">
+    <%= link_to 'Show Floor Stock Engines', engines_floor_stock_path, class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Stock', stocks_path, class: "btn btn-sm btn-primary" %>
   </div>
 </div>
