@@ -12,9 +12,11 @@
       <div class="col-sm-3"><%= alternator.serial %></div>
       <div class="col-sm-3 btn-group">
         <%= link_to 'Show', alternator, class: "btn btn-xs btn-info" %>
-        <%= link_to 'Edit', edit_alternator_path(alternator), class: "btn btn-xs btn-info" %>
-        <%= link_to 'Destroy', alternator, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-      </div>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_alternator_path(alternator), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', alternator, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        <% end %>
+    </div>
     </div>
   <% end %>
 </div>

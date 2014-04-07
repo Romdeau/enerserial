@@ -1,4 +1,5 @@
 Enerserial::Application.routes.draw do
+  devise_for :users
   root 'stocks#index'
 
   get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine

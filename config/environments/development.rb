@@ -26,4 +26,13 @@ Enerserial::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Basic Actionmailer Config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:        'mail.eneraque.com',
+    port:           25,
+    domain:         'eneraque.com'
+  }
+  config.action_mailer.default_url_options = { host: 'localhost:3000'}
 end

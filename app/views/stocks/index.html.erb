@@ -26,9 +26,11 @@
       <div class="col-sm-1"><%= stock.ppsr %></div>
       <div class="col-sm-3 btn-group">
         <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
-        <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
-        <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-      </div>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        <% end %>
+    </div>
     </div>
     <% end %>
   </div>

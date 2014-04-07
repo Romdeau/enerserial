@@ -21,6 +21,8 @@
   <%= @engine.serial %>
 </p>
 <div class="btn-group">
-  <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
+  <% end %>
   <%= link_to 'Show All Engines', engines_path, class: "btn btn-sm btn-primary" %>
 </div>

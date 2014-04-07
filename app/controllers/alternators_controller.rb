@@ -1,5 +1,6 @@
 class AlternatorsController < ApplicationController
   before_action :set_alternator, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /alternators
   # GET /alternators.json

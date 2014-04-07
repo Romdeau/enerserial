@@ -11,10 +11,12 @@
       <div class="col-sm-3"><%= engine.engine_type %></div>
       <div class="col-sm-3"><%= engine.serial %></div>
       <div class="col-sm-3 btn-group">
-        <%= link_to 'Show', engine, class: "btn btn-xs btn-info" %>
+      <%= link_to 'Show', engine, class: "btn btn-xs btn-info" %>
+      <% if user_signed_in? %>  
         <%= link_to 'Edit', edit_engine_path(engine), class: "btn btn-xs btn-info" %>
         <%= link_to 'Destroy', engine, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-      </div>
+      <% end %>
+    </div>
     </div>
   <% end %>
 </div>
