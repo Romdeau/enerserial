@@ -7,8 +7,10 @@
   <div class="btn-group">
     <%= link_to 'Create Alternator as Floor Stock', new_floor_alternator_path, class: "btn btn-sm btn-success" %>
   </div><br>
-  <div class="btn-group">
-    <%= link_to 'Show Floor Stock Alternators', alternators_floor_stock_path, class: "btn btn-sm btn-primary" %>
-    <%= link_to 'Stock', stocks_path, class: "btn btn-sm btn-primary" %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="btn-group">
+      <%= link_to 'Show Floor Stock Alternators', alternators_floor_stock_path, class: "btn btn-sm btn-primary" %>
+      <%= link_to 'Stock', stocks_path, class: "btn btn-sm btn-primary" %>
+    </div>
+  <% end %>
 </div>

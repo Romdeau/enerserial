@@ -1,5 +1,6 @@
 class EnginesController < ApplicationController
   before_action :set_engine, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /engines
   # GET /engines.json
