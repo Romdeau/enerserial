@@ -1,12 +1,14 @@
 Enerserial::Application.routes.draw do
+  get '/users' => 'users#index', :as => :users
+  get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
   root 'stocks#index'
 
   get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine
-  post 'engines' => 'engines#create_floor_engine', :as => :create_floor_engine
+  post '/engines' => 'engines#create_floor_engine', :as => :create_floor_engine
   get '/engines/floor_stock' => 'engines#floor_stock', :as => :engines_floor_stock
   get '/alternators/new_floor_alternator' => 'alternators#new_floor_alternator', :as => :new_floor_alternator
-  post 'alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
+  post '/alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
   get '/alternators/floor_stock' => 'alternators#floor_stock', :as => :alternators_floor_stock
 
   resources :stocks do
