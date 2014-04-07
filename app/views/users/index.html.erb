@@ -6,11 +6,19 @@
   <div class="paragraph">
     <div class="row ener-header">
       <div class="col-sm-3">Email</div>
+      <div class="col-sm-3">Account</div>
       <div class="col-sm-3"></div>
     </div>
     <% @users.each do |user| %>
       <div class="row">
         <div class="col-sm-3"><%= user.email %></div>
+        <div class="col-sm-3">
+          <% if current_user.admin? %>
+          Admin
+          <% else %>
+          User
+          <% end %>
+        </div>
         <div class="col-sm-3 btn-group">
           <% if current_user.admin? or current_user.id == 1 %>
             <%= link_to "Set Admin", set_user_admin_path(user), class: "btn btn-xs btn-info" %>
