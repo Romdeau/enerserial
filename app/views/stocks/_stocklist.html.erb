@@ -12,7 +12,7 @@
 
   <% @stocks.each do |stock| %>
   <div class="row">
-    <div class="col-sm-1"><%= link_to stock.serial_number, edit_stock_path(stock) %></div>
+    <div class="col-sm-1"><%= link_to stock.serial_number, stock_path(stock) %></div>
     <div class="col-sm-1"><%= link_to check_job(stock), stock.job %></div>
     <div class="col-sm-2"><%= stock.detail %></div>
     <div class="col-sm-1"><%= stock.status %></div>
