@@ -1,6 +1,6 @@
 class ChangePpsrToLong < ActiveRecord::Migration
   def up
-    change_column :stocks, :ppsr, :long
+    change_column :stocks, :ppsr, :string
   end
 
   def down
