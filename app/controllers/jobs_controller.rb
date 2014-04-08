@@ -13,6 +13,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @customer = @job.customer
+    @stocks = @job.stock
   end
 
   # GET /jobs/new
