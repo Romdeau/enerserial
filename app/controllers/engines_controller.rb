@@ -90,6 +90,21 @@ class EnginesController < ApplicationController
     end
   end
 
+  def assign_engine
+    @engine = Engine.find(params[:id])
+  end
+
+  def process_engine
+    @engine = Engine.find(params[:id])
+    @stock = Stock.find_by serial_number: engine_params[:stock_id]
+    @engine.stock_id = @stock.id
+    if @engine.save
+      redirect_to @engine, notice: "Engine #{@engine.id} was assigned to #{@stock.id}"
+    else
+      redirect_to @engine, alert: "Something went wrong."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_engine
@@ -98,6 +113,6 @@ class EnginesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def engine_params
-      params.require(:engine).permit(:engine, :engine_type, :serial)
+      params.require(:engine).permit(:engine, :engine_type, :serial, :stock_id)
     end
 end
