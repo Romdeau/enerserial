@@ -1,22 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Alternator:</strong>
-  <%= @alternator.alternator %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @alternator.alternator_type %>
-</p>
-
-<p>
-  <strong>Serial:</strong>
-  <%= @alternator.serial %>
-</p>
-<div class="btn-group">
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_alternator_path(@alternator), class: "btn btn-sm btn-primary" %>
-  <% end %>
-  <%= link_to 'Back', alternators_path, class: "btn btn-sm btn-primary" %>
+<% if @alternator.stock != nil %>
+  <div class="page-header">
+    <h1>Alternator Installed In: <%= link_to @alternator.stock.serial_number, stock_path(@alternator.stock) %> for job <%= link_to @alternator.stock.job.job_number, job_path(@alternator.stock.job) %>
+  </div>
+<% else %>
+  <div class="page-header">
+    <h1>Alternator in Stock</h1>
+  </div>
+<% end %>
+<div class="content">
+  <div class="paragraph">
+    <%= render 'alternator' %>
+  </div>
+  <br>
+  <div class="btn-group">
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_alternator_path(@alternator), class: "btn btn-sm btn-primary" %>
+    <% end %>
+    <%= link_to 'Back', alternators_path, class: "btn btn-sm btn-primary" %>
+  </div>
 </div>
