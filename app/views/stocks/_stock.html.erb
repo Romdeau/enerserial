@@ -1,0 +1,54 @@
+<div class="paragraph">
+  <p>
+    <strong>Serial number:</strong>
+    <%= @stock.serial_number %>
+  </p>
+
+  <p>
+    <strong>Job:</strong>
+    <%= format_job(@stock) %>
+  </p>
+
+  <p>
+    <strong>Engine:</strong>
+    <% if @stock.engine != nil %>
+      <%= link_to @stock.engine.serial, engine_path(@stock.engine) %>
+    <% else %>
+      No Engine Found
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Alternator:</strong>
+    <% if @stock.alternator != nil %>
+      <%= link_to @stock.alternator.serial, alternator_path(@stock.alternator) %>
+    <% else %>
+      No Alternator Found
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Detail:</strong>
+    <%= @stock.detail %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @stock.status %>
+  </p>
+
+  <p>
+    <strong>Status detail:</strong>
+    <%= @stock.status_detail %>
+  </p>
+
+  <p>
+    <strong>Gesan number:</strong>
+    <%= @stock.gesan_number %>
+  </p>
+
+  <p>
+    <strong>Ppsr:</strong>
+    <%= @stock.ppsr %>
+  </p>
+</div>

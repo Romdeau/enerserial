@@ -11,6 +11,9 @@ class StocksController < ApplicationController
   # GET /stocks/1
   # GET /stocks/1.json
   def show
+    @stock = Stock.find(params[:id])
+    @alternator = @stock.alternator
+    @engine = @stock.engine
   end
 
   # GET /stocks/new
