@@ -3,38 +3,7 @@
 </div>
 
 <div id="content">
-  <div class="paragraph">
-    <div class="row">
-      <div class="col-sm-1 ener-header">Serial number</div>
-      <div class="col-sm-1 ener-header">Job</div>
-      <div class="col-sm-2 ener-header">Detail</div>
-      <div class="col-sm-1 ener-header">Status</div>
-      <div class="col-sm-1 ener-header">Status detail</div>
-      <div class="col-sm-2 ener-header">Gesan number</div>
-      <div class="col-sm-1 ener-header">Ppsr</div>
-      <div class="col-sm-2 btn-group"></div>
-    </div>
-
-    <% @stocks.each do |stock| %>
-    <div class="row">
-      <div class="col-sm-1"><%= stock.serial_number %></div>
-      <div class="col-sm-1"><%= check_job(stock) %></div>
-      <div class="col-sm-2"><%= stock.detail %></div>
-      <div class="col-sm-1"><%= stock.status %></div>
-      <div class="col-sm-1"><%= stock.status_detail %></div>
-      <div class="col-sm-2"><%= stock.gesan_number %></div>
-      <div class="col-sm-1"><%= stock.ppsr %></div>
-      <div class="btn-group" style="float:right;">
-        <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
-        <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
-          <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-        <% end %>
-    </div>
-    </div>
-    <% end %>
-  </div>
-
+  <%= render 'stocklist' %>
   <br>
   <div class="btn-group" >
     <%= link_to 'New Stock', new_stock_path, class: "btn btn-sm btn-success" %>

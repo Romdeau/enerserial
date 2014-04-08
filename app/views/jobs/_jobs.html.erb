@@ -1,14 +1,14 @@
   <div class="paragraph">
     <div class="row">
-      <div class="col-sm-4 ener-header">Job number</div>
-      <div class="col-sm-4 ener-header">Customer</div>
-      <div class="col-sm-4 ener-header"></div>
+      <div class="col-sm-2 ener-header">Job number</div>
+      <div class="col-sm-3 ener-header">Customer</div>
+      <div class="col-sm-7 ener-header"></div>
     </div>
     <% @jobs.each do |job| %>
       <div class="row">
-        <div class="col-sm-4"><%= job.job_number %></div>
-        <div class="col-sm-4"><%= job.customer.name %></div>
-        <div class="col-sm-4 btn-group">
+        <div class="col-sm-2"><%= job.job_number %></div>
+        <div class="col-sm-3"><%= job.customer.name %></div>
+        <div class="col-sm-7 btn-group">
           <%= link_to 'Show', job, class: "btn btn-xs btn-info" %>
           <%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
           <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>

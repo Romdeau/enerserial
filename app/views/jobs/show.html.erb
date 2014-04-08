@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Job number:</strong>
-  <%= @job.job_number %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @job.customer.name %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<div class="page-header">
+  <h1>Job <%= @job.job_number %> for <%= @job.customer.name %>
+</div>
+<div class="content">
+  <%= render 'stocks/stocklist' %>
+  <br>
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Back', jobs_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>
