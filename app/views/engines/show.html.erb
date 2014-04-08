@@ -1,28 +1,21 @@
-<p id="notice"><%= notice %></p>
 <% if @engine.stock != nil %>
-  <p>
-    <strong>Engine Installed In:</strong>
-    <%= @engine.stock.serial_number %>
-  </p>
+  <div class="page-header">
+    <h1>Engine Installed In: <%= link_to @engine.stock.serial_number, stock_path(@engine.stock) %> for job <%= link_to @engine.stock.job.job_number, job_path(@engine.stock.job) %>
+  </div>
+<% else %>
+  <div class="page-header">
+    <h1>Engine in Stock</h1>
+  </div>
 <% end %>
-
-<p>
-  <strong>Engine:</strong>
-  <%= @engine.engine %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @engine.engine_type %>
-</p>
-
-<p>
-  <strong>Serial:</strong>
-  <%= @engine.serial %>
-</p>
-<div class="btn-group">
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
-  <% end %>
-  <%= link_to 'Show All Engines', engines_path, class: "btn btn-sm btn-primary" %>
+<div class="content">
+  <div class="paragraph">
+    <%= render 'engine' %>
+  </div>
+  <br>
+  <div class="btn-group">
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
+    <% end %>
+    <%= link_to 'Show All Engines', engines_path, class: "btn btn-sm btn-primary" %>
+  </div>
 </div>
