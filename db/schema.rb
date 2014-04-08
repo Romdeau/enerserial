@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407054355) do
+ActiveRecord::Schema.define(version: 20140408001721) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -46,20 +46,8 @@ ActiveRecord::Schema.define(version: 20140407054355) do
 
   add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id"
 
-  create_table "stocks", force: true do |t|
-    t.integer  "serial_number"
-    t.integer  "job_id"
-    t.string   "detail"
-    t.string   "status"
-    t.string   "status_detail"
-    t.string   "gesan_number"
-    t.integer  "ppsr"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "needs_ppsr",    default: true
-  end
-
-  add_index "stocks", ["job_id"], name: "index_stocks_on_job_id"
+# Could not dump table "stocks" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
