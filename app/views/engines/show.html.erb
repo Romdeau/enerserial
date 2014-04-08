@@ -1,6 +1,9 @@
 <% if @engine.stock != nil %>
   <div class="page-header">
-    <h1>Engine Installed In: <%= link_to @engine.stock.serial_number, stock_path(@engine.stock) %> for job <%= link_to @engine.stock.job.job_number, job_path(@engine.stock.job) %>
+    <h1>Engine Installed In: <%= link_to @engine.stock.serial_number, stock_path(@engine.stock) %>
+      <% if @engine.stock.job != nil %>
+       for job <%= link_to @engine.stock.job.job_number, job_path(@engine.stock.job) %>
+      <%end%>
   </div>
 <% else %>
   <div class="page-header">
@@ -17,5 +20,8 @@
       <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
     <% end %>
     <%= link_to 'Show All Engines', engines_path, class: "btn btn-sm btn-primary" %>
+    <% if @engine.stock == nil %>
+      <%= link_to 'Assign to Stock', assign_engine_path(@engine), class: "btn btn-sm btn-warning" %>
+    <% end %>
   </div>
 </div>
