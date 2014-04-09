@@ -20,7 +20,7 @@
       <%= link_to 'Edit', edit_engine_path(@engine), class: "btn btn-sm btn-primary" %>
     <% end %>
     <%= link_to 'Show All Engines', engines_path, class: "btn btn-sm btn-primary" %>
-    <% if @engine.stock == nil %>
+    <% if @engine.stock == nil and user_signed_in? %>
       <%= link_to 'Assign to Stock', assign_engine_path(@engine), class: "btn btn-sm btn-warning" %>
     <% end %>
   </div>

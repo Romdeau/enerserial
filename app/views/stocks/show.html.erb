@@ -35,18 +35,22 @@
         <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
       </div>
       <% if user_signed_in? %>
-        <div class="col-sm-4">
+        <div class="col-sm-4 btn-group">
           <% if @stock.engine == nil%>
             <%= link_to 'New Engine', new_stock_engine_path(@stock), class: "btn btn-sm btn-success" %>
+            <%= link_to 'Assign Stock Engine', engines_floor_stock_path, class: "btn btn-sm btn-success" %>
           <% else %>
             <%= link_to 'View Engine', engine_path(@stock.engine), class: "btn btn-sm btn-primary" %>
+            <%= link_to 'Assign Engine to Floor Stock', unassign_engine_path(@stock), method: :patch, class: "btn btn-sm btn-danger" %>
           <% end %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 btn-group">
           <% if @stock.alternator == nil %>
             <%= link_to 'New Alternator', new_stock_alternator_path(@stock), class: "btn btn-sm btn-success" %>
+            <%= link_to 'Assign Stock Alternator', alternators_floor_stock_path, class: "btn btn-sm btn-success" %>
           <% else %>
             <%= link_to 'View Alternator', alternator_path(@stock.alternator), class: "btn btn-sm btn-primary"%>
+            <%= link_to 'Assign Alternator to Floor Stock', unassign_alternator_path(@stock), method: :patch, class: "btn btn-sm btn-danger" %>
           <% end %>
         </div>
       <% end %>
