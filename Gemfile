@@ -6,6 +6,7 @@ gem 'rails', '4.0.3'
 group :development do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
+	gem 'annotate', ">=2.6.0"
 	# See https://github.com/sstephenson/execjs#readme for more supported runtimes
 	#gem 'therubyracer', platforms: :ruby
 end
