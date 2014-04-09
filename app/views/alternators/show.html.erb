@@ -1,6 +1,9 @@
 <% if @alternator.stock != nil %>
   <div class="page-header">
-    <h1>Alternator Installed In: <%= link_to @alternator.stock.serial_number, stock_path(@alternator.stock) %> for job <%= link_to @alternator.stock.job.job_number, job_path(@alternator.stock.job) %>
+    <h1>Alternator Installed In: <%= link_to @alternator.stock.serial_number, stock_path(@alternator.stock) %>
+      <% if @alternator.stock.job != nil %>
+       for job <%= link_to @alternator.stock.job.job_number, job_path(@alternator.stock.job) %>
+      <%end%>
   </div>
 <% else %>
   <div class="page-header">
@@ -17,5 +20,8 @@
       <%= link_to 'Edit', edit_alternator_path(@alternator), class: "btn btn-sm btn-primary" %>
     <% end %>
     <%= link_to 'Back', alternators_path, class: "btn btn-sm btn-primary" %>
+    <% if @alternator.stock == nil and user_signed_in? %>
+      <%= link_to 'Assign to Stock', assign_alternator_path(@alternator), class: "btn btn-sm btn-warning" %>
+    <% end %>
   </div>
 </div>

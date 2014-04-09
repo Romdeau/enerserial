@@ -94,6 +94,17 @@ class EnginesController < ApplicationController
     @engine = Engine.find(params[:id])
   end
 
+  def unassign_engine
+    @stock = Stock.find(params[:id])
+    @engine = @stock.engine
+    @engine.stock_id = nil
+    if @engine.save
+      redirect_to @engine, notice: "Engine #{@engine.id} was assigned to floor stock"
+    else
+      redirect_to @engine, alert: "Something went wrong."
+    end
+  end
+
   def process_engine
     @engine = Engine.find(params[:id])
     @stock = Stock.find_by serial_number: engine_params[:stock_id]

@@ -9,12 +9,14 @@ Enerserial::Application.routes.draw do
   get '/engines/floor_stock' => 'engines#floor_stock', :as => :engines_floor_stock
   get '/engines/:id/engine_assign' => 'engines#assign_engine', :as => :assign_engine
   patch '/engines/:id/engine_assign' => 'engines#process_engine', :as => :process_engine
+  patch '/engines/:id/engine_unassign' => 'engines#unassign_engine', :as => :unassign_engine
 
   get '/alternators/new_floor_alternator' => 'alternators#new_floor_alternator', :as => :new_floor_alternator
   post '/alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
   get '/alternators/floor_stock' => 'alternators#floor_stock', :as => :alternators_floor_stock
-  get '/alternators/:id/alternator_assign' => 'alternator#assign_alternator', :as => :assign_alternator
-  patch '/alternators/:id/alternator_assign' => 'engines#process_alternator', :as => :process_alternator
+  get '/alternators/:id/alternator_assign' => 'alternators#assign_alternator', :as => :assign_alternator
+  patch '/alternators/:id/alternator_assign' => 'alternators#process_alternator', :as => :process_alternator
+  patch '/alternators/:id/alternator_unassign' => 'alternators#unassign_alternator', :as => :unassign_alternator
 
   resources :stocks do
     resources :alternators, only: [:new, :create]

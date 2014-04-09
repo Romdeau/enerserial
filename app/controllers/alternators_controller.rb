@@ -85,6 +85,32 @@ class AlternatorsController < ApplicationController
     end
   end
 
+  def assign_alternator
+    @alternator = Alternator.find(params[:id])
+  end
+
+  def unassign_alternator
+    @stock = Stock.find(params[:id])
+    @alternator = @stock.alternator
+    @alternator.stock_id = nil
+    if @alternator.save
+      redirect_to @alternator, notice: "Alternator #{@alternator.id} was assigned to floor stock"
+    else
+      redirect_to @alternator, alert: "Something went wrong."
+    end
+  end
+
+  def process_alternator
+    @alternator = Alternator.find(params[:id])
+    @stock = Stock.find_by serial_number: alternator_params[:stock_id]
+    @alternator.stock_id = @stock.id
+    if @alternator.save
+      redirect_to @alternator, notice: "Alternator #{@alternator.id} was assigned to #{@stock.id}"
+    else
+      redirect_to @alternator, alert: "Something went wrong."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_alternator
@@ -93,6 +119,6 @@ class AlternatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alternator_params
-      params.require(:alternator).permit(:alternator, :alternator_type, :serial)
+      params.require(:alternator).permit(:alternator, :alternator_type, :serial, :stock_id)
     end
 end
