@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree .
  */
+$brand-primary:#c6c6c6;
+$brand-success:#afbc21;
+$brand-info:#a9a9ac;
+$brand-warning:#4fb2ce;
+$brand-danger:#263746;
 
 @import "bootstrap";
 /* Remember that theres CSS is the scaffolds file as well.
