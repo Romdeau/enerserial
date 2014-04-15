@@ -6,4 +6,22 @@ module StocksHelper
       ''
     end
   end
+
+  def format_serial(stock)
+    if stock.serial_number == nil
+      'TBA'
+    else
+      stock.serial_number
+    end
+  end
+
+  def format_ppsr(stock)
+    if (stock.ppsr == nil or stock.ppsr == '' ) and stock.needs_ppsr == true
+      'Pending PPSR'
+    elsif (stock.ppsr == nil or stock.ppsr == '' ) and stock.needs_ppsr == false
+      'No PPSR Required'
+    else
+      "Needs ppsr: #{stock.needs_ppsr}; Stock PPSR #{stock.ppsr}"
+    end
+  end
 end

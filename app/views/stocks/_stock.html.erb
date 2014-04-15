@@ -1,10 +1,10 @@
 <p>
-  <strong>Serial number:</strong>
-  <%= @stock.serial_number %>
+  <strong>Eneraque Serial Number:</strong>
+  <%= format_serial(@stock) %>
 </p>
 
 <p>
-  <strong>Job:</strong>
+  <strong>Eneraque Job Number:</strong>
   <%= format_job(@stock) %>
 </p>
 
@@ -42,11 +42,11 @@
 </p>
 
 <p>
-  <strong>Gesan number:</strong>
+  <strong>Supplier Serial Number:</strong>
   <%= @stock.gesan_number %>
 </p>
 
 <p>
   <strong>Ppsr:</strong>
-  <%= @stock.ppsr %>
+  <%= format_ppsr(@stock) %>
 </p>

@@ -1,18 +1,18 @@
 <div class="paragraph">
   <div class="row">
-    <div class="col-sm-1 ener-header">Serial number</div>
-    <div class="col-sm-1 ener-header">Job</div>
+    <div class="col-sm-1 ener-header">Eneraque Serial Number</div>
+    <div class="col-sm-1 ener-header">Eneraque Job Number</div>
     <div class="col-sm-2 ener-header">Detail</div>
     <div class="col-sm-1 ener-header">Status</div>
-    <div class="col-sm-1 ener-header">Status detail</div>
-    <div class="col-sm-2 ener-header">Gesan number</div>
+    <div class="col-sm-1 ener-header">Status Detail</div>
+    <div class="col-sm-2 ener-header">Supplier Serial</div>
     <div class="col-sm-1 ener-header">Ppsr</div>
     <div class="col-sm-2 btn-group"></div>
   </div>
 
   <% @stocks.each do |stock| %>
   <div class="row">
-    <div class="col-sm-1"><%= link_to stock.serial_number, stock_path(stock) %></div>
+    <div class="col-sm-1"><%= link_to format_serial(stock), stock_path(stock) %></div>
     <div class="col-sm-1"><%= link_to check_job(stock), stock.job %></div>
     <div class="col-sm-2"><%= stock.detail %></div>
     <div class="col-sm-1"><%= stock.status %></div>

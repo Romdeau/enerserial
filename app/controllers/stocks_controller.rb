@@ -53,17 +53,15 @@ end
     @stock.update(stock_params)
     if @job != nil
       @stock.job_id = @job.id
-      respond_to do |format|
-        if @stock.save
-          format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: 'edit' }
-          format.json { render json: @stock.errors, status: :unprocessable_entity }
-        end
+    end
+    respond_to do |format|
+      if @stock.save
+        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
-    else
-      redirect_to edit_stock_path(@stock), alert: "Invalid Job Entry, all other changes were saved."
     end
 end
 
