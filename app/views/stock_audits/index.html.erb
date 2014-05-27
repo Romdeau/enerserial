@@ -1,0 +1,35 @@
+<h1>Listing stock_audits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Engine</th>
+      <th>Alternator</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stock_audits.each do |stock_audit| %>
+      <tr>
+        <td><%= stock_audit.stock %></td>
+        <td><%= stock_audit.engine %></td>
+        <td><%= stock_audit.alternator %></td>
+        <td><%= stock_audit.user %></td>
+        <td><%= stock_audit.comment %></td>
+        <td><%= link_to 'Show', stock_audit %></td>
+        <td><%= link_to 'Edit', edit_stock_audit_path(stock_audit) %></td>
+        <td><%= link_to 'Destroy', stock_audit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stock audit', new_stock_audit_path %>

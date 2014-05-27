@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408001721) do
+ActiveRecord::Schema.define(version: 20140527054852) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 20140408001721) do
   end
 
   add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id"
+
+  create_table "stock_audits", force: true do |t|
+    t.integer  "stock_id"
+    t.integer  "engine_id"
+    t.integer  "alternator_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stock_audits", ["alternator_id"], name: "index_stock_audits_on_alternator_id"
+  add_index "stock_audits", ["engine_id"], name: "index_stock_audits_on_engine_id"
+  add_index "stock_audits", ["stock_id"], name: "index_stock_audits_on_stock_id"
+  add_index "stock_audits", ["user_id"], name: "index_stock_audits_on_user_id"
 
   create_table "stocks", force: true do |t|
     t.integer  "serial_number"

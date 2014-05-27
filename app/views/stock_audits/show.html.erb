@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @stock_audit.stock %>
+</p>
+
+<p>
+  <strong>Engine:</strong>
+  <%= @stock_audit.engine %>
+</p>
+
+<p>
+  <strong>Alternator:</strong>
+  <%= @stock_audit.alternator %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @stock_audit.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @stock_audit.comment %>
+</p>
+
+<%= link_to 'Edit', edit_stock_audit_path(@stock_audit) %> |
+<%= link_to 'Back', stock_audits_path %>

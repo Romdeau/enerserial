@@ -1,4 +1,6 @@
 Enerserial::Application.routes.draw do
+  resources :stock_audits
+
   get '/users' => 'users#index', :as => :users
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
