@@ -38,9 +38,10 @@ class StocksController < ApplicationController
     @stock_audit = StockAudit.new
     @stock_audit.stock = @stock
     @stock_audit.user = current_user
+    @stock_audit.audit_params = "#{stock_params}"
     respond_to do |format|
       if @stock.save
-        @stock_audit.comment = "#{current_user.email} has created the new stock item #{@stock.id}"
+        @stock_audit.comment = "has created the new stock item #{@stock.id}"
         @stock_audit.save
         format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stock }
@@ -63,7 +64,8 @@ end
     @stock_audit = StockAudit.new
     @stock_audit.user = current_user
     @stock_audit.stock = @stock
-    @stock_audit.comment = "#{current_user.email} updated stock with #{stock_params}"
+    @stock_audit.audit_params = "#{stock_params}"
+    @stock_audit.comment = "updated stock"
     respond_to do |format|
       if @stock.save
         @stock_audit.save
@@ -82,7 +84,8 @@ end
     @stock_audit = StockAudit.new
     @stock_audit.user = current_user
     @stock_audit.stock = @stock
-    @stock_audit.comment = "#{current_user.email} destroyed stock unit with an ID of #{@stock.id}"
+    @stock_audit.comment = "destroyed stock unit with an ID of #{@stock.id}"
+    @stock_audit.save
     @stock.destroy
     respond_to do |format|
       format.html { redirect_to stocks_url }

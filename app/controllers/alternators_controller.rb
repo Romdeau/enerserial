@@ -15,6 +15,7 @@ class AlternatorsController < ApplicationController
   # GET /alternators/1
   # GET /alternators/1.json
   def show
+    @stock_audits = @alternator.stock_audit
   end
 
   # GET /alternators/new
@@ -25,7 +26,7 @@ class AlternatorsController < ApplicationController
 
   # GET /alternators/1/edit
   def edit
-    @engine = Engine.find(params[:id])
+    @alternator = Alternator.find(params[:id])
   end
 
   # POST /alternators
@@ -33,8 +34,14 @@ class AlternatorsController < ApplicationController
   def create
     @alternator = Alternator.new(alternator_params)
     @alternator.stock_id = params[:stock_id]
+    @stock_audit = StockAudit.new
+    @stock_audit.alternator = @alternator
+    @stock_audit.user = current_user
+    @stock_audit.audit_params = "#{alternator_params}"
+    @stock_audit.comment = "created a new engine"
     respond_to do |format|
       if @alternator.save
+        @stock_audit.save
         format.html { redirect_to @alternator, notice: 'Alternator was successfully created.' }
         format.json { render action: 'show', status: :created, location: @alternator }
       else
@@ -49,6 +56,12 @@ class AlternatorsController < ApplicationController
   def update
     respond_to do |format|
       if @alternator.update(alternator_params)
+        @stock_audit = StockAudit.new
+        @stock_audit.alternator = @alternator
+        @stock_audit.user = current_user
+        @stock_audit.audit_params = "#{alternator_params}"
+        @stock_audit.comment = "updated alternator"
+        @stock_audit.save
         format.html { redirect_to @alternator, notice: 'Alternator was successfully updated.' }
         format.json { head :no_content }
       else
@@ -61,6 +74,11 @@ class AlternatorsController < ApplicationController
   # DELETE /alternators/1
   # DELETE /alternators/1.json
   def destroy
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.alternator = @alternator
+    @stock_audit.comment = "destroyed alternator with an ID of #{@alternator.id}"
+    @stock_audit.save
     @alternator.destroy
     respond_to do |format|
       format.html { redirect_to alternators_url }
@@ -74,8 +92,14 @@ class AlternatorsController < ApplicationController
 
   def create_floor_alternator
     @alternator = Alternator.new(alternator_params)
+    @stock_audit = StockAudit.new
+    @stock_audit.alternator = @alternator
+    @stock_audit.user = current_user
+    @stock_audit.audit_params = "#{alternator_params}"
+    @stock_audit.comment = "created a new alternator"
     respond_to do |format|
       if @alternator.save
+        @stock_audit.save
         format.html { redirect_to alternators_path, notice: 'Alternator was successfully created.' }
         format.json { render action: 'show', status: :created, location: @alternator }
       else
@@ -93,7 +117,17 @@ class AlternatorsController < ApplicationController
     @stock = Stock.find(params[:id])
     @alternator = @stock.alternator
     @alternator.stock_id = nil
+    @stock_audit = StockAudit.new
+    @stock_audit.alternator = @alternator
+    @stock_audit.user = current_user
+    @stock_audit.comment = "alternator assigned to floor stock from stock item #{@stock.id}"
+    @stock_audit1 = StockAudit.new
+    @stock_audit1.stock = @alternator.stock
+    @stock_audit1.user = current_user
+    @stock_audit1.comment = "alternator #{@alternator.id} assigned to floor stock"
     if @alternator.save
+      @stock_audit.save
+      @stock_audit1.save
       redirect_to @alternator, notice: "Alternator #{@alternator.id} was assigned to floor stock"
     else
       redirect_to @alternator, alert: "Something went wrong."
@@ -104,7 +138,17 @@ class AlternatorsController < ApplicationController
     @alternator = Alternator.find(params[:id])
     @stock = Stock.find_by serial_number: alternator_params[:stock_id]
     @alternator.stock_id = @stock.id
+    @stock_audit = StockAudit.new
+    @stock_audit.alternator = @alternator
+    @stock_audit.user = current_user
+    @stock_audit.comment = "floor stock alternator assigned to #{@alternator.stock.id}"
+    @stock_audit1 = StockAudit.new
+    @stock_audit1.stock = @alternator.stock
+    @stock_audit1.user = current_user
+    @stock_audit1.comment = "floor stock alternator #{@alternator.id} assigned"
     if @alternator.save
+      @stock_audit.save
+      @stock_audit1.save
       redirect_to @alternator, notice: "Alternator #{@alternator.id} was assigned to #{@stock.id}"
     else
       redirect_to @alternator, alert: "Something went wrong."

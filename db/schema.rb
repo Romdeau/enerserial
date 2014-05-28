@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527054852) do
+ActiveRecord::Schema.define(version: 20140528031708) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140527054852) do
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "audit_params"
   end
 
   add_index "stock_audits", ["alternator_id"], name: "index_stock_audits_on_alternator_id"
