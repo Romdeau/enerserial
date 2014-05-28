@@ -13,6 +13,7 @@
 
 class Engine < ActiveRecord::Base
   belongs_to :stock
+  has_many :stock_audit
 
   validate :serial, :engine, presence: true
 

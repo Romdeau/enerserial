@@ -13,6 +13,7 @@
 
 class Alternator < ActiveRecord::Base
   belongs_to :stock
+  has_many :stock_audit
 
   validate :serial, :alternator, presence: true
 

@@ -14,6 +14,7 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
     @alternator = @stock.alternator
     @engine = @stock.engine
+    @stock_audits = @stock.stock_audit
   end
 
   # GET /stocks/new
@@ -34,8 +35,13 @@ class StocksController < ApplicationController
     if @job != nil
       @stock.job_id = @job.id
     end
+    @stock_audit = StockAudit.new
+    @stock_audit.stock = @stock
+    @stock_audit.user = current_user
     respond_to do |format|
       if @stock.save
+        @stock_audit.comment = "#{current_user.email} has created the new stock item #{@stock.id}"
+        @stock_audit.save
         format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stock }
       else
@@ -54,8 +60,13 @@ end
     if @job != nil
       @stock.job_id = @job.id
     end
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.stock = @stock
+    @stock_audit.comment = "#{current_user.email} updated stock with #{stock_params}"
     respond_to do |format|
       if @stock.save
+        @stock_audit.save
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
@@ -68,6 +79,10 @@ end
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.stock = @stock
+    @stock_audit.comment = "#{current_user.email} destroyed stock unit with an ID of #{@stock.id}"
     @stock.destroy
     respond_to do |format|
       format.html { redirect_to stocks_url }

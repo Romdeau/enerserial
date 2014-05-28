@@ -19,6 +19,7 @@ class Stock < ActiveRecord::Base
   belongs_to :job
   has_one :engine
   has_one :alternator
+  has_many :stock_audit
 
   STATUS_TYPES = %w[New\ Stock Job\ Allocated Manufacturing Ready\ to\ Ship On\ the\ Water Dispatched]
 
