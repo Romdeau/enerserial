@@ -147,11 +147,11 @@ class EnginesController < ApplicationController
     @stock_audit = StockAudit.new
     @stock_audit.engine = @engine
     @stock_audit.user = current_user
-    @stock_audit.comment = "floor stock engine assigned to #{@engine.stock.id}"
+    @stock_audit.comment = "floor stock engine assigned to stock ID #{@engine.stock.id}"
     @stock_audit1 = StockAudit.new
     @stock_audit1.stock = @engine.stock
     @stock_audit1.user = current_user
-    @stock_audit1.comment = "floor stock engine #{@engine.id} assigned"
+    @stock_audit1.comment = "floor stock engine #{@engine.id} assigned to Stock Item"
     if @engine.save
       @stock_audit.save
       @stock_audit1.save
