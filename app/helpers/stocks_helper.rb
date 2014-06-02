@@ -21,7 +21,7 @@ module StocksHelper
     elsif (stock.ppsr == nil or stock.ppsr == '' ) and stock.needs_ppsr == false
       'No PPSR Required'
     else
-      "Needs ppsr: #{stock.needs_ppsr}; Stock PPSR #{stock.ppsr}"
+      "#{stock.ppsr}"
     end
   end
 end

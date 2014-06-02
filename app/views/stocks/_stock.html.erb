@@ -9,6 +9,11 @@
 </p>
 
 <p>
+  <strong>Supplier Name:</strong>
+  <%= @stock.supplier_name %>
+</p>
+
+<p>
   <strong>Engine:</strong>
   <% if @stock.engine != nil %>
     <%= link_to @stock.engine.serial, engine_path(@stock.engine) %>
