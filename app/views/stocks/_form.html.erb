@@ -40,7 +40,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :ppsr %> <%= f.check_box :needs_ppsr %><br>
+    <%= f.label :ppsr %> <%if current_user.admin? %> <%= f.check_box :needs_ppsr %> <% end %><br>
     <%= f.number_field :ppsr %>
   </div>
   <div class="actions">
