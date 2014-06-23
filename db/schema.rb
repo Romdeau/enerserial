@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623013601) do
+ActiveRecord::Schema.define(version: 20140623015437) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140623013601) do
     t.boolean  "needs_ppsr",    default: true
     t.string   "supplier_name"
     t.string   "vin"
+    t.date     "shipping_date"
   end
 
   add_index "stocks", ["job_id"], name: "index_stocks_on_job_id"

@@ -31,6 +31,10 @@
     <%= f.collection_select :status, Stock::STATUS_TYPES, :to_s, :humanize %>
   </div>
   <div class="field">
+    <%= f.label :shipping_date %><br>
+    <%= f.date_field :shipping_date %>
+  </div>
+  <div class="field">
     <%= f.label :status_detail %><br>
     <%= f.text_field :status_detail %>
   </div>

@@ -26,6 +26,7 @@ class Stock < ActiveRecord::Base
   validate :serial_number, presence: true
   validate :valid_ppsr?
   validate :valid_serial?
+  validate :valid_dispatched?
 
   def valid_job?
     if Job.find_by job_number: job_id != nil
@@ -46,6 +47,14 @@ class Stock < ActiveRecord::Base
   def valid_serial?
     if needs_ppsr == true and (ppsr == nil or ppsr == '') and (serial_number != nil and serial_number != '')
       errors.add(:serial_number, "Cannot make Serial Number #{serial_number}. Job cannot be assigned a serial number without a valid PPSR.")
+    else
+      true
+    end
+  end
+
+  def valid_dispatched?
+    if status == "Dispatched" and ( shipping_date == "" or shipping_date == nil)
+      errors.add(:status, "Job Cannot be dispatched without a shipping date")
     else
       true
     end
