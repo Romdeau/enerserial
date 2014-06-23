@@ -59,14 +59,14 @@
       <h4>Audit Events</h4>
       <div class="row">
         <div class="col-sm-4 ener-header">Comment</div>
-        <% if current_user.admin == true %>
+        <% if user_signed_in? && current_user.admin == true %>
           <div class="col-sm-8 ener-header">Params</div>
         <% end %>
       </div>
       <% @stock_audits.each do |stock_audit| %>
         <div class="row">
           <div class="col-sm-4"><%= format_name(stock_audit.user.email) %> <%= stock_audit.comment %></div>
-          <% if current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? %>
             <div class="col-sm-8"><%= stock_audit.audit_params %></div>
           <% end %>
         </div>
