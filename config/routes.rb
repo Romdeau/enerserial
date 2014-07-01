@@ -5,7 +5,7 @@ Enerserial::Application.routes.draw do
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
   root 'stocks#index'
-  get '/stocks/import' => 'stocks#import', :as => :import_items
+  get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
 
   get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine

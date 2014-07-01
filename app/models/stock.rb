@@ -64,8 +64,12 @@ class Stock < ActiveRecord::Base
     CSV.foreach(file.path, headers: true) do |row|
       @stockhash = row.to_hash
       @stock = Stock.create(serial_number: @stockhash["serial_number"], job_id: @stockhash["job_id"], detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
-      @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
-      @alternator = Alternator.create(stock_id: @stock.id, alternator: @stockhash["alternator"], alternator_type: @stockhash["alternator_type"], serial: @stockhash["alternator_serial"])
+      if @stockhash["engine"] != nil
+        @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
+      end
+      if @stockhash["alternator"] != nil
+        @alternator = Alternator.create(stock_id: @stock.id, alternator: @stockhash["alternator"], alternator_type: @stockhash["alternator_type"], serial: @stockhash["alternator_serial"])
+      end
     end
   end
 end
