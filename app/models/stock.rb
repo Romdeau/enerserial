@@ -62,8 +62,10 @@ class Stock < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      @item = Stock.new(row.to_hash)
-      @item.save
+      @stockhash = row.to_hash
+      @stock = Stock.create(serial_number: @stockhash["serial_number"], job_id: @stockhash["job_id"], detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
+      @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
+      @alternator = Alternator.create(stock_id: @stock.id, alternator: @stockhash["alternator"], alternator_type: @stockhash["alternator_type"], serial: @stockhash["alternator_serial"])
     end
   end
 end

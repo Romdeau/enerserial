@@ -32,12 +32,12 @@ class StocksController < ApplicationController
 
   # POST /items/import
   def import_file
-    begin
+    #begin
       Stock.import(params[:file])
       redirect_to root_url, notice: "Stock imported. Duplicates are Ignored."
-    rescue
-      redirect_to root_url, notice: "Invalid CSV file format."
-    end
+    #rescue
+    #  redirect_to root_url, notice: "Invalid CSV file format."
+    #end
   end
 
   # POST /stocks

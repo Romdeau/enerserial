@@ -3,7 +3,10 @@
 </div>
 <div class="container">
   <%= form_tag import_items_path, multipart: true do %>
+    <p>To convert the existing serial register delete the customer column then convert to .csv and replace the header row with<br>
+      <font size ="1">serial_number,job_id,engine,engine_type,engine_serial,alternator,alternator_type,alternator_serial,detail,status_detail,gesan_number,ppsr</font>
+    </p>
     <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV" %>
+    <%= submit_tag "Import CSV", class: "btn btn-sm btn-success" %>
   <% end %>
 </div>
