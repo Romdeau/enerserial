@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h3>Import a CSV File</h3>
+</div>
+<div class="container">
+  <%= form_tag import_items_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>

@@ -25,7 +25,7 @@ class Stock < ActiveRecord::Base
 
   validate :serial_number, presence: true
   validate :valid_ppsr?
-  validate :valid_serial?
+  #validate :valid_serial?
   validate :valid_dispatched?
 
   def valid_job?
@@ -57,6 +57,13 @@ class Stock < ActiveRecord::Base
       errors.add(:status, "Job Cannot be dispatched without a shipping date")
     else
       true
+    end
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      @item = Stock.new(row.to_hash)
+      @item.save
     end
   end
 end

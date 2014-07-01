@@ -26,6 +26,20 @@ class StocksController < ApplicationController
   def edit
   end
 
+  # GET /stocks/import
+  def import
+  end
+
+  # POST /items/import
+  def import_file
+    begin
+      Stock.import(params[:file])
+      redirect_to root_url, notice: "Stock imported. Duplicates are Ignored."
+    rescue
+      redirect_to root_url, notice: "Invalid CSV file format."
+    end
+  end
+
   # POST /stocks
   # POST /stocks.json
   def create
