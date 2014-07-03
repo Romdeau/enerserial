@@ -11,5 +11,5 @@
 class Customer < ActiveRecord::Base
   has_many :job, dependent: :destroy
 
-  validate :name, presence: :true
+  validates :name, presence: :true, uniqueness: true
 end

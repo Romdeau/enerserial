@@ -15,7 +15,7 @@ class Alternator < ActiveRecord::Base
   belongs_to :stock
   has_many :stock_audit
 
-  validate :serial, :alternator, presence: true
+  validates :serial, :alternator, presence: true, uniqueness: true
 
   scope :floor_stock, -> { where stock_id: nil }
 	scope :assigned_stock, -> { where stock_id: !nil}

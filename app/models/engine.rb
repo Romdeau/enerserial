@@ -15,7 +15,7 @@ class Engine < ActiveRecord::Base
   belongs_to :stock
   has_many :stock_audit
 
-  validate :serial, :engine, presence: true
+  validates :serial, :engine, presence: true, uniqueness: true
 
   scope :floor_stock, -> { where stock_id: nil }
   scope :assigned_stock, -> { where stock_id: !nil}

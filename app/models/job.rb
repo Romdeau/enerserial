@@ -12,4 +12,8 @@
 class Job < ActiveRecord::Base
   belongs_to :customer
   has_many :stock
+
+  validates :job_number, presence: :true, uniqueness: :true
+  validates :customer_id, presence: true
+
 end

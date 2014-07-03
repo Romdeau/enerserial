@@ -23,7 +23,7 @@ class Stock < ActiveRecord::Base
 
   STATUS_TYPES = %w[New\ Stock Job\ Allocated Manufacturing Ready\ to\ Ship On\ the\ Water Dispatched]
 
-  validate :serial_number, presence: true
+  validates :serial_number, presence: true, uniqueness: true
   validate :valid_ppsr?
   #validate :valid_serial?
   validate :valid_dispatched?
@@ -63,7 +63,21 @@ class Stock < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       @stockhash = row.to_hash
-      @stock = Stock.create(serial_number: @stockhash["serial_number"], job_id: @stockhash["job_id"], detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
+      if @stockhash["customer"] != nil
+        @customer = Customer.create(name: @stockhash["customer"])
+      else
+        @customer = Customer.find_by name: @stockhash["customer"]
+      end
+      if @stockhash["job_id"] != nil and @customer != nil
+        @job = Job.create(job_number: @stockhash["job_id"], customer_id: @customer.id)
+      else
+        @job = Job.find_by job_number: @stockhash["job_id"]
+      end
+      if @job == nil or @customer == nil
+        @stock = Stock.create(serial_number: @stockhash["serial_number"], detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
+      else
+        @stock = Stock.create(serial_number: @stockhash["serial_number"], job_id: @job.id, detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
+      end
       if @stockhash["engine"] != nil
         @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
       end
