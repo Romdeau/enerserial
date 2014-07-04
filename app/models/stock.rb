@@ -63,25 +63,36 @@ class Stock < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       @stockhash = row.to_hash
+
+      #If the customer field isnt nil try to match to existing customer. If customer doest exist create.
       if @stockhash["customer"] != nil
-        @customer = Customer.create(name: @stockhash["customer"])
-      else
         @customer = Customer.find_by name: @stockhash["customer"]
+        if @customer == nil
+          @customer = Customer.create(name: @stockhash["customer"])
+        end
       end
 
+      #if the job isnt nil and the customer isnt nil try to match the existing job. If the job doesnt exist create it.
       if @stockhash["job_id"] != nil and @customer != nil
-        @job = Job.create(job_number: @stockhash["job_id"], customer_id: @customer.id)
-      else
         @job = Job.find_by job_number: @stockhash["job_id"]
+        if @job == nil
+          @job = Job.create(job_number: @stockhash["job_id"], customer_id: @customer.id)
+        end
       end
+
+      #If job or customer are nil create without job and customer
+      #No need to account for individual cases, as customers are only linked through jobs and a job must have a customer.
       if @job == nil or @customer == nil
         @stock = Stock.create(serial_number: @stockhash["serial_number"], detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
+      #else create with full job and customer details
       else
         @stock = Stock.create(serial_number: @stockhash["serial_number"], job_id: @job.id, detail: @stockhash["detail"], status_detail: @stockhash["status_detail"], gesan_number: @stockhash["gesan_number"], ppsr: @stockhash["ppsr"])
       end
+      #if the engine exists creat it associated with the stock item
       if @stockhash["engine"] != nil
         @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
       end
+      #if the alternator exists create it associated with the stock item
       if @stockhash["alternator"] != nil
         @alternator = Alternator.create(stock_id: @stock.id, alternator: @stockhash["alternator"], alternator_type: @stockhash["alternator_type"], serial: @stockhash["alternator_serial"])
       end
