@@ -68,6 +68,7 @@ class Stock < ActiveRecord::Base
       else
         @customer = Customer.find_by name: @stockhash["customer"]
       end
+
       if @stockhash["job_id"] != nil and @customer != nil
         @job = Job.create(job_number: @stockhash["job_id"], customer_id: @customer.id)
       else
