@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623015437) do
+ActiveRecord::Schema.define(version: 20140711012001) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20140623015437) do
 
   add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id"
 
+  create_table "orders", force: true do |t|
+    t.string   "order_number"
+    t.date     "shipping_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stock_audits", force: true do |t|
     t.integer  "stock_id"
     t.integer  "engine_id"
@@ -62,23 +69,8 @@ ActiveRecord::Schema.define(version: 20140623015437) do
   add_index "stock_audits", ["stock_id"], name: "index_stock_audits_on_stock_id"
   add_index "stock_audits", ["user_id"], name: "index_stock_audits_on_user_id"
 
-  create_table "stocks", force: true do |t|
-    t.integer  "serial_number"
-    t.integer  "job_id"
-    t.string   "detail"
-    t.string   "status"
-    t.string   "status_detail"
-    t.string   "gesan_number"
-    t.string   "ppsr"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "needs_ppsr",    default: true
-    t.string   "supplier_name"
-    t.string   "vin"
-    t.date     "shipping_date"
-  end
-
-  add_index "stocks", ["job_id"], name: "index_stocks_on_job_id"
+# Could not dump table "stocks" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

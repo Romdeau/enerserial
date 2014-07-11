@@ -1,4 +1,6 @@
 Enerserial::Application.routes.draw do
+  resources :orders
+
   resources :stock_audits
 
   get '/users' => 'users#index', :as => :users

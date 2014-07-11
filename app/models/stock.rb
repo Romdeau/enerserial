@@ -17,6 +17,7 @@
 
 class Stock < ActiveRecord::Base
   belongs_to :job
+  belongs_to :order
   has_one :engine
   has_one :alternator
   has_many :stock_audit
