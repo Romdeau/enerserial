@@ -28,7 +28,9 @@ class Stock < ActiveRecord::Base
 
   STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Ready\ to\ Ship Ready\ to\ Dispatch Dispatched]
 
-  validates :serial_number, uniqueness: true
+  validates :serial_number, uniqueness: true,
+    unless: :blank_serial?
+
   validate :valid_ppsr?
   #validate :valid_serial?
   validate :valid_dispatched?
@@ -54,6 +56,14 @@ class Stock < ActiveRecord::Base
       errors.add(:serial_number, "Cannot make Serial Number #{serial_number}. Job cannot be assigned a serial number without a valid PPSR.")
     else
       true
+    end
+  end
+
+  def blank_serial?
+    if serial_number == nil or serial_number == ''
+      true
+    else
+      false
     end
   end
 

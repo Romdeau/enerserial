@@ -28,10 +28,10 @@ class OrdersController < ApplicationController
     @order.order_number = order_params[:order_number]
     @order.shipping_date = order_params[:shipping_date]
     @order.order_status = order_params[:order_status]
-    @stock_to_generate = order_params[:stock_to_generate]
-    @order.generate_stock(@stock_to_generate, @order.order_number)
+    @stock_to_generate = order_params[:stock_to_generate].to_i
     respond_to do |format|
       if @order.save
+        @order.generate_stock(@stock_to_generate, @order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
