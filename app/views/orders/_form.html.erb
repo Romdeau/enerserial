@@ -19,6 +19,14 @@
     <%= f.label :shipping_date %><br>
     <%= f.date_select :shipping_date %>
   </div>
+  <div class="field">
+    <%= f.label :order_status %><br>
+    <%= f.collection_select :order_status, Stock::STATUS_TYPES, :to_s, :humanize %>
+  </div>
+  <div class="field">
+    <%= f.label :stock_to_generate %><br>
+    <%= f.number_field :stock_to_generate %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

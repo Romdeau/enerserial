@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id            :integer          not null, primary key
+#  order_number  :string(255)
+#  shipping_date :date
+#  created_at    :datetime
+#  updated_at    :datetime
+#  order_status  :string(255)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

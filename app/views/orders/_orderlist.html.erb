@@ -1,0 +1,23 @@
+<div class="paragraph">
+  <div class="row">
+    <div class="col-sm-2 ener-header">Order Number</div>
+    <div class="col-sm-2 ener-header">Eneraque Job Number</div>
+    <div class="col-sm-2 ener-header">Status</div>
+    <div class="col-sm-2 btn-group"></div>
+  </div>
+
+  <% @orders.each do |order| %>
+  <div class="row">
+    <div class="col-sm-2"><%= order.order_number %></div>
+    <div class="col-sm-2"><%= order.shipping_date %></div>
+    <div class="col-sm-2"><%= order.status %></div>
+    <div class="col-sm-2 btn-group" style="float:right;">
+      <%= link_to 'Show', order, class: "btn btn-xs btn-info" %>
+      <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_order_path(order), class: "btn btn-xs btn-info" %>
+        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+      <% end %>
+  </div>
+  </div>
+  <% end %>
+</div>

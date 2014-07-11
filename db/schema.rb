@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711012001) do
+ActiveRecord::Schema.define(version: 20140711012712) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140711012001) do
     t.date     "shipping_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "order_status"
   end
 
   create_table "stock_audits", force: true do |t|

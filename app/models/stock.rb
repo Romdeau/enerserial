@@ -13,6 +13,10 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  needs_ppsr    :boolean          default(TRUE)
+#  supplier_name :string(255)
+#  vin           :string(255)
+#  shipping_date :date
+#  order         :reference
 #
 
 class Stock < ActiveRecord::Base
@@ -22,9 +26,9 @@ class Stock < ActiveRecord::Base
   has_one :alternator
   has_many :stock_audit
 
-  STATUS_TYPES = %w[New\ Stock Job\ Allocated Manufacturing Ready\ to\ Ship On\ the\ Water Dispatched]
+  STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Ready\ to\ Ship Ready\ to\ Dispatch Dispatched]
 
-  validates :serial_number, presence: true, uniqueness: true
+  validates :serial_number, uniqueness: true
   validate :valid_ppsr?
   #validate :valid_serial?
   validate :valid_dispatched?
