@@ -9,6 +9,8 @@ Enerserial::Application.routes.draw do
   root 'stocks#index'
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
+  get '/stocks/:id/assign_pm' => 'stocks#assign_pm', :as => :assign_pm_stock
+  patch '/stocks/:id/assign_pm' => 'stocks#process_pm', :as => :process_pm_stock
 
   get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine
   post '/engines' => 'engines#create_floor_engine', :as => :create_floor_engine

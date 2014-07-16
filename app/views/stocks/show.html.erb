@@ -31,8 +31,10 @@
       <div class="col-sm-4 btn-group">
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
+          <%= link_to 'Assign PM', assign_pm_stock_path, class: "btn btn-sm btn-primary" %>
         <% end %>
         <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
+
       </div>
       <% if user_signed_in? %>
         <div class="col-sm-4 btn-group">

@@ -90,7 +90,31 @@ end
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
     end
-end
+  end
+
+  # GET /stocks/1/assign_pm
+  def set_pm
+    @stock = Stock.find(params[:id])
+  end
+
+  # PATCH /stocks/1/assign_pm
+  def process_pm
+    @stock = Stock.find(params[:id])
+    @stock.project_manager = stock_params[:project_manager]
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.stock = @stock
+    @stock_audit.audit_params = "#{stock_params}"
+    @stock_audit.comment = "assigned_pm"
+    if @stock.save
+      @stock_audit.save
+      format.html { redirect_to @stock, notice: 'PM was assigned.' }
+      format.json { head :no_content }
+    else
+      format.html { render action: 'edit' }
+      format.json { render json: @stock.errors, status: :unprocessable_entity }
+    end
+  end
 
   # DELETE /stocks/1
   # DELETE /stocks/1.json
@@ -115,6 +139,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date)
+      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date, :project_manager)
     end
 end
