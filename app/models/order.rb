@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
   has_many :stock
 
   validates :order_number, presence: :true, uniqueness: :true
+  validate :valid_shipping?
 
   attr_accessor :stock_to_generate
 
@@ -23,6 +24,14 @@ class Order < ActiveRecord::Base
     while number_to_generate > 0
         Stock.create(status: "Ordered", detail: "Generated for order #{order_object.order_number}", order_id: order_object.id)
       number_to_generate -= 1
+    end
+  end
+
+  def valid_shipping?
+    if order_status == "Goods Loaded" and shipping_date == nil
+      errors.add(:order_status, "#{order_number} cannot be Goods Loaded without a Shipping Date")
+    else
+      true
     end
   end
 

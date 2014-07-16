@@ -12,7 +12,7 @@
     <div class="col-sm-2"><%= order.order_number %></div>
     <div class="col-sm-2"><%= order.shipping_date %></div>
     <div class="col-sm-2"><%= order.order_status %></div>
-    <div class="col-sm-2"><%= order.stock %></div>
+    <div class="col-sm-2"><%= order.stock.count %></div>
     <div class="col-sm-2 btn-group" style="float:right;">
       <%= link_to 'Show', order, class: "btn btn-xs btn-info" %>
       <% if user_signed_in? %>
