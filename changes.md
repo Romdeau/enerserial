@@ -55,7 +55,7 @@ Order -> Order Acknowledgement -> Invoice (serial numbers start here)
 rails g scaffold order order_number:string shipping_date:date
 rails g migration #add order:references to stock
 #  Build Generator to translate "week 5" into the date for Wednesday.
-#  Order has multiple items on it.
+  Order has multiple items on it.
 #    Ordered - Single order has_many: Stock Items with only model numbers. Stock item has status Ordered.
 #    Acknowledged - Estimated Shipping Date for whole order
 #    Goods Loaded - Suppliers Serial Numbers
