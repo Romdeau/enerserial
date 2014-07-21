@@ -4,9 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to EnerSerial, <%= @user.email %></h1>
+    <h1>Hello, <%= @user.email %></h1>
     <p>
-      Body Text goes here.
+      You've been assigned as the PM of a serial register item.
+      You can view this item <%= link_to "here", stock_path(@stock) %>
     </p>
     <p>
       To Login to Enerserial simply follow this link <%= @url %>.

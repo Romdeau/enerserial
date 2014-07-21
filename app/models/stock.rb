@@ -24,9 +24,12 @@
 class Stock < ActiveRecord::Base
   belongs_to :job
   belongs_to :order
+  belongs_to :user
   has_one :engine
   has_one :alternator
   has_many :stock_audit
+
+  attr_accessor :pm_email
 
   STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Ready\ to\ Ship Ready\ to\ Dispatch Dispatched]
 
@@ -34,7 +37,6 @@ class Stock < ActiveRecord::Base
     unless: :blank_serial?
 
   validate :valid_ppsr?
-  #validate :valid_serial?
   validate :valid_dispatched?
 
   def valid_job?

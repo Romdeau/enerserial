@@ -117,7 +117,7 @@ GEM
     turbolinks (2.2.2)
       coffee-rails
     tzinfo (0.3.40)
-    uglifier (2.5.1)
+    uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.3)
