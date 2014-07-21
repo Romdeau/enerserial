@@ -6,7 +6,7 @@
   <body>
     <h1>Hello, <%= format_name(@user.email) %></h1>
     <p>
-      You've been assigned as the PM of a serial register item by <%= format_name(@current_user.email) %><br>
+      An item you're assigned as the PM of has had its status updated to '<%= @stock.status %>' by <%= format_name(@current_user.email) %><br>
       You can view this item <%= link_to "here", stock_path(@stock) %>
     </p>
     <p>

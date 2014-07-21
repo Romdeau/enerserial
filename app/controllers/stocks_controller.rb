@@ -71,6 +71,14 @@ end
   def update
     @job = Job.find_by job_number: stock_params[:job_number]
     params[:stock].delete :job_number
+    if @stock.project_manager != nil
+      if @stock.status == stock_params[:status]
+        @status_updated = false
+      else
+        @project_manager = User.find(@stock.project_manager)
+        @status_updated = true
+      end
+    end
     @stock.update(stock_params)
     if @job != nil
       @stock.job_id = @job.id
@@ -83,6 +91,9 @@ end
     respond_to do |format|
       if @stock.save
         @stock_audit.save
+        if @status_updated
+          UserMailer.status_update(@project_manager, @stock, current_user).deliver
+        end
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
@@ -113,7 +124,7 @@ end
     respond_to do |format|
       if @stock.save && @project_manager != nil
         @stock_audit.save
-        UserMailer.update_pm(@project_manager, @stock).deliver
+        UserMailer.update_pm(@project_manager, @stock, current_user).deliver
         format.html { redirect_to @stock, notice: 'PM was assigned.' }
         format.json { head :no_content }
       else

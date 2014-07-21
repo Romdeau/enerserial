@@ -57,10 +57,10 @@ rails g migration #add order:references to stock
 #  Build Generator to translate "week 5" into the date for Wednesday.
   Order has multiple items on it.
     Ordered - Single order has_many: Stock Items with only model numbers. Stock item has status Ordered.
-#    Acknowledged - Estimated Shipping Date for whole order
-#    Goods Loaded - Suppliers Serial Numbers
-#    On The Water - Estimated Arrival Date Email project manager, accounts, factory
-#    Arrived - End Point - Goes to Floor Stock or Stock Item. Needs Location Field
+    Acknowledged - Estimated Shipping Date for whole order
+    Goods Loaded - Suppliers Serial Numbers
+    On The Water - Estimated Arrival Date Email project manager, accounts, factory
+    Arrived - End Point - Goes to Floor Stock or Stock Item. Needs Location Field
 
 # Serial Numbers
 #    New Stock -
