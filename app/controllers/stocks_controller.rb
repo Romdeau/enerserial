@@ -106,7 +106,7 @@ end
   # GET /stocks/1/assign_pm
   def assign_pm
     @stock = Stock.find(params[:id])
-    if @stock.project_manager != nil
+    if @stock.user != nil
       @pm = User.find(@stock.project_manager)
     end
   end
@@ -115,7 +115,7 @@ end
   def process_pm
     @project_manager = User.find_by email: stock_params[:pm_email]
     @stock = Stock.find(params[:id])
-    @stock.project_manager = @project_manager
+    @stock.user = @project_manager
     @stock_audit = StockAudit.new
     @stock_audit.user = current_user
     @stock_audit.stock = @stock
