@@ -46,10 +46,11 @@ BRANCHES
 Order -> Order Acknowledgement -> Invoice (serial numbers start here)
 
 # Status
-#  Order number field into Stock.
-#  Remove serial number validate: exists from Stock.
+  Order number field into Stock.
+  Remove serial number validate: exists from Stock.
 #  Stock Items need a floor stock system.
 #  Stock needs a Location Field.
+#  Need a better indicator for when adding an invalid job, just says updated successfully at the moment,.
 
 # Orders
 rails g scaffold order order_number:string shipping_date:date

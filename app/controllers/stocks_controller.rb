@@ -71,11 +71,11 @@ end
   def update
     @job = Job.find_by job_number: stock_params[:job_number]
     params[:stock].delete :job_number
-    if @stock.project_manager != nil
+    if @stock.user != nil
       if @stock.status == stock_params[:status]
         @status_updated = false
       else
-        @project_manager = User.find(@stock.project_manager)
+        @project_manager = User.find(@stock.user.id)
         @status_updated = true
       end
     end

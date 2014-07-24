@@ -4,6 +4,9 @@
     <% if @stock.job != nil %>
       <%= ": Job #{format_job(@stock)} for #{format_company(@stock)}." %>
     <% end %>
+    <% if @stock.order != nil %>
+      <%= ": For Order Number #{@stock.order.order_number}" %>
+    <% end %>
   </h1>
 </div>
 
