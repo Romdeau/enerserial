@@ -72,7 +72,8 @@ rails g migration #add order:references to stock
 #    Ready to Dispatch - Can't Set Until all sign off from various people
 #    Dispatched -
 
-# Add Ins
+# Items
+#  Determine This from the Live Orders Sheet.
 #  Stock_Type: Engine, Alternator, Pump,
 #  Order:references
 #  Distributor: string
