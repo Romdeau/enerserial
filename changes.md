@@ -68,7 +68,7 @@ rails g migration #add order:references to stock
 #    Floor Stock -
 #    Job Allocated - Requires Job Number
 #    In Production -
-#    Ready to Ship - Email out sign off points in order to get to Ready to Dispatch, Accounts email requires PPSR toggle to be off or on.
+#    Production Complete - Email out sign off points in order to get to Ready to Dispatch, Accounts email requires PPSR toggle to be off or on.
 #    Ready to Dispatch - Can't Set Until all sign off from various people
 #    Dispatched -
 
