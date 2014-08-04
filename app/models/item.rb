@@ -19,6 +19,10 @@ class Item < ActiveRecord::Base
   belongs_to :order
   belongs_to :stock
 
+  has_many :stock_audit
+
+  STOCK_TYPES = %w[Engine Alternator Pump Flare Other]
+
   validates :item_serial, presence: true, uniqueness: true
 
   scope :floor_stock, -> { where stock_id: nil }

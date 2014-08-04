@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def floor_stock
+    @items = Item.floor_stock
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
@@ -14,6 +18,10 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    @item = Item.new
+  end
+
+  def new_floor_item
     @item = Item.new
   end
 
@@ -25,9 +33,34 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    @item.stock_id = params[:stock_id]
+    @stock_audit = StockAudit.new
+    @stock_audit.item = @item
+    @stock_audit.user = current_user
+    @stock_audit.audit_params = "#{item_params}"
+    @stock_audit.comment = "created a new item"
     respond_to do |format|
       if @item.save
+        @stock_audit.save
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @item }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_floor_item
+    @item = Item.new(item_params)
+    @stock_audit = StockAudit.new
+    @stock_audit.item = @item
+    @stock_audit.user = current_user
+    @stock_audit.audit_params = "#{item_params}"
+    @stock_audit.comment = "created a new item"
+    respond_to do |format|
+      if @item.save
+        @stock_audit.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @item }
       else
