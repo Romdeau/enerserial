@@ -12,6 +12,7 @@
 
 class Order < ActiveRecord::Base
   has_many :stock
+  has_many :item
 
   validates :order_number, presence: :true, uniqueness: :true
 

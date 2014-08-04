@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716012942) do
+ActiveRecord::Schema.define(version: 20140804014247) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 20140716012942) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "items", force: true do |t|
+    t.string   "item_name"
+    t.string   "item_model"
+    t.string   "item_serial"
+    t.string   "stock_type"
+    t.integer  "order_id"
+    t.string   "distributor"
+    t.string   "manufacturer"
+    t.integer  "stock_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["order_id"], name: "index_items_on_order_id"
+  add_index "items", ["stock_id"], name: "index_items_on_stock_id"
 
   create_table "jobs", force: true do |t|
     t.string   "job_number"

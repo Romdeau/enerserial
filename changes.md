@@ -74,6 +74,9 @@ rails g migration #add order:references to stock
 
 # Items
 #  Determine This from the Live Orders Sheet.
+#  Item_Name:string
+#  Item_Type:string
+#  Item_Serial:string
 #  Stock_Type: Engine, Alternator, Pump,
 #  Order:references
 #  Distributor: string

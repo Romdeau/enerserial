@@ -1,7 +1,6 @@
 Enerserial::Application.routes.draw do
-  resources :orders
 
-  resources :stock_audits
+  resources :items
 
   get '/users' => 'users#index', :as => :users
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
@@ -25,6 +24,17 @@ Enerserial::Application.routes.draw do
   get '/alternators/:id/alternator_assign' => 'alternators#assign_alternator', :as => :assign_alternator
   patch '/alternators/:id/alternator_assign' => 'alternators#process_alternator', :as => :process_alternator
   patch '/alternators/:id/alternator_unassign' => 'alternators#unassign_alternator', :as => :unassign_alternator
+
+  get '/items/new_floor_alternator' => 'items#new_floor_alternator', :as => :new_floor_item
+  post '/items' => 'items#create_floor_alternator', :as => :create_floor_item
+  get '/items/floor_stock' => 'items#floor_stock', :as => :item_floor_stock
+  get '/items/:id/alternator_assign' => 'items#assign_alternator', :as => :assign_item
+  patch '/items/:id/alternator_assign' => 'items#process_alternator', :as => :process_item
+  patch '/items/:id/alternator_unassign' => 'items#unassign_alternator', :as => :unassign_item
+
+  resources :orders
+
+  resources :stock_audits
 
   resources :stocks do
     resources :alternators, only: [:new, :create]
