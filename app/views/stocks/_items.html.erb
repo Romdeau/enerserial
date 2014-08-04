@@ -1,0 +1,24 @@
+<div class="paragraph">
+  <div class="row">
+    <div class="col-sm-2 ener-header">Item serial</div>
+    <div class="col-sm-2 ener-header">Item model</div>
+    <div class="col-sm-2 ener-header">Stock type</div>
+    <div class="col-sm-2 ener-header">Order</div>
+    <div class="col-sm-4 ener-header"></div>
+  </div>
+  <% @items.each do |item| %>
+    <div class="row">
+      <div class="col-sm-2"><%= item.item_serial %></div>
+      <div class="col-sm-2"><%= item.item_model %></div>
+      <div class="col-sm-2"><%= item.stock_type %></div>
+      <div class="col-sm-2">
+        <% if item.order != nil %>
+          <%= item.order.order_number %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to 'Show', item, class: "btn btn-xs btn-info" %>
+      </div>
+    </div>
+  <% end %>
+</div>

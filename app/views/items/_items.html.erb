@@ -1,0 +1,40 @@
+<div class="paragraph">
+  <div class="row">
+    <div class="col-sm-1 ener-header">Item name</div>
+    <div class="col-sm-1 ener-header">Item model</div>
+    <div class="col-sm-1 ener-header">Item serial</div>
+    <div class="col-sm-1 ener-header">Stock type</div>
+    <div class="col-sm-1 ener-header">Order</div>
+    <div class="col-sm-1 ener-header">Distributor</div>
+    <div class="col-sm-1 ener-header">Manufacturer</div>
+    <div class="col-sm-1 ener-header">Stock</div>
+    <div class="col-sm-3 ener-header"></div>
+  </div>
+  <% @items.each do |item| %>
+    <div class="row">
+      <div class="col-sm-1"><%= item.item_name %></div>
+      <div class="col-sm-1"><%= item.item_model %></div>
+      <div class="col-sm-1"><%= item.item_serial %></div>
+      <div class="col-sm-1"><%= item.stock_type %></div>
+      <div class="col-sm-1">
+        <% if item.order != nil %>
+          <%= item.order.order_number %>
+        <% end %>
+      </div>
+      <div class="col-sm-1"><%= item.distributor %></div>
+      <div class="col-sm-1"><%= item.manufacturer %></div>
+      <div class="col-sm-1">
+        <% if item.stock != nil %>
+          <%= item.stock.serial_number %>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to 'Show', item, class: "btn btn-xs btn-info" %>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_item_path(item), class: "btn btn-xs btn-info" %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -16,9 +16,8 @@
 #  supplier_name :string(255)
 #  vin           :string(255)
 #  shipping_date :date
-#  order         :belongs_to
 #  order_id      :integer
-#  user          :belongs_to
+#  user_id       :integer
 #
 
 class Stock < ActiveRecord::Base
