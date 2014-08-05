@@ -1,40 +1,53 @@
-<div class="paragraph">
-  <div class="row">
-    <div class="col-sm-1 ener-header">Item name</div>
-    <div class="col-sm-1 ener-header">Item model</div>
-    <div class="col-sm-1 ener-header">Item serial</div>
-    <div class="col-sm-1 ener-header">Stock type</div>
-    <div class="col-sm-1 ener-header">Order</div>
-    <div class="col-sm-1 ener-header">Distributor</div>
-    <div class="col-sm-1 ener-header">Manufacturer</div>
-    <div class="col-sm-1 ener-header">Stock</div>
-    <div class="col-sm-3 ener-header"></div>
+<div class="row">
+  <div class="col-sm-4">
+    <input id="filter" type="text" class="form-control" placeholder="Search For...">
   </div>
-  <% @items.each do |item| %>
-    <div class="row">
-      <div class="col-sm-1"><%= item.item_name %></div>
-      <div class="col-sm-1"><%= item.item_model %></div>
-      <div class="col-sm-1"><%= item.item_serial %></div>
-      <div class="col-sm-1"><%= item.stock_type %></div>
-      <div class="col-sm-1">
-        <% if item.order != nil %>
-          <%= item.order.order_number %>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="ener-header">Item name</th>
+          <th class="ener-header">Item model</th>
+          <th class="ener-header">Item serial</th>
+          <th class="ener-header">Stock type</th>
+          <th class="ener-header">Order</th>
+          <th class="ener-header">Distributor</th>
+          <th class="ener-header">Manufacturer</th>
+          <th class="ener-header">Stock</th>
+          <th class="ener-header"></th>
+        </tr>
+      </thead>
+      <tbody class="searchable">
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.item_name %></td>
+            <td><%= item.item_model %></td>
+            <td><%= item.item_serial %></td>
+            <td><%= item.stock_type %></td>
+            <td>
+              <% if item.order != nil %>
+                <%= item.order.order_number %>
+              <% end %>
+            </td>
+            <td><%= item.distributor %></td>
+            <td><%= item.manufacturer %></td>
+            <td>
+              <% if item.stock != nil %>
+                <%= item.stock.serial_number %>
+              <% end %>
+            </td>
+            <td class="btn-group">
+              <%= link_to 'Show', item, class: "btn btn-xs btn-info" %>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_item_path(item), class: "btn btn-xs btn-info" %>
+                <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-      </div>
-      <div class="col-sm-1"><%= item.distributor %></div>
-      <div class="col-sm-1"><%= item.manufacturer %></div>
-      <div class="col-sm-1">
-        <% if item.stock != nil %>
-          <%= item.stock.serial_number %>
-        <% end %>
-      </div>
-      <div class="col-sm-3 btn-group">
-        <%= link_to 'Show', item, class: "btn btn-xs btn-info" %>
-        <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_item_path(item), class: "btn btn-xs btn-info" %>
-          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

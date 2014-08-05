@@ -1,0 +1,52 @@
+<div class="col-sm-3">
+  <p>
+    <strong>Eneraque Serial Number:</strong>
+    <%= format_serial(@stock) %>
+  </p>
+
+  <p>
+    <strong>Eneraque Job Number:</strong>
+    <%= format_job(@stock) %>
+  </p>
+
+  <p>
+    <strong>Supplier Name:</strong>
+    <%= @stock.supplier_name %>
+  </p>
+
+  <p>
+    <strong>Detail:</strong>
+    <%= @stock.detail %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @stock.status %>
+  </p>
+</div>
+<div class="col-sm-3">
+  <p>
+    <strong>Shipping Date:</strong>
+    <%= @stock.shipping_date %>
+  </p>
+
+  <p>
+    <strong>Status detail:</strong>
+    <%= @stock.status_detail %>
+  </p>
+
+  <p>
+    <strong>Supplier Serial Number:</strong>
+    <%= @stock.gesan_number %>
+  </p>
+
+  <p>
+    <strong>Vin Number:</strong>
+    <%= @stock.vin %>
+  </p>
+
+  <p>
+    <strong>Ppsr:</strong>
+    <%= format_ppsr(@stock) %>
+  </p>
+</div>

@@ -9,26 +9,14 @@ Enerserial::Application.routes.draw do
   get '/stocks/:id/assign_pm' => 'stocks#assign_pm', :as => :assign_pm_stock
   patch '/stocks/:id/assign_pm' => 'stocks#process_pm', :as => :process_pm_stock
 
-  get '/engines/new_floor_engine' => 'engines#new_floor_engine', :as => :new_floor_engine
-  post '/engines' => 'engines#create_floor_engine', :as => :create_floor_engine
-  get '/engines/floor_stock' => 'engines#floor_stock', :as => :engines_floor_stock
-  get '/engines/:id/engine_assign' => 'engines#assign_engine', :as => :assign_engine
-  patch '/engines/:id/engine_assign' => 'engines#process_engine', :as => :process_engine
-  patch '/engines/:id/engine_unassign' => 'engines#unassign_engine', :as => :unassign_engine
-
-  get '/alternators/new_floor_alternator' => 'alternators#new_floor_alternator', :as => :new_floor_alternator
-  post '/alternators' => 'alternators#create_floor_alternator', :as => :create_floor_alternator
-  get '/alternators/floor_stock' => 'alternators#floor_stock', :as => :alternators_floor_stock
-  get '/alternators/:id/alternator_assign' => 'alternators#assign_alternator', :as => :assign_alternator
-  patch '/alternators/:id/alternator_assign' => 'alternators#process_alternator', :as => :process_alternator
-  patch '/alternators/:id/alternator_unassign' => 'alternators#unassign_alternator', :as => :unassign_alternator
-
   get '/items/new_floor_item' => 'items#new_floor_item', :as => :new_floor_item
   post '/items' => 'items#create_floor_item', :as => :create_floor_item
   get '/items/floor_stock' => 'items#floor_stock', :as => :items_floor_stock
-  get '/items/:id/item_assign' => 'items#assign_alternator', :as => :assign_item
-  patch '/items/:id/item_assign' => 'items#process_alternator', :as => :process_item
-  patch '/items/:id/item_unassign' => 'items#unassign_alternator', :as => :unassign_item
+  get '/items/:id/assign_item' => 'items#assign_item', :as => :assign_item
+  patch '/items/:id/assign_item' => 'items#process_item', :as => :process_item
+  get '/items/:id/stock/:stock_id/' => 'items#item_stock', :as => :item_stock
+  patch '/items/:id/stock/:stock_id/' => 'items#process_item_stock', :as => :process_item_stock
+  post '/items/:id/' => 'items#unassign_item', :as => :unassign_item
 
   resources :orders
 
@@ -37,8 +25,6 @@ Enerserial::Application.routes.draw do
   resources :items, only: [:index, :show, :edit, :update, :destroy]
 
   resources :stocks do
-    resources :alternators, only: [:new, :create]
-    resources :engines, only: [:new, :create]
     resources :items, only: [:new, :create]
   end
 
@@ -47,9 +33,5 @@ Enerserial::Application.routes.draw do
   end
 
   resources :jobs, only: [:index, :show, :edit, :update, :destroy]
-
-  resources :alternators, only: [:index, :show, :edit, :update, :destroy]
-
-  resources :engines, only: [:index, :show, :edit, :update, :destroy]
 
 end

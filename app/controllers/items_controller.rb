@@ -84,6 +84,78 @@ class ItemsController < ApplicationController
     end
   end
 
+  def assign_item
+    @item = Item.find(params[:id])
+    @stocks = Stock.all
+  end
+
+  def unassign_item
+    @item = Item.find(params[:id])
+    @stock = @item.stock
+    @item.stock_id = nil
+    @stock_audit = StockAudit.new
+    @stock_audit.item = @item
+    @stock_audit.user = current_user
+    @stock_audit.comment = "item #{@item} assigned to floor stock"
+    @stock_audit1 = StockAudit.new
+    @stock_audit1.stock = @item.stock
+    @stock_audit1.user = current_user
+    @stock_audit1.comment = "stock item #{@item.id} assigned to floor stock"
+    if @item.save
+      @stock_audit.save
+      @stock_audit1.save
+      redirect_to @item, notice: "Item #{@item.id} was assigned to #{@stock.id}"
+    else
+      redirect_to @item, alert: "Something went wrong."
+    end
+  end
+
+  def process_item
+    @item = Item.find(params[:id])
+    @stock = Stock.find_by serial_number: item_params[:stock_id]
+    @item.stock_id = @stock.id
+    @stock_audit = StockAudit.new
+    @stock_audit.item = @item
+    @stock_audit.user = current_user
+    @stock_audit.comment = "floor stock item assigned to #{@item.stock.id}"
+    @stock_audit1 = StockAudit.new
+    @stock_audit1.stock = @item.stock
+    @stock_audit1.user = current_user
+    @stock_audit1.comment = "floor stock item #{@item.id} assigned"
+    if @item.save
+      @stock_audit.save
+      @stock_audit1.save
+      redirect_to @item, notice: "Item #{@item.id} was assigned to #{@stock.id}"
+    else
+      redirect_to @item, alert: "Something went wrong."
+    end
+  end
+  def item_stock
+    @stock = Stock.find(params[:stock_id])
+    @item = Item.find(params[:id])
+  end
+
+  def process_item_stock
+    @item = Item.find(params[:id])
+    @stock = Stock.find(params[:stock_id])
+    @item.stock_id = @stock.id
+    @stock_audit = StockAudit.new
+    @stock_audit.item = @item
+    @stock_audit.user = current_user
+    @stock_audit.comment = "floor stock item assigned to #{@item.stock.id}"
+    @stock_audit1 = StockAudit.new
+    @stock_audit1.stock = @item.stock
+    @stock_audit1.user = current_user
+    @stock_audit1.comment = "floor stock item #{@item.id} assigned"
+    if @item.save
+      @stock_audit.save
+      @stock_audit1.save
+      redirect_to @stock, notice: "Item #{@item.id} was assigned to #{@stock.id}"
+    else
+      redirect_to @item, alert: "Something went wrong."
+    end
+  end
+
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy

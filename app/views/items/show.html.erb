@@ -1,44 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>
+    <%= "Detail for Item \##{@item.item_serial}" %>
+    <% if @item.stock != nil %>
+      attached to stock item <%= link_to format_serial(@item.stock), stock_path(@item.stock) %>.
+    <% end %>
+    <% if @item.order != nil %>
+      <%= " on order \##{@item.order.order_number}" %>
+    <% end %>
+  </h1>
+</div>
 
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
-
-<p>
-  <strong>Item model:</strong>
-  <%= @item.item_model %>
-</p>
-
-<p>
-  <strong>Item serial:</strong>
-  <%= @item.item_serial %>
-</p>
-
-<p>
-  <strong>Stock type:</strong>
-  <%= @item.stock_type %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @item.order %>
-</p>
-
-<p>
-  <strong>Distributor:</strong>
-  <%= @item.distributor %>
-</p>
-
-<p>
-  <strong>Manufacturer:</strong>
-  <%= @item.manufacturer %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @item.stock %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div class="container">
+  <div class="row">
+    <%= render 'item' %>
+  </div>
+  <div class="btn-group">
+    <% if user_signed_in? %>
+      <% if @item.stock != nil %>
+        <%= link_to 'Assign to Floor Stock', item_path(@item), method: :unassign_item, class: "btn btn-sm btn-success" %>
+        <%= link_to 'Back to Stock', stock_path(@item.stock), class: "btn btn-sm btn-primary" %>
+      <% else %>
+        <%= link_to 'Assign to Stock', assign_item_path(@item), class: "btn btn-sm btn-success" %>
+        <%= link_to 'Back to Floor Stock', items_floor_stock_path(@item.stock), class: "btn btn-sm btn-primary" %>
+      <% end %>
+  </div><br>
+  <div class="btn-group">
+    <%= link_to 'Edit Item', edit_item_path(@item), class: "btn btn-sm btn-primary" %>
+    <% end %>
+    <%= link_to 'Back', items_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>
