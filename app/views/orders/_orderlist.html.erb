@@ -1,25 +1,37 @@
 <div class="paragraph">
   <div class="row">
-    <div class="col-sm-2 ener-header">Order Number</div>
-    <div class="col-sm-2 ener-header">Shipping Date</div>
-    <div class="col-sm-2 ener-header">Status</div>
-    <div class="col-sm-2 ener-header">Stock Items</div>
-    <div class="col-sm-2 btn-group"></div>
+    <div class="col-sm-4">
+      <input id="filter" type="text" class="form-control" placeholder="Search For...">
+    </div>
   </div>
-
-  <% @orders.each do |order| %>
-  <div class="row">
-    <div class="col-sm-2"><%= order.order_number %></div>
-    <div class="col-sm-2"><%= order.shipping_date %></div>
-    <div class="col-sm-2"><%= order.order_status %></div>
-    <div class="col-sm-2"><%= order.stock.count %></div>
-    <div class="col-sm-2 btn-group" style="float:right;">
-      <%= link_to 'Show', order, class: "btn btn-xs btn-info" %>
-      <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_order_path(order), class: "btn btn-xs btn-info" %>
-        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="ener-header">Order Number</th>
+        <th class="ener-header">Shipping Date</th>
+        <th class="ener-header">Status</th>
+        <th class="ener-header">Stock Items</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="searchable">
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.order_number %></td>
+        <td><%= order.shipping_date %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.stock.count %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'Show', order, class: "btn btn-xs btn-info" %>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_order_path(order), class: "btn btn-xs btn-info" %>
+              <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+            <% end %>
+          </div>
+        </td>
+      <tr>
       <% end %>
-  </div>
-  </div>
-  <% end %>
+    </tbody>
+  </table>
 </div>

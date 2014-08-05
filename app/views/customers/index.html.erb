@@ -5,20 +5,33 @@
 <div id="content">
   <div class="paragraph">
     <div class="row">
-      <div class="col-sm-4 ener-header">Name</div>
-      <div class="col-sm-4"></div>
-    </div>
-    <% @customers.each do |customer| %>
-      <div class="row">
-        <div class="col-sm-4"><%= customer.name %></div>
-        <div class="col-sm-4 btn-group">
-          <%= link_to 'Show', customer, class: "btn btn-xs btn-info" %>
-          <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-xs btn-info" %>
-          <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-        </div>
+      <div class="col-sm-4">
+        <input id="filter" type="text" class="form-control" placeholder="Search For...">
       </div>
-    <% end %>
-  </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="ener-header">Name</th>
+        </tr>
+      </thead>
+      <tbody class="searchable">
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.name %></td>
+            <td>
+              <div class="btn-group">
+                <%= link_to 'Show', customer, class: "btn btn-xs btn-info" %>
+                <%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-xs btn-info" %>
+                <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+              </div>
+            </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   <br>
   <%= link_to 'New Customer', new_customer_path, class: "btn btn-sm btn-success" %>
+</div>
+</div>
 </div>

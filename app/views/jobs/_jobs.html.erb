@@ -1,18 +1,31 @@
-  <div class="paragraph">
-    <div class="row">
-      <div class="col-sm-2 ener-header">Job number</div>
-      <div class="col-sm-3 ener-header">Customer</div>
-      <div class="col-sm-7 ener-header"></div>
+<div class="paragraph">
+  <div class="row">
+    <div class="col-sm-4">
+      <input id="filter" type="text" class="form-control" placeholder="Search For...">
     </div>
-    <% @jobs.each do |job| %>
-      <div class="row">
-        <div class="col-sm-2"><%= job.job_number %></div>
-        <div class="col-sm-3"><%= job.customer.name %></div>
-        <div class="col-sm-7 btn-group">
-          <%= link_to 'Show', job, class: "btn btn-xs btn-info" %>
-          <%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
-          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-        </div>
-      </div>
-    <% end %>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="ener-header">Job number</th>
+        <th class="ener-header">Customer</th>
+        <th class="ener-header"></th>
+      </tr>
+    </thead>
+    <tbody class="searchable">
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.job_number %></td>
+          <td><%= job.customer.name %></td>
+          <td>
+            <div class=" btn-group">
+              <%= link_to 'Show', job, class: "btn btn-xs btn-info" %>
+              <%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
+              <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
