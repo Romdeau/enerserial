@@ -31,9 +31,11 @@ class OrdersController < ApplicationController
     @order.shipping_date = order_params[:shipping_date]
     @order.order_status = order_params[:order_status]
     @stock_to_generate = order_params[:stock_to_generate].to_i
+    @items_to_generate = order_params[:items_to_generate].to_i
     respond_to do |format|
       if @order.save
         @order.generate_stock(@stock_to_generate, @order)
+        @order.generate_items(@items_to_generate, @order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -76,6 +78,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_number, :shipping_date, :order_status, :stock_to_generate)
+      params.require(:order).permit(:order_number, :shipping_date, :order_status, :stock_to_generate, :items_to_generate)
     end
 end

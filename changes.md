@@ -33,13 +33,13 @@ COMMENTS
 Meeting 10/7/14
 
 BRANCHES
-# Main Register Sorting
+Main Register Sorting - Decided on javascript search.
 
 # put new button up the top
 
 # granular user levels Admin->Editor->ReadOnly
 
-# edit form rename Gesan Number to Manufacturers Number
+edit form rename Gesan Number to Manufacturers Number
 
 # 1405016 - Missing Engine and Alternator
 
