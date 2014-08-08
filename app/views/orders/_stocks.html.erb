@@ -1,31 +1,34 @@
-<div class="paragraph">
-  <div class="row">
-    <div class="col-sm-1 ener-header">Eneraque Serial Number</div>
-    <div class="col-sm-1 ener-header">Eneraque Job Number</div>
-    <div class="col-sm-2 ener-header">Detail</div>
-    <div class="col-sm-1 ener-header">Status</div>
-    <div class="col-sm-1 ener-header">Status Detail</div>
-    <div class="col-sm-2 ener-header">Supplier Serial</div>
-    <div class="col-sm-1 ener-header">Ppsr</div>
-    <div class="col-sm-2 btn-group"></div>
-  </div>
-
-  <% @stocks.each do |stock| %>
-  <div class="row">
-    <div class="col-sm-1"><%= link_to format_serial(stock), stock_path(stock) %></div>
-    <div class="col-sm-1"><%= link_to check_job(stock), stock.job %></div>
-    <div class="col-sm-2"><%= stock.detail %></div>
-    <div class="col-sm-1"><%= stock.status %></div>
-    <div class="col-sm-1"><%= stock.status_detail %></div>
-    <div class="col-sm-2"><%= stock.gesan_number %></div>
-    <div class="col-sm-1"><%= stock.ppsr %></div>
-    <div class="btn-group" style="float:right;">
-      <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
-      <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
-        <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
-      <% end %>
-  </div>
-  </div>
-  <% end %>
-</div>
+<table class="table table-striped table-hover table-condensed">
+  <col style="width:15%">
+  <col style="width:15%">
+  <col style="width:38%">
+  <col style="width:15%">
+  <col style="width:18%">
+  <thead>
+    <tr>
+      <th class="ener-header">Serial</th>
+      <th class="ener-header">Job #</th>
+      <th class="ener-header">Detail</th>
+      <th class="ener-header">Status</th>
+      <th></th>
+    <tr>
+  </thead>
+  <tbody class="searchable">
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= link_to format_serial(stock), stock_path(stock) %></td>
+        <td><%= link_to check_job(stock), stock.job %></td>
+        <td><%= stock.detail %></td>
+        <td><%= stock.status %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

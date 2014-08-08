@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @stocks = @order.stock
+    @items = @order.item
   end
 
   # GET /orders/new

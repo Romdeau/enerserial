@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
 
   def generate_items(number_to_generate, order_object)
     while number_to_generate > 0
-        Item.create(item_name: "Generated for order #{order_object.order_number}", order_id: order_object.id)
+        Item.create(item_model: "Generated for order #{order_object.order_number}", order_id: order_object.id)
       number_to_generate -= 1
     end
   end

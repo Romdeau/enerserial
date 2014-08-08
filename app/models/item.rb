@@ -23,8 +23,17 @@ class Item < ActiveRecord::Base
 
   STOCK_TYPES = %w[Engine Alternator Pump Flare Other]
 
-  validates :item_serial, presence: true, uniqueness: true
+  validates :item_serial, presence: true, uniqueness: true,
+    unless: :blank_serial?
 
   scope :floor_stock, -> { where stock_id: nil }
   scope :assigned_stock, -> { where stock_id: !nil}
+
+  def blank_serial?
+    if item_serial == nil or item_serial == ''
+      true
+    else
+      false
+    end
+  end
 end

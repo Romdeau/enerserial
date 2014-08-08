@@ -6,7 +6,16 @@
 <div class="content">
   <p><strong>Shipping Date:</strong> <%= @order.shipping_date %></p>
   <p><strong>Order Status:</strong> <%= @order.order_status %></p>
-  <p><strong>Stock Items From This Order:</strong><%= render 'stocks' %></p>
+  <div class="paragraph">
+    <div class="row">
+      <div class=col-sm-6>
+        <strong>Stock Items From This Order:</strong><%= render 'stocks' %>
+      </div>
+      <div class=col-sm-6>
+        <strong>Stock Items From This Order:</strong><%= render 'items' %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
