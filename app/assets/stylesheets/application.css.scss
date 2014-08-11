@@ -21,6 +21,10 @@ $brand-danger:#263746;
 /* Remember that theres CSS is the scaffolds file as well.
 *  @import "bootstrap/theme";
 */
+table {
+  font-size: 12px;
+}
+
 body {
   background: #ecf1f5 !important;
 }
