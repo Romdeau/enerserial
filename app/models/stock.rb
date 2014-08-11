@@ -109,11 +109,11 @@ class Stock < ActiveRecord::Base
       end
       #if the engine exists creat it associated with the stock item
       if @stockhash["engine"] != nil
-        @engine = Engine.create(stock_id: @stock.id, engine: @stockhash["engine"], engine_type: @stockhash["engine_type"], serial: @stockhash["engine_serial"])
+        @engine = Item.create(stock_type: "Engine", stock_id: @stock.id, item_name: @stockhash["engine"], item_model: @stockhash["engine_type"], item_serial: @stockhash["engine_serial"])
       end
       #if the alternator exists create it associated with the stock item
       if @stockhash["alternator"] != nil
-        @alternator = Alternator.create(stock_id: @stock.id, alternator: @stockhash["alternator"], alternator_type: @stockhash["alternator_type"], serial: @stockhash["alternator_serial"])
+        @alternator = Item.create(stock_type: "Alternator", stock_id: @stock.id, item_name: @stockhash["alternator"], item_model: @stockhash["alternator_type"], item_serial: @stockhash["alternator_serial"])
       end
     end
   end
