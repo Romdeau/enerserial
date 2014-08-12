@@ -26,6 +26,7 @@ class Stock < ActiveRecord::Base
   belongs_to :user
   has_one :engine
   has_one :alternator
+  has_one :costing
   has_many :item
   has_many :stock_audit
 

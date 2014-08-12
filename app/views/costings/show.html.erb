@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Foreign cost:</strong>
+  <%= @costing.foreign_cost %>
+</p>
+
+<p>
+  <strong>Exchange rate:</strong>
+  <%= @costing.exchange_rate %>
+</p>
+
+<p>
+  <strong>Markup:</strong>
+  <%= @costing.markup %>
+</p>
+
+<p>
+  <strong>Landed cost:</strong>
+  <%= @costing.landed_cost %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= link_to "Stock Unit", @costing.stock, class: "btn btn-sm btn-primary" %>
+</p>
+<div class="btn-group">
+  <%= link_to 'Edit', edit_costing_path(@costing), class: "btn btn-sm btn-primary" %> |
+  <%= link_to 'Back', costings_path, class: "btn btn-sm btn-primary" %>
+</div>

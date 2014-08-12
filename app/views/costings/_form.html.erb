@@ -1,0 +1,29 @@
+<%= form_for [@stock, @costing], :url => {:action => 'create'} do |f| %>
+  <% if @costing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@costing.errors.count, "error") %> prohibited this costing from being saved:</h2>
+
+      <ul>
+      <% @costing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :foreign_cost %><br>
+    <%= f.text_field :foreign_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :exchange_rate %><br>
+    <%= f.text_field :exchange_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :markup %><br>
+    <%= f.text_field :markup %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

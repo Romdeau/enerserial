@@ -103,3 +103,6 @@ Branch Off Engines & Alternators into a generic item spinoff.
 # stock details needs extra column for manufacturer
 # add a costing model and allow it to be added to items / stock for their cost.
 # items and stock on orders need to know if sold or going to stock.
+# costings
+
+(foreign currency cost * exchange rate) + 7% Markup

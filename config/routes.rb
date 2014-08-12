@@ -1,5 +1,7 @@
 Enerserial::Application.routes.draw do
 
+
+
   get '/users' => 'users#index', :as => :users
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
@@ -18,6 +20,8 @@ Enerserial::Application.routes.draw do
   patch '/items/:id/stock/:stock_id/' => 'items#process_item_stock', :as => :process_item_stock
   post '/items/:id/' => 'items#unassign_item', :as => :unassign_item
 
+  resources :costings, only: [:index, :show, :edit, :update, :destroy]
+
   resources :orders
 
   resources :stock_audits
@@ -26,6 +30,7 @@ Enerserial::Application.routes.draw do
 
   resources :stocks do
     resources :items, only: [:new, :create]
+    resources :costings, only: [:new, :create]
   end
 
   resources :customers do

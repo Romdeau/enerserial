@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  foreign_cost: MyString
+  exchange_rate: MyString
+  markup: MyString
+  landed_cost: MyString
+  stock_id: 
+
+two:
+  foreign_cost: MyString
+  exchange_rate: MyString
+  markup: MyString
+  landed_cost: MyString
+  stock_id: 
