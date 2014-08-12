@@ -86,4 +86,6 @@ rails g migration #add order:references to stock
 
 #  Out on Demo - Location, Sent and Arrival Date
 
-# Branch Off Engines & Alternators into a generic addon spinoff.
+Branch Off Engines & Alternators into a generic addon spinoff.
+
+# Work on Responsive Design
