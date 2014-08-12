@@ -78,7 +78,7 @@ rails g migration #add order:references to stock
 # Items
 #  Determine This from the Live Orders Sheet.
 #  Item_Name:string      -- Description
-#  Item_Type:string      -- Part #
+#  Item_Type:string      --
 #  Item_Serial:string    -- Serial Number
 #  Stock_Type:string     --
 #  Order:references      -- Our Order Number
@@ -88,7 +88,6 @@ rails g migration #add order:references to stock
 #												-- Supplier Order Number
 #												-- Ready Ex Manufacturer
 #												-- Manufacturers Comments
-#												-- Salesman (is this important?)
 #												-- Normal Sell Price (is this important?)
 #												-- Stock sell @ 31 01 14 (what does this even mean?)
 #												-- Are we worried about price here, or should this just be for exo? If so whats the math?
@@ -98,3 +97,9 @@ rails g migration #add order:references to stock
 Branch Off Engines & Alternators into a generic item spinoff.
 
 # Work on Responsive Design
+
+# order view, both columns have same name.
+# order change doesnt trigger stock status update
+# stock details needs extra column for manufacturer
+# add a costing model and allow it to be added to items / stock for their cost.
+# items and stock on orders need to know if sold or going to stock.
