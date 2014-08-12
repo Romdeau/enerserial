@@ -36,9 +36,7 @@ class Stock < ActiveRecord::Base
   validates :serial_number, uniqueness: true,
     unless: :blank_serial?
 
-  validate :valid_ppsr?
-  validate :valid_dispatched?
-  validate :needs_job?
+  validate :stock_valid?
 
   def valid_job?
     if Job.find_by job_number: job_id != nil
@@ -80,11 +78,57 @@ class Stock < ActiveRecord::Base
     end
   end
 
-  def needs_job?
-    if status == "Job Allocated" and ( job_id == "" or job_id == nil)
-      errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
-    else
-      true
+  def stock_valid?
+    case status
+    when "Floor Stock"
+    when "New Stock"
+    when "In Production"
+    when "Job Allocated"
+      #check for valid job
+      if job_id == "" or job_id == nil
+        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+      else
+        true
+      end
+    when "Production Complete"
+      #check for valid job
+      if job_id == "" or job_id == nil
+        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+      else
+        true
+      end
+    when "Ready to Dispatch"
+      #check for valid ppsr
+      if needs_ppsr == true and (ppsr == nil or ppsr == '')
+        errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
+      else
+        true
+      end
+      #check for valid job
+      if job_id == "" or job_id == nil
+        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+      else
+        true
+      end
+    when "Dispatched"
+      #check for valid ppsr
+      if needs_ppsr == true and (ppsr == nil or ppsr == '')
+        errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
+      else
+        true
+      end
+      #check for valid job
+      if job_id == "" or job_id == nil
+        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+      else
+        true
+      end
+      #check for valid shipping date
+      if shipping_date == "" or shipping_date == nil
+        errors.add(:status, "Job Cannot be dispatched without a shipping date")
+      else
+        true
+      end
     end
   end
 

@@ -11,6 +11,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  audit_params  :string(255)
+#  item_id       :integer
 #
 
 require 'test_helper'

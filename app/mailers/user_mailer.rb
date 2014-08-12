@@ -16,7 +16,21 @@ class UserMailer < ActionMailer::Base
     @url = 'http://enerserial.eneraque.com/users/sign_in'
     @stock = stock
     @current_user = current_user
-    mail(to: @user.email, subject: "Stock Item has been marked as On The Water.")
+    mail(to: @user.email, subject: "Stock Item has been marked as #{@stock.status}.")
+  end
+
+  def production_notify_accounts(stock, user)
+    @user = user
+    @url = stock_path(stock)
+    @stock = stock
+    mail(to: 'luminita.kopf@eneraque.com', subject: "Stock Item Completed: Accounting Checkoff")
+  end
+
+  def production_notify_pm(stock, user)
+    @user = user
+    @url = stock_path(stock)
+    @stock = stock
+    mail(to: @stock.user.email, subject: "Stock Item Completed: PM Checkoff")
   end
 
 end
