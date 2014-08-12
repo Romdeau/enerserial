@@ -25,7 +25,7 @@ class CostingsController < ApplicationController
   # POST /costings.json
   def create
     @costing = Costing.new(costing_params)
-    @costing.landed_cost = (@costing.foreign_cost.to_i / @costing.exchange_rate.to_f) * ((100 + @costing.markup.to_f ) / 100)
+    @costing.landed_cost = @costing.foreign_cost.to_i * ((100 + @costing.markup.to_f ) / 100)
     respond_to do |format|
       if @costing.save
         format.html { redirect_to @costing, notice: 'Costing was successfully created.' }
@@ -41,7 +41,7 @@ class CostingsController < ApplicationController
   # PATCH/PUT /costings/1.json
   def update
     @costing.update(costing_params)
-    @costing.landed_cost = (@costing.foreign_cost.to_i / @costing.exchange_rate.to_f) * ((100 + @costing.markup.to_f ) / 100)
+    @costing.landed_cost = @costing.foreign_cost.to_i * ((100 + @costing.markup.to_f ) / 100)
     respond_to do |format|
       if @costing.save
         format.html { redirect_to @costing, notice: 'Costing was successfully updated.' }
@@ -71,6 +71,6 @@ class CostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def costing_params
-      params.require(:costing).permit(:foreign_cost, :exchange_rate, :markup, :stock_id)
+      params.require(:costing).permit(:foreign_cost, :markup, :stock_id)
     end
 end

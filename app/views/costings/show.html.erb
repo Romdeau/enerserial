@@ -5,23 +5,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Foreign cost:</strong>
-  <%= @costing.foreign_cost %>
+  <strong>Australian Dollar Cost:</strong>
+  $<%= @costing.foreign_cost %>
 </p>
 
 <p>
-  <strong>Exchange rate:</strong>
-  <%= @costing.exchange_rate %>
-</p>
-
-<p>
-  <strong>Markup:</strong>
+  <strong>Freight Markup:</strong>
   <%= @costing.markup %>
 </p>
 
 <p>
-  <strong>Landed cost:</strong>
-  <%= @costing.landed_cost %> (Estimated Cost Only)
+  <strong>Landed Cost:</strong>
+  $<%= @costing.landed_cost %> (Estimated Cost Only)
 </p>
 
 <p>
