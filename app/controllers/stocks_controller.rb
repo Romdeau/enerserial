@@ -81,6 +81,8 @@ end
     @stock.update(stock_params)
     if @job != nil
       @stock.job_id = @job.id
+    else
+      @stock.job_id = nil
     end
     @stock_audit = StockAudit.new
     @stock_audit.user = current_user

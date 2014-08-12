@@ -35,7 +35,7 @@ Meeting 10/7/14
 BRANCHES
 Main Register Sorting - Decided on javascript search.
 
-# put new button up the top
+put new button up the top
 
 # granular user levels Admin->Editor->ReadOnly
 
@@ -64,8 +64,8 @@ rails g migration #add order:references to stock
     Arrived - End Point - Goes to Floor Stock or Stock Item. Needs Location Field
 
 # Serial Numbers
-#    New Stock -
-#    Floor Stock -
+    New Stock -
+    Floor Stock -
 #    Job Allocated - Requires Job Number
 #    In Production -
 #    Production Complete - Email out sign off points in order to get to Ready to Dispatch, Accounts email requires PPSR toggle to be off or on.
@@ -74,18 +74,24 @@ rails g migration #add order:references to stock
 
 # Items
 #  Determine This from the Live Orders Sheet.
-  Item_Name:string
-  Item_Type:string
-  Item_Serial:string
-  Stock_Type: Engine, Alternator, Pump,
-  Order:references
-  Distributor: string
-  Manufacturer: string
-  Model: string
-  Serial_Number: string
+#  Item_Name:string      -- Description
+#  Item_Type:string      -- Part #
+#  Item_Serial:string    -- Serial Number
+#  Stock_Type:string     --
+#  Order:references      -- Our Order Number
+#  Distributor: string   --
+#  Manufacturer: string  --
+#  Model: string        --
+#												-- Supplier Order Number
+#												-- Ready Ex Manufacturer
+#												-- Manufacturers Comments
+#												-- Salesman (is this important?)
+#												-- Normal Sell Price (is this important?)
+#												-- Stock sell @ 31 01 14 (what does this even mean?)
+#												-- Are we worried about price here, or should this just be for exo? If so whats the math?
 
 #  Out on Demo - Location, Sent and Arrival Date
 
-Branch Off Engines & Alternators into a generic addon spinoff.
+Branch Off Engines & Alternators into a generic item spinoff.
 
 # Work on Responsive Design

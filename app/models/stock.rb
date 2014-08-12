@@ -31,13 +31,14 @@ class Stock < ActiveRecord::Base
 
   attr_accessor :pm_email
 
-  STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Ready\ to\ Ship Ready\ to\ Dispatch Dispatched]
+  STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Production\ Complete Ready\ to\ Dispatch Dispatched]
 
   validates :serial_number, uniqueness: true,
     unless: :blank_serial?
 
   validate :valid_ppsr?
   validate :valid_dispatched?
+  validate :needs_job?
 
   def valid_job?
     if Job.find_by job_number: job_id != nil
@@ -48,7 +49,7 @@ class Stock < ActiveRecord::Base
   end
 
   def valid_ppsr?
-    if status == "Ready to Ship" and needs_ppsr == true and (ppsr == nil or ppsr == '')
+    if status == "Ready to Dispatch" and needs_ppsr == true and (ppsr == nil or ppsr == '')
       errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
     else
       true
@@ -74,6 +75,14 @@ class Stock < ActiveRecord::Base
   def valid_dispatched?
     if status == "Dispatched" and ( shipping_date == "" or shipping_date == nil)
       errors.add(:status, "Job Cannot be dispatched without a shipping date")
+    else
+      true
+    end
+  end
+
+  def needs_job?
+    if status == "Job Allocated" and ( job_id == "" or job_id == nil)
+      errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
     else
       true
     end
