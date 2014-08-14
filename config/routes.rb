@@ -20,6 +20,11 @@ Enerserial::Application.routes.draw do
   patch '/items/:id/stock/:stock_id/' => 'items#process_item_stock', :as => :process_item_stock
   post '/items/:id/' => 'items#unassign_item', :as => :unassign_item
 
+  get '/orders/:id/bulk_edit_stock' => 'stocks#bulk_edit_stock', :as => :bulk_edit_stock
+  get '/orders/:id/bulk_edit_stock' => 'stocks#bulk_process_stock', :as => :bulk_process_stock
+  get '/orders/:id/bulk_edit_items' => 'items#bulk_edit_items', :as => :bulk_edit_items
+  get '/orders/:id/bulk_edit_items' => 'items#bulk_process_items', :as => :bulk_process_items
+
   resources :costings, only: [:index, :show, :edit, :update, :destroy]
 
   resources :orders

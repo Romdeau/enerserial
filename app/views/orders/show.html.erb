@@ -8,15 +8,23 @@
   <p><strong>Order Status:</strong> <%= @order.order_status %></p>
   <div class="paragraph">
     <div class="row">
-      <div class=col-sm-6>
+      <div class="col-sm-6">
         <strong>Stock Items From This Order:</strong><%= render 'stocks' %>
       </div>
-      <div class=col-sm-6>
+      <div class="col-sm-6">
         <strong>Stock Items From This Order:</strong><%= render 'items' %>
+      </div>
+    </div>
+    <div class="row">
+    <p></p>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="btn-group">
+          <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
+          <%= link_to 'Back', orders_path, class: "btn btn-sm btn-info" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
-<%= link_to 'Back', orders_path, class: "btn btn-sm btn-info" %>

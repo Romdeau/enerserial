@@ -23,14 +23,6 @@
     <%= f.label :order_status %><br>
     <%= f.collection_select :order_status, Stock::STATUS_TYPES, :to_s, :humanize %>
   </div>
-  <div class="field">
-    <%= f.label :stock_to_generate %><br>
-    <%= f.number_field :stock_to_generate %>
-  </div>
-  <div class="field">
-    <%= f.label :items_to_generate %><br>
-    <%= f.number_field :items_to_generate %>
-  </div>
   <div class="actions">
     <%= f.submit class: "btn btn-sm btn-success" %>
   </div>

@@ -1,6 +1,12 @@
-<h1>Editing order</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<div class="page-hearder">
+  <h1>Editing order</h1>
+</div>
+<div class="container">
+  <div class="paragraph">
+    <%= render 'edit' %>
+    <div class="btn-group">
+      <%= link_to 'Show', @order, class: "btn btn-sm btn-primary" %>
+      <%= link_to 'Back', orders_path, class: "btn btn-sm btn-info" %>
+    </div>
+  </div>
+</div>

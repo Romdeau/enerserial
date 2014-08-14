@@ -1,0 +1,38 @@
+<%= form_for (@stock), :url => {:controller => 'stocks', :action => 'create'} do |f| %>
+  <% if @stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @stocks.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="ener-header">Order Number</th>
+        <th class="ener-header">Shipping Date</th>
+        <th class="ener-header">Status</th>
+        <th class="ener-header">Detail</th>
+      <tr>
+    </thead>
+    <tbody class="searchable">
+      <% @stocks.each do |stock| %>
+        <%= fields_for "stock[]", stock do |stock_fields| %>
+          <tr>
+            <td><%= link_to format_serial(stock), stock_path(stock) %></td>
+            <td><%= link_to check_job(stock), stock.job %></td>
+            <td><%= stock.status %></td>
+            <td><%= stock_fields.text_field :detail %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="actions">
+    <%= f.submit class: "btn btn-sm btn-success" %>
+  </div>
+<% end %>

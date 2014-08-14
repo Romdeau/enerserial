@@ -150,6 +150,14 @@ end
     end
   end
 
+  def bulk_edit_stock
+    @order = Order.find(params[:id])
+    @stock = @order.stock
+  end
+
+  def bulk_process_stock
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stock

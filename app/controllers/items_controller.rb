@@ -166,6 +166,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def bulk_edit_items
+    @order = Order.find(params[:id])
+    @items = @order.item
+  end
+
+  def bulk_process_items
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
