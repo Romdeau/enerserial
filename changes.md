@@ -72,8 +72,8 @@ rails g migration #add order:references to stock
 #			notify_pm(stock, user)
 #			notify_accounts(stock, user)
 
-#    Ready to Dispatch - Can't Set Until all sign off from various people
-#    Dispatched -
+#    Ready to Dispatch - Can't Set Until all sign off from various people - email PM
+#    Dispatched - email PM
 
 # Items
 #  Determine This from the Live Orders Sheet.
