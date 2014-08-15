@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :stock_audit
-  has_many :stock
+  has_many :job
 
   def admin?
     admin

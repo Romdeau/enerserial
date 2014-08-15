@@ -66,6 +66,33 @@ class JobsController < ApplicationController
     end
   end
 
+  # GET /stocks/1/assign_pm
+  def assign_pm
+    @job = Job.find(params[:id])
+    if @job.user != nil
+      @pm = User.find(@job.user)
+    end
+  end
+
+  # PATCH /stocks/1/assign_pm
+  def process_pm
+    @project_manager = User.find_by email: job_params[:pm_email]
+    @job = Job.find(params[:id])
+    if @project_manager != nil
+      @job.user_id = @project_manager.id
+    end
+    respond_to do |format|
+      if @job.save && @project_manager != nil
+        UserMailer.update_pm(@project_manager, @job, current_user).deliver
+        format.html { redirect_to @job, notice: 'PM was assigned.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @job, alert: 'PM assignement failed, invalid Enerserial User.' }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
@@ -74,6 +101,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:job_number, :customer_id)
+      params.require(:job).permit(:job_number, :customer_id, :user_id, :pm_email)
     end
 end

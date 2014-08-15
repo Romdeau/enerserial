@@ -33,21 +33,26 @@
       <div class="col-sm-4 btn-group">
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
-          <%= link_to 'Assign PM', assign_pm_stock_path, class: "btn btn-sm btn-primary" %>
           <% if @stock.costing == nil %>
             <%= link_to 'New Costing', new_stock_costing_path(@stock), class: "btn btn-sm btn-success" %>
           <% else %>
             <%= link_to 'Show Costing', costing_path(@stock.costing), class: "btn btn-sm btn-primary" %>
           <% end %>
         <% end %>
-        <%= link_to 'Back', stocks_path, class: "btn btn-sm btn-primary" %>
-
       </div>
       <% if user_signed_in? %>
         <div class="col-sm-8 btn-group">
             <%= link_to 'New Item', new_stock_item_path(@stock), class: "btn btn-sm btn-success" %>
         </div>
       <% end %>
+    </div>
+    <div class = "row">
+      <div class="col-sm-4 btn-group">
+        <%= link_to 'Serial Register', stocks_path, class: "btn btn-sm btn-primary" %>
+        <% if @stock.order != nil%>
+          <%= link_to "Order ##{@stock.order.order_number}", @stock.order, class: "btn btn-sm btn-danger" %>
+        <% end %>
+      </div>
     </div>
     <div class="paragraph">
       <h4>Audit Events</h4>

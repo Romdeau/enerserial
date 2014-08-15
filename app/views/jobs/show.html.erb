@@ -1,11 +1,19 @@
 <div class="page-header">
-  <h1>Job <%= @job.job_number %> for <%= @job.customer.name %>
+  <h1>Job <%= @job.job_number %> for <%= @job.customer.name %></h1>
+  <% if @job.user != nil %>
+    <h4>PM assigned to this job is <%= @job.user.email %></h4>
+  <% else %>
+    <h4>No PM is currently assigned to this job %>
+  <% end %>
 </div>
 <div class="content">
   <%= render 'stocks/stocklist' %>
   <br>
   <div class="btn-group">
-    <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-primary" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-primary" %>
+      <%= link_to 'Assign PM', assign_pm_job_path, class: "btn btn-sm btn-primary" %>
+    <% end %>
     <%= link_to 'Back', jobs_path, class: "btn btn-sm btn-primary" %>
   </div>
 </div>

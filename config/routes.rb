@@ -1,6 +1,7 @@
 Enerserial::Application.routes.draw do
 
-
+  get '/jobs/:id/assign_pm' => 'jobs#assign_pm', :as => :assign_pm_job
+  patch '/jobs/:id/assign_pm' => 'jobs#process_pm', :as => :process_pm_job
 
   get '/users' => 'users#index', :as => :users
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
@@ -8,8 +9,6 @@ Enerserial::Application.routes.draw do
   root 'stocks#index'
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
-  get '/stocks/:id/assign_pm' => 'stocks#assign_pm', :as => :assign_pm_stock
-  patch '/stocks/:id/assign_pm' => 'stocks#process_pm', :as => :process_pm_stock
 
   get '/items/new_floor_item' => 'items#new_floor_item', :as => :new_floor_item
   post '/items' => 'items#create_floor_item', :as => :create_floor_item

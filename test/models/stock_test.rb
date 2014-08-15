@@ -17,7 +17,6 @@
 #  vin           :string(255)
 #  shipping_date :date
 #  order_id      :integer
-#  user_id       :integer
 #
 
 require 'test_helper'

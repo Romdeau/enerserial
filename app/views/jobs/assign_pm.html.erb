@@ -1,19 +1,15 @@
 <div class="page-header">
   <h1>
-    <%= "Assign PM to Serial \##{@stock.serial_number}" %>
-    <% if @stock.job != nil %>
-      <%= ": Job #{format_job(@stock)} for #{format_company(@stock)}." %>
-    <% end %>
+    <%= "Assign PM to Job #{@job.job_number} for #{@job.customer.name}." %>
   </h1>
 </div>
 
-  <%= form_for @stock, :url => url_for(:controller => 'stocks', :action => 'process_pm') do |f| %>
-    <% if @stock.errors.any? %>
+  <%= form_for @job, :url => url_for(:controller => 'jobs', :action => 'process_pm') do |f| %>
+    <% if @job.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
-
+        <h2><%= pluralize(@job.errors.count, "error") %> prohibited this stock from being saved:</h2>
         <ul>
-        <% @stock.errors.full_messages.each do |msg| %>
+        <% @job.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>

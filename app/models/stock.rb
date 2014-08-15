@@ -17,20 +17,16 @@
 #  vin           :string(255)
 #  shipping_date :date
 #  order_id      :integer
-#  user_id       :integer
 #
 
 class Stock < ActiveRecord::Base
   belongs_to :job
   belongs_to :order
-  belongs_to :user
   has_one :engine
   has_one :alternator
   has_one :costing
   has_many :item
   has_many :stock_audit
-
-  attr_accessor :pm_email
 
   STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Production\ Complete Ready\ to\ Dispatch Dispatched]
 

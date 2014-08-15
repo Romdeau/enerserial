@@ -70,11 +70,11 @@ end
   def update
     @job = Job.find_by job_number: stock_params[:job_number]
     params[:stock].delete :job_number
-    if @stock.user != nil
+    if @job.user != nil
       if @stock.status == stock_params[:status]
         @status_updated = false
       else
-        @project_manager = User.find(@stock.user.id)
+        @project_manager = User.find(@job.user)
         @status_updated = true
       end
     end
@@ -93,7 +93,11 @@ end
       if @stock.save
         @stock_audit.save
         if @status_updated
-          UserMailer.status_update(@project_manager, @stock, current_user).deliver
+          if @project_manager != nil
+            UserMailer.status_update(@project_manager, @stock, current_user).deliver
+          else
+            UserMailer.jim_status_update(@stock, current_user).deliver
+          end
         end
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
@@ -104,36 +108,7 @@ end
     end
   end
 
-  # GET /stocks/1/assign_pm
-  def assign_pm
-    @stock = Stock.find(params[:id])
-    if @stock.user != nil
-      @pm = User.find(@stock.project_manager)
-    end
-  end
 
-  # PATCH /stocks/1/assign_pm
-  def process_pm
-    @project_manager = User.find_by email: stock_params[:pm_email]
-    @stock = Stock.find(params[:id])
-    @stock.user = @project_manager
-    @stock_audit = StockAudit.new
-    @stock_audit.user = current_user
-    @stock_audit.stock = @stock
-    @stock_audit.audit_params = "#{stock_params}"
-    @stock_audit.comment = "assigned_pm"
-    respond_to do |format|
-      if @stock.save && @project_manager != nil
-        @stock_audit.save
-        UserMailer.update_pm(@project_manager, @stock, current_user).deliver
-        format.html { redirect_to @stock, notice: 'PM was assigned.' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to @stock, alert: 'PM assignement failed, invalid Enerserial User.' }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /stocks/1
   # DELETE /stocks/1.json

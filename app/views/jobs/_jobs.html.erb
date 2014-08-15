@@ -9,6 +9,7 @@
       <tr>
         <th class="ener-header">Job number</th>
         <th class="ener-header">Customer</th>
+        <th class="ener-header">PM</th>
         <th class="ener-header"></th>
       </tr>
     </thead>
@@ -17,6 +18,12 @@
         <tr>
           <td><%= job.job_number %></td>
           <td><%= job.customer.name %></td>
+          <td>
+            <% if job.user != nil %>
+              <%= job.user.email %></td>
+            <% else %>
+              None assigned
+            <% end %>
           <td>
             <div class=" btn-group">
               <%= link_to 'Show', job, class: "btn btn-xs btn-info" %>
