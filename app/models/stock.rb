@@ -28,7 +28,7 @@ class Stock < ActiveRecord::Base
   has_many :item
   has_many :stock_audit
 
-  STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock Job\ Allocated In\ Production Production\ Complete Ready\ to\ Dispatch Dispatched]
+  STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived Floor\ Stock New\ Stock In\ Production Production\ Complete Ready\ to\ Dispatch Dispatched]
 
   validates :serial_number, uniqueness: true,
     unless: :blank_serial?
@@ -79,9 +79,12 @@ class Stock < ActiveRecord::Base
     case status
     when "Floor Stock"
     when "New Stock"
+      if job_id == "" or job_id == nil
+        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+      else
+        true
+      end
     when "In Production"
-    when "Job Allocated"
-      #check for valid job
       if job_id == "" or job_id == nil
         errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
       else

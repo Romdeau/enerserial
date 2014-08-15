@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :order_status %><br>
-    <%= f.collection_select :order_status, Stock::STATUS_TYPES, :to_s, :humanize %>
+    <%= f.collection_select :order_status, Order::STATUS_TYPES, :to_s, :humanize %>
   </div>
   <div class="field">
     <%= f.label :stock_to_generate %><br>

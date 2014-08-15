@@ -1,6 +1,8 @@
 <div class="page-header">
-  <strong>Order Number:</strong>
-  <%= @order.order_number %>
+  <h1>Order Number: <%= @order.order_number %></h1>
+  <% if @order.order_status == "Arrived" %>
+    <h4>This order is complete, its details cannot be changed</h4>
+  <% end %>
 </div>
 
 <div class="content">
@@ -21,7 +23,9 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="btn-group">
-          <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
+          <% if @order.order_status != "Arrived" %>
+            <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
+          <% end %>
           <%= link_to 'Back', orders_path, class: "btn btn-sm btn-info" %>
         </div>
       </div>

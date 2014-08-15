@@ -35,10 +35,24 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def update_stock(updated_order)
+  def update_stock(updated_order, current_user)
     @stocks = updated_order.stock
     @stocks.each do |stock_item|
-      stock_item.update(status: updated_order.order_status)
+      if updated_order.order_status == "Arrived"
+        if stock_item.job.user != nil
+          stock_item.update(status: "New Stock")
+          UserMailer.status_update(stock_item.job.user, stock_item, current_user).deliver
+        else
+          stock_item.update(status: "Floor Stock")
+          UserMailer.jim_status_update(stock_item, current_user).deliver
+        end
+      elsif stock_item.update(status: updated_order.order_status)
+        if stock_item.job.user_id != nil
+          UserMailer.status_update(stock_item.job.user, stock_item, current_user).deliver
+        else
+          UserMailer.jim_status_update(stock_item, current_user).deliver
+        end
+      end
     end
   end
 
