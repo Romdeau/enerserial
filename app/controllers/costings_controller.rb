@@ -1,4 +1,5 @@
 class CostingsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_costing, only: [:show, :edit, :update, :destroy]
 
   # GET /costings

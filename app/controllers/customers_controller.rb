@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 

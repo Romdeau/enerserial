@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
+  before_filter :authenticate_user!, except: [:index]
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /stocks
   # GET /stocks.json

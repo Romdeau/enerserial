@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
