@@ -1,13 +1,13 @@
 ORDER
 stock
-# ppsr
+ ppsr
 import
-# actionmailer
+ actionmailer
 
 
 BRANCHES
-# actionmailer
-#  Set “ready to ship” trigger to email to generate a PPSR.
+ actionmailer
+ Set “ready to ship” trigger to email to generate a PPSR.
 devise
 import
 	Write import for existing data.
@@ -15,7 +15,7 @@ job
 layout
 logging
 master
-# ppsr
+  ppsr
 	PPSR does need a serial number.
 #	PPSR Expiry Date and Reminder
 scaffold
@@ -37,7 +37,7 @@ Main Register Sorting - Decided on javascript search.
 
 put new button up the top
 
-# granular user levels Admin->Editor->ReadOnly
+granular user levels Admin->Editor->ReadOnly ** Did role based instead
 
 edit form rename Gesan Number to Manufacturers Number
 
@@ -45,7 +45,7 @@ edit form rename Gesan Number to Manufacturers Number
 
 Order -> Order Acknowledgement -> Invoice (serial numbers start here)
 
-# Status
+  Status
   Order number field into Stock.
   Remove serial number validate: exists from Stock.
 #  Stock Items need a floor stock system.
@@ -63,28 +63,28 @@ rails g migration #add order:references to stock
     On The Water - Estimated Arrival Date Email project manager, accounts, factory
     Arrived - End Point - Goes to Floor Stock or Stock Item. Needs Location Field
 
-# Serial Numbers
+  Serial Numbers
     New Stock -
     Floor Stock -
     Job Allocated - Requires Job Number
     In Production -
  		Production Complete - Email out sign off points in order to get to Ready to Dispatch, Accounts email requires PPSR toggle to be off or on.
-#		notify_pm(stock, user)
-#		notify_accounts(stock, user)
+ 		notify_pm(stock, user)
+ 		notify_accounts(stock, user)
 
-#    Ready to Dispatch - Can't Set Until all sign off from various people - email PM
-#    Dispatched - email PM
+     Ready to Dispatch - Can't Set Until all sign off from various people - email PM
+     Dispatched - email PM
 
 # Items
-#  Determine This from the Live Orders Sheet.
-#  Item_Name:string      -- Description
-#  Item_Type:string      --
-#  Item_Serial:string    -- Serial Number
-#  Stock_Type:string     --
-#  Order:references      -- Our Order Number
-#  Distributor: string   --
-#  Manufacturer: string  --
-#  Model: string        --
+  Determine This from the Live Orders Sheet.
+  Item_Name:string      -- Description
+  Item_Type:string      --
+  Item_Serial:string    -- Serial Number
+  Stock_Type:string     --
+  Order:references      -- Our Order Number
+  Distributor: string   --
+  Manufacturer: string  --
+  Model: string        --
 #												-- Supplier Order Number
 #												-- Ready Ex Manufacturer
 #												-- Manufacturers Comments
@@ -98,10 +98,10 @@ Branch Off Engines & Alternators into a generic item spinoff.
 
 # Work on Responsive Design
 
-# order view, both columns have same name.
-# order change doesnt trigger stock status update
+ order view, both columns have same name.
+ order change doesnt trigger stock status update
 # stock details needs extra column for manufacturer
-# add a costing model and allow it to be added to items / stock for their cost.
+ add a costing model and allow it to be added to items / stock for their cost.
 # items and stock on orders need to know if sold or going to stock.
 # costings
 
