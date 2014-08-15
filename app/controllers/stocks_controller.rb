@@ -45,6 +45,8 @@ class StocksController < ApplicationController
     @job = Job.find_by job_number: stock_params[:job_number]
     params[:stock].delete :job_number
     @stock = Stock.new(stock_params)
+    @stock.accounts_signoff = 0
+    @stock.projects_signoff = 0
     if @job != nil
       @stock.job_id = @job.id
     end
@@ -131,6 +133,30 @@ end
   end
 
   def bulk_process_stock
+  end
+
+  def accounts_signoff
+    @stock = Stock.find(params[:id])
+    @stock.accounts_signoff = 1
+    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user, comment: "has signed off for accounts")
+    if @stock.save
+      @user_audit.save
+      redirect_to @stock, notice: "Accounts Signoff Complete"
+    else
+      redirect_to @stock, alert: "something went wrong!"
+    end
+  end
+
+  def projects_signoff
+    @stock = Stock.find(params[:id])
+    @stock.projects_signoff = 1
+    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user, comment: "has signed off for projects")
+    if @stock.save
+      @user_audit.save
+      redirect_to @stock, notice: "Projects Signoff Complete"
+    else
+      redirect_to @stock, alert: "something went wrong!"
+    end
   end
 
   private

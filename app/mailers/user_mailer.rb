@@ -37,7 +37,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url = stock_path(stock)
     @stock = stock
-    mail(to: @stock.user.email, subject: "Stock Item Completed: PM Checkoff")
+    mail(to: @stock.job.user.email, subject: "Stock Item Completed: PM Checkoff")
   end
 
 end

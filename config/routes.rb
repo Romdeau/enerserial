@@ -12,6 +12,8 @@ Enerserial::Application.routes.draw do
   root 'stocks#index'
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
+  get '/stocks/:id/accounts_signoff' => 'stocks#accounts_signoff', :as => :accounts_signoff
+  get '/stocks/:id/projects_signoff' => 'stocks#projects_signoff', :as => :projects_signoff
 
   get '/items/new_floor_item' => 'items#new_floor_item', :as => :new_floor_item
   post '/items' => 'items#create_floor_item', :as => :create_floor_item

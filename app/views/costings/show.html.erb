@@ -11,7 +11,7 @@
 
 <p>
   <strong>Freight Markup:</strong>
-  <%= @costing.markup %>
+  <%= @costing.markup %>%
 </p>
 
 <p>
@@ -25,5 +25,5 @@
 </p>
 <div class="btn-group">
   <%= link_to 'Edit', edit_costing_path(@costing), class: "btn btn-sm btn-primary" %>
-  <%= link_to 'Back', costings_path, class: "btn btn-sm btn-primary" %>
+  <%= link_to 'Back', @costing.stock, class: "btn btn-sm btn-primary" %>
 </div>

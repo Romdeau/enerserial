@@ -4,7 +4,9 @@
       <input id="filter" type="text" class="form-control" placeholder="Search For...">
     </div>
     <div class="col-sm-4">
-      <%= link_to 'New Stock', new_stock_path, class: "btn btn-success" %>
+      <% if user_signed_in? and current_user.can_manage? %>
+        <%= link_to 'New Stock', new_stock_path, class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
   <table class="table table-striped">
@@ -45,7 +47,9 @@
               <%= link_to 'Show', stock, class: "btn btn-xs btn-info" %>
               <% if user_signed_in? %>
                 <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-xs btn-info" %>
-                <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+                <% if current_user.can_manage? %>
+                  <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+                <% end %>
               <% end %>
             </div>
           </td>

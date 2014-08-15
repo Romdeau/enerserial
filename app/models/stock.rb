@@ -100,6 +100,12 @@ class Stock < ActiveRecord::Base
         true
       end
     when "Ready to Dispatch"
+      #check for sign off
+      if accounts_signoff == 1 and projects_signoff == 1
+        true
+      else
+        errors.add(:status, "Job cannot be ready to dispatch without accounts & projects singoff.")
+      end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
         errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
@@ -113,6 +119,12 @@ class Stock < ActiveRecord::Base
         true
       end
     when "Dispatched"
+      #check for sign off
+      if accounts_signoff == 1 and projects_signoff == 1
+        true
+      else
+        errors.add(:status, "Job cannot be ready to dispatch without accounts & projects singoff.")
+      end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
         errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")

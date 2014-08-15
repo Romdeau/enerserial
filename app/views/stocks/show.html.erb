@@ -12,6 +12,40 @@
 
 <div id="content">
   <div class="paragraph">
+    <% if @stock.status == "Production Complete" %>
+      <div class="row">
+        <div class="col-sm-6">
+          <% if current_user.can_account? or current_user.can_manage? %>
+            Accounts requirements are
+              <% if @stock.valid_ppsr? %>
+                complete, PPSR filled out or not required
+                <%= link_to "Sign Off", accounts_signoff_path(@stock), class: "btn btn-xs btn-success" %>
+              <% else %>
+                incomplete, PPSR not filled out or PPSR toggle not unchecked
+              <% end %>
+          <% else %>
+            <% if @stock.accounts_signoff == 1 %>
+              Accounts Sign Off Complete
+            <% else %>
+              Accounts Sign Off Pending
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-sm-6">
+          <% if current_user.can_project? or current_user.can_manage? %>
+            Projects requirements are complete
+            <%= link_to "Sign Off", projects_signoff_path(@stock), class: "btn btn-xs btn-success" %>
+          <% else %>
+            <% if @stock.projects_signoff == 1 %>
+              Projects Sign Off Complete
+            <% else %>
+              Projects Sign Off Pending
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
     <div class="row">
       <div class="col-sm-4">
         <h4>Main Unit</h4>
@@ -33,16 +67,20 @@
       <div class="col-sm-4 btn-group">
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
-          <% if @stock.costing == nil %>
-            <%= link_to 'New Costing', new_stock_costing_path(@stock), class: "btn btn-sm btn-success" %>
-          <% else %>
-            <%= link_to 'Show Costing', costing_path(@stock.costing), class: "btn btn-sm btn-primary" %>
+          <% if current_user.can_account? or current_user.can_manage? %>
+            <% if @stock.costing == nil %>
+              <%= link_to 'New Costing', new_stock_costing_path(@stock), class: "btn btn-sm btn-success" %>
+            <% else %>
+              <%= link_to 'Show Costing', costing_path(@stock.costing), class: "btn btn-sm btn-primary" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
       <% if user_signed_in? %>
         <div class="col-sm-8 btn-group">
-            <%= link_to 'New Item', new_stock_item_path(@stock), class: "btn btn-sm btn-success" %>
+            <% if current_user.can_manage? %>
+              <%= link_to 'New Item', new_stock_item_path(@stock), class: "btn btn-sm btn-success" %>
+            <% end %>
         </div>
       <% end %>
     </div>

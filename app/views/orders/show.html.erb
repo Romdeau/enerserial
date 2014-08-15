@@ -11,10 +11,10 @@
   <div class="paragraph">
     <div class="row">
       <div class="col-sm-6">
-        <strong>Stock Items From This Order:</strong><%= render 'stocks' %>
+        <strong>Stock From This Order:</strong><%= render 'stocks' %>
       </div>
       <div class="col-sm-6">
-        <strong>Stock Items From This Order:</strong><%= render 'items' %>
+        <strong>Items (Parts) From This Order:</strong><%= render 'items' %>
       </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="btn-group">
-          <% if @order.order_status != "Arrived" %>
+          <% if @order.order_status != "Arrived" and user_signed_in? and (current_user.can_order? or current_user.can_manage?) %>
             <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-primary" %>
           <% end %>
           <%= link_to 'Back', orders_path, class: "btn btn-sm btn-info" %>

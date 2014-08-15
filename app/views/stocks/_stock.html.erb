@@ -65,3 +65,13 @@
   <strong>Ppsr:</strong>
   <%= format_ppsr(@stock) %>
 </p>
+<% if current_user.can_sales? or current_user.can_manage? %>
+  <p>
+    <strong>Costing:</strong>
+    <% if @stock.costing != nil %>
+      $<%= @stock.costing.landed_cost%>
+    <% else %>
+      No costing was done on this unit.
+    <% end %>
+  </p>
+<% end %>

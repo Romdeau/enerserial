@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :foreign_cost %><br>
-    <%= f.text_field :foreign_cost %>
+    <%= f.label :foreign_cost, "Unit Cost ($AUD)" %><br>
+    $<%= f.text_field :foreign_cost %>
   </div>
   <div class="field">
-    <%= f.label :markup %><br>
-    <%= f.text_field :markup %>
+    <%= f.label :markup, "Freight Markup" %><br>
+    <%= f.text_field :markup %>%
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-sm btn-success" %>
   </div>
 <% end %>

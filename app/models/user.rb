@@ -27,14 +27,14 @@ class User < ActiveRecord::Base
   has_many :stock_audit
   has_many :job
 
-  USER_ROLES = %w[End\ User Accounts Projects Purchasing Managment]
+  USER_ROLES = %w[End\ User Sales Accounts Projects Purchasing Factory Managment]
 
   def admin?
     admin
   end
 
-  def can_purchase?
-    if role == "Purchasing"
+  def can_order?
+    if role == "Purchasing" or admin
       true
     else
       false
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def can_account?
-    if role == "Accounts"
+    if role == "Accounts" or admin
       true
     else
       false
@@ -50,7 +50,23 @@ class User < ActiveRecord::Base
   end
 
   def can_project?
-    if role == "Projects"
+    if role == "Projects" or admin
+      true
+    else
+      false
+    end
+  end
+
+  def can_factory?
+    if role == "Factory" or admin
+      true
+    else
+      false
+    end
+  end
+
+  def can_sales?
+    if role == "Sales" or admin
       true
     else
       false
@@ -58,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def can_manage?
-    if role == "Management"
+    if role == "Management" or admin
       true
     else
       false
