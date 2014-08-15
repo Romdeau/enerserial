@@ -16,30 +16,36 @@
       <div class="row">
         <div class="col-sm-6">
           <% if current_user.can_account? or current_user.can_manage? %>
-            Accounts requirements are
-              <% if @stock.valid_ppsr? %>
-                complete, PPSR filled out or not required
+            Accounts Sign Off is
+              <% if @stock.accounts_signoff == 1 %>
+                complete.
+              <% elsif @stock.accounts_signoff? %>
+                valid, PPSR filled out or not required, click button to sign off.
                 <%= link_to "Sign Off", accounts_signoff_path(@stock), class: "btn btn-xs btn-success" %>
               <% else %>
                 incomplete, PPSR not filled out or PPSR toggle not unchecked
               <% end %>
           <% else %>
             <% if @stock.accounts_signoff == 1 %>
-              Accounts Sign Off Complete
+              Accounts Sign Off is Complete
             <% else %>
-              Accounts Sign Off Pending
+              Accounts Sign Off is Pending
             <% end %>
           <% end %>
         </div>
         <div class="col-sm-6">
           <% if current_user.can_project? or current_user.can_manage? %>
-            Projects requirements are complete
-            <%= link_to "Sign Off", projects_signoff_path(@stock), class: "btn btn-xs btn-success" %>
+            <% if @stock.projects_signoff == 1 %>
+              Projects Sign Off is complete
+            <% else %>
+              Projects Sign Off is valid, click button to sign off.
+              <%= link_to "Sign Off", projects_signoff_path(@stock), class: "btn btn-xs btn-success" %>
+            <% end %>
           <% else %>
             <% if @stock.projects_signoff == 1 %>
-              Projects Sign Off Complete
+              Projects Sign Off is Complete
             <% else %>
-              Projects Sign Off Pending
+              Projects Sign Off is Pending
             <% end %>
           <% end %>
         </div>

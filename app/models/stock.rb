@@ -45,9 +45,9 @@ class Stock < ActiveRecord::Base
     end
   end
 
-  def valid_ppsr?
-    if status == "Ready to Dispatch" and needs_ppsr == true and (ppsr == nil or ppsr == '')
-      errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
+  def accounts_signoff?
+    if status == "Production Complete" and needs_ppsr == true and (ppsr == nil or ppsr == '')
+      false
     else
       true
     end

@@ -100,6 +100,10 @@ end
           else
             UserMailer.jim_status_update(@stock, current_user).deliver
           end
+          if @stock.status == "Production Complete"
+            UserMailer.production_notify_accounts(@stock, current_user).deliver
+            UserMailer.production_notify_pm(@stock, current_user).deliver
+          end
         end
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
@@ -138,9 +142,14 @@ end
   def accounts_signoff
     @stock = Stock.find(params[:id])
     @stock.accounts_signoff = 1
-    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user, comment: "has signed off for accounts")
+    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user.id, comment: "has signed off for accounts")
     if @stock.save
       @user_audit.save
+      if @stock.projects_signoff == 1
+        @stock.update(status: "Ready to Dispatch")
+        StockAudit.create(user_id: current_user.id, stock_id: @stock.id, comment: "triggered Ready to Dispatch from Accounts Signoff")
+        UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+      end
       redirect_to @stock, notice: "Accounts Signoff Complete"
     else
       redirect_to @stock, alert: "something went wrong!"
@@ -150,9 +159,14 @@ end
   def projects_signoff
     @stock = Stock.find(params[:id])
     @stock.projects_signoff = 1
-    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user, comment: "has signed off for projects")
+    @user_audit = StockAudit.new(stock_id: @stock.id, user_id: current_user.id, comment: "has signed off for projects")
     if @stock.save
       @user_audit.save
+      if @stock.accounts_signoff == 1
+        @stock.update(status: "Ready to Dispatch")
+        StockAudit.create(user_id: current_user.id, stock_id: @stock.id, comment: "triggered Ready to Dispatch from Project Signoff")
+        UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+      end
       redirect_to @stock, notice: "Projects Signoff Complete"
     else
       redirect_to @stock, alert: "something went wrong!"

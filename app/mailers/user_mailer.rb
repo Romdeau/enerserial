@@ -27,14 +27,14 @@ class UserMailer < ActionMailer::Base
   end
 
   def production_notify_accounts(stock, user)
-    @user = user
+    @current_user = user
     @url = stock_path(stock)
     @stock = stock
     mail(to: 'luminita.kopf@eneraque.com', subject: "Stock Item Completed: Accounting Checkoff")
   end
 
   def production_notify_pm(stock, user)
-    @user = user
+    @current_user = user
     @url = stock_path(stock)
     @stock = stock
     mail(to: @stock.job.user.email, subject: "Stock Item Completed: PM Checkoff")
