@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
   def update_pm(user, job, current_user)
     @user = user
     @url = 'http://enerserial.eneraque.com/users/sign_in'
-    @job_url = "http://enerserial.eneraque.com/job/#{job.id}"
+    @job_url = "http://enerserial.eneraque.com/jobs/#{job.id}"
     @job = job
     @current_user = current_user
     mail(to: @user.email, subject: "You've been assigned PM of a Serial Number Register item.")
@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url = 'http://enerserial.eneraque.com/users/sign_in'
     @stock = stock
-    @stock_url ="http://enerserial.eneraque.com/stock/#{@stock.id}"
+    @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
     @current_user = current_user
     mail(to: @user.email, subject: "Stock Item has been marked as #{@stock.status}.")
   end
@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
   def jim_status_update(stock, current_user)
     @url = 'http://enerserial.eneraque.com/users/sign_in'
     @stock = stock
-    @stock_url ="http://enerserial.eneraque.com/stock/#{@stock.id}"
+    @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
     @current_user = current_user
     mail(to: "jim.pringle@eneraque.com", subject: "Stock Item has been marked as #{@stock.status}.")
   end
@@ -33,7 +33,7 @@ class UserMailer < ActionMailer::Base
     @current_user = user
     @url = stock_path(stock)
     @stock = stock
-    @stock_url ="http://enerserial.eneraque.com/stock/#{@stock.id}"
+    @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
     mail(to: 'luminita.kopf@eneraque.com', subject: "Stock Item Completed: Accounting Checkoff")
   end
 
@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
     @current_user = user
     @url = stock_path(stock)
     @stock = stock
-    @stock_url ="http://enerserial.eneraque.com/stock/#{@stock.id}"
+    @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
     mail(to: @stock.job.user.email, subject: "Stock Item Completed: PM Checkoff")
   end
 
