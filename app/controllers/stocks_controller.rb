@@ -141,6 +141,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date, :pm_email)
+      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date, :accounts_signoff, :projects_signoff)
     end
 end

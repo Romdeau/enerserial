@@ -4,34 +4,50 @@
 
 <div class="content">
   <div class="paragraph">
-    <div class="row ener-header">
-      <div class="col-sm-3">Email</div>
-      <div class="col-sm-3">Account</div>
-      <div class="col-sm-3"></div>
-    </div>
-    <% @users.each do |user| %>
-      <div class="row">
-        <div class="col-sm-3"><%= user.email %></div>
-        <div class="col-sm-3">
-          <% if user.admin? %>
-          Admin
-          <% else %>
-          User
-          <% end %>
-        </div>
-        <div class="col-sm-3 btn-group">
-          <% if current_user.admin? or current_user.id == 1 %>
-            <%= link_to "Set Admin", set_user_admin_path(user), class: "btn btn-xs btn-info" %>
-          <% end %>
-      </div>
-      </div>
-    <% end %>
-    <br>
     <div class="row">
-      <div class="col-sm-12 btn-group">
-        <%= link_to "Back", stocks_path, class: "btn btn-sm btn-primary" %>
-        <%= link_to "create User", new_user_registration_path, class: "btn btn-sm btn-success" %>
+      <div class="col-sm-4">
+        <input id="filter" type="text" class="form-control" placeholder="Search For...">
       </div>
-  </div>
+      <div class="col-sm-8 btn-group">
+        <%= link_to "Create User", new_user_registration_path, class: "btn btn-sm btn-success" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="ener-header">Email</th>
+              <th class="ener-header">Account Type</th>
+              <th class="ener-header"></th>
+            </tr>
+          </thead>
+          <tbody class="searchable">
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td>
+                  <% if user.admin? %>
+                  Admin
+                  <% else %>
+                    <%= user.role %>
+                  <% end %>
+                </td>
+                <td>
+                  <div class="btn-group">
+                    <% if current_user.admin? or current_user.id == 1 %>
+                      <%= link_to "Set Role", edit_user_role_path(user), class: "btn btn-xs btn-success" %>
+                      <%= link_to "Set Admin", set_user_admin_path(user), class: "btn btn-xs btn-danger" %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-4">
+        <h4>Admin Controlls</h4>
+    </div>
   </div>
 </div>

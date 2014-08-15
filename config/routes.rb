@@ -4,8 +4,11 @@ Enerserial::Application.routes.draw do
   patch '/jobs/:id/assign_pm' => 'jobs#process_pm', :as => :process_pm_job
 
   get '/users' => 'users#index', :as => :users
+  get '/users/:id/edit_role' => 'users#edit_role', :as => :edit_user_role
+  patch 'users/:id/edit_role' => 'users#update_role', :as => :update_user_role
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
+
   root 'stocks#index'
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'

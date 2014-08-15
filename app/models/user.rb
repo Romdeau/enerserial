@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  admin                  :boolean          default(FALSE)
+#  role                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -26,7 +27,41 @@ class User < ActiveRecord::Base
   has_many :stock_audit
   has_many :job
 
+  USER_ROLES = %w[End\ User Accounts Projects Purchasing Managment]
+
   def admin?
     admin
+  end
+
+  def can_purchase?
+    if role == "Purchasing"
+      true
+    else
+      false
+    end
+  end
+
+  def can_account?
+    if role == "Accounts"
+      true
+    else
+      false
+    end
+  end
+
+  def can_project?
+    if role == "Projects"
+      true
+    else
+      false
+    end
+  end
+
+  def can_manage?
+    if role == "Management"
+      true
+    else
+      false
+    end
   end
 end
