@@ -88,9 +88,10 @@ rails g migration #add order:references to stock
 #												-- Supplier Order Number
 #												-- Ready Ex Manufacturer
 #												-- Manufacturers Comments
-#												-- Normal Sell Price (is this important?)
-#												-- Stock sell @ 31 01 14 (what does this even mean?)
-#												-- Are we worried about price here, or should this just be for exo? If so whats the math?
+			  !combined into costing
+          							-- Normal Sell Price (is this important?)
+												-- Stock sell @ 31 01 14 (what does this even mean?)
+												-- Are we worried about price here, or should this just be for exo? If so whats the math?
 
 #  Out on Demo - Location, Sent and Arrival Date
 
