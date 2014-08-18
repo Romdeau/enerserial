@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Job <%= @job.job_number %> for <%= @job.customer.name %></h1>
+  <h1>Job <%= @job.job_number %> for <%= link_to @job.customer.name, @job.customer %></h1>
   <% if @job.user != nil %>
     <h4>PM assigned to this job is <%= @job.user.email %></h4>
   <% else %>
