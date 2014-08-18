@@ -29,7 +29,9 @@ Enerserial::Application.routes.draw do
   get '/orders/:id/bulk_edit_items' => 'items#bulk_edit_items', :as => :bulk_edit_items
   get '/orders/:id/bulk_edit_items' => 'items#bulk_process_items', :as => :bulk_process_items
 
+  #filtered views
   get '/stocks/filter/:stock_status' => 'stocks#status_filter', :as => :filter_stock_status
+  get '/orders/filter/:order_status' => 'orders#status_filter', :as => :filter_order_status
 
   resources :costings, only: [:index, :show, :edit, :update, :destroy]
 

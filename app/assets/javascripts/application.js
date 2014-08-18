@@ -16,6 +16,7 @@
 //= require turbolinks
 // Loads all Boostrap javascritps
 //= require bootstrap
+//= require jquery.tablesorter.min.js
 // require_tree .
 
 $(document).ready(function () {
@@ -33,5 +34,5 @@ $(document).ready(function () {
         })
 
     }(jQuery));
-
+    $("#sorttable").tablesorter();
 });

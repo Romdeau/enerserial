@@ -16,6 +16,12 @@ class OrdersController < ApplicationController
     @items = @order.item
   end
 
+  # GET /orders/filter/Ordered
+  def status_filter
+    @order_status = params[:order_status]
+    @orders = Order.select { |order| order.order_status == @order_status }
+  end
+
   # GET /orders/new
   def new
     @order = Order.new

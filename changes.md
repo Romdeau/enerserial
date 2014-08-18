@@ -106,3 +106,5 @@ Branch Off Engines & Alternators into a generic item spinoff.
 # costings
 
 (foreign currency cost * exchange rate) + 7% Markup
+
+#  Implement a combined Calendar View
