@@ -7,6 +7,24 @@
       <% if user_signed_in? and current_user.can_manage? %>
         <%= link_to 'New Stock', new_stock_path, class: "btn btn-success" %>
       <% end %>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Filtered Views <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/stocks/filter/Ordered">Ordered</a></li>
+          <li><a href="/stocks/filter/Acknowledged">Acknowledged</a></li>
+          <li><a href="/stocks/filter/Goods%20Loaded">Goods Loaded</a></li>
+          <li><a href="/stocks/filter/On%20The%20Water">On The Water</a></li>
+          <li class="divider"></li>
+          <li><a href="/stocks/filter/Floor%20Stock">Floor Stock</a></li>
+          <li><a href="/stocks/filter/New%20Stock">New Stock</a></li>
+          <li><a href="/stocks/filter/In%20Production">In Production</a></li>
+          <li><a href="/stocks/filter/Production%20Complete">Production Complete</a></li>
+          <li><a href="/stocks/filter/Ready%20to%20Dispatch">Ready to Dispatch</a></li>
+          <li><a href="/stocks/filter/Dispatched">Dispatched</a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <table class="table table-striped">

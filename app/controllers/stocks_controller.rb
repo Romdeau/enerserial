@@ -16,6 +16,11 @@ class StocksController < ApplicationController
     @stock_audits = @stock.stock_audit
   end
 
+  def status_filter
+    @stock_status = params[:stock_status]
+    @stocks = Stock.select { |stock| stock.status == @stock_status }
+  end
+
   # GET /stocks/new
   def new
     @stock = Stock.new
