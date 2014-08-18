@@ -5,7 +5,7 @@
     </div>
     <div class="col-sm-4" >
       <% if user_signed_in? and (current_user.can_order? or current_user.can_manage?) %>
-        <%= link_to 'New Order', new_order_path, class: "btn btn-sm btn-success" %>
+        <%= link_to 'New Order', new_order_path, class: "btn btn-success" %>
       <% end %>
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
