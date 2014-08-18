@@ -85,6 +85,7 @@ rails g migration #add order:references to stock
   Distributor: string   --
   Manufacturer: string  --
   Model: string        --
+# i feel like these all belong in order, not item.
 #												-- Supplier Order Number
 #												-- Ready Ex Manufacturer
 #												-- Manufacturers Comments
