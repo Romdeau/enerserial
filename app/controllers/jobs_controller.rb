@@ -34,7 +34,7 @@ class JobsController < ApplicationController
     @job.customer_id = params[:customer_id]
     respond_to do |format|
       if @job.save
-        format.html { redirect_to jobs_path, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render action: 'show', status: :created, location: @job }
       else
         format.html { render action: 'new' }
