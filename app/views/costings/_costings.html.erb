@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Foreign cost</th>
+      <th>Exchange rate</th>
+      <th>Markup</th>
+      <th>Landed cost</th>
+      <th>Stock</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @costings.each do |costing| %>
+      <tr>
+        <td><%= costing.foreign_cost %></td>
+        <td><%= costing.exchange_rate %></td>
+        <td><%= costing.markup %></td>
+        <td><%= costing.landed_cost %></td>
+        <td><%= costing.stock %></td>
+        <td><%= link_to 'Show', costing %></td>
+        <td><%= link_to 'Edit', edit_costing_path(costing) %></td>
+        <td><%= link_to 'Destroy', costing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
