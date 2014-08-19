@@ -1,6 +1,10 @@
-<h1>Editing item</h1>
-
-<%= render 'edit_form' %>
-
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>
+<div class="page-header">
+  <h1>Editing item</h1>
+</div>
+<div class="paragraph">
+  <%= render 'edit_form' %>
+  <div class="btn-group">
+    <%= link_to 'Show', @item, class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Back', items_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>
