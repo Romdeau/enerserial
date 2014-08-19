@@ -77,8 +77,11 @@ end
   # PATCH/PUT /stocks/1.json
   def update
     @job = Job.find_by job_number: stock_params[:job_number]
+    if @job != nil
+      @job_user = @job.user
+    end
     params[:stock].delete :job_number
-    if @job.user != nil
+    if @job_user != nil
       if @stock.status == stock_params[:status]
         @status_updated = false
       else
