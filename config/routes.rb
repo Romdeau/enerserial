@@ -37,6 +37,9 @@ Enerserial::Application.routes.draw do
   get '/orders/filter/:order_status' => 'orders#status_filter', :as => :filter_order_status
   get '/items/filter/:item_type' => 'items#type_filter', :as => :filter_item_type
 
+  #homepage
+  get 'stylesheet' => 'homepage#stylesheet', :as => :view_stylesheet
+
   resources :costings, only: [:index, :show, :edit, :update, :destroy]
 
   resources :orders

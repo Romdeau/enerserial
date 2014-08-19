@@ -14,10 +14,10 @@
 <div class="container main-body errors">
   <div>
     <% if notice %>
-      <p id="notice"><%= flash[:notice] %></p>
+      <div class="alert alert-success" id="notice"><%= flash[:notice] %></div>
     <% end %>
     <% if alert %>
-      <p id="alert" style="color:red;"><%= flash[:alert] %></p>
+      <div class="alert alert-warning" id="alert" style="color:red;"><%= flash[:alert] %></div>
     <% end %>
   </div>
 </div>
