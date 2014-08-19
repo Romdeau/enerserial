@@ -12,8 +12,8 @@
       <th class="ener-header"></th>
     </tr>
   </thead>
-  <% @stocks.each do |stock| %>
-    <tbody class="searchable">
+  <tbody class="searchable">
+    <% @stocks.each do |stock| %>
       <tr>
         <td><%= link_to format_serial(stock), stock_path(stock) %></td>
         <td><%= link_to check_job(stock), stock.job %></td>
@@ -23,6 +23,6 @@
         <td><%= stock.gesan_number %></td>
         <td><%= link_to 'Assign', item_stock_path(@item, stock), class: "btn btn-xs btn-info" %></td>
       </tr>
-    </tbody>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>

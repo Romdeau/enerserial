@@ -94,6 +94,31 @@ class JobsController < ApplicationController
     end
   end
 
+  def change_customer
+    @job = Job.find(params[:id])
+    @customers = Customer.all
+  end
+
+  def customer_job
+    @customer = Customer.find(params[:customer_id])
+    @job = Job.find(params[:id])
+  end
+
+  def process_customer_job
+    @job = Job.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @job.customer_id = @customer.id
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.comment = "Job ##{@job.job_number} assigned to #{@customer.name}"
+    if @job.save
+      @stock_audit.save
+      redirect_to @job, notice: "Job ##{@job.job_number} was assigned to #{@customer.name}."
+    else
+      redirect_to @job, alert: "Something went wrong."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

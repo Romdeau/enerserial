@@ -131,6 +131,7 @@ class ItemsController < ApplicationController
       redirect_to @item, alert: "Something went wrong."
     end
   end
+  
   def item_stock
     @stock = Stock.find(params[:stock_id])
     @item = Item.find(params[:id])

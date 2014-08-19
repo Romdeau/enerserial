@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Change Customer for <%= @job.job_number %></h1>
+  <h4>Current Customer is <%= @job.customer.name %></h4>
+</div>
+
+<div class="paragraph">
+  <h4>Choose new customer</h4>
+  <div class="row">
+
+  </div>
+  <div class="row">
+  <table class="table table-striped tablesorter" id="sorttable">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="searchable">
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%=customer.name%></td>
+          <td><%= link_to "Assign Customer", process_customer_job_path(@job, customer), class: "btn btn-xs btn-success" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

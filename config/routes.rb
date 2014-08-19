@@ -2,6 +2,9 @@ Enerserial::Application.routes.draw do
 
   get '/jobs/:id/assign_pm' => 'jobs#assign_pm', :as => :assign_pm_job
   patch '/jobs/:id/assign_pm' => 'jobs#process_pm', :as => :process_pm_job
+  get '/jobs/:id/change_customer' => 'jobs#change_customer', :as => :change_customer_job
+  get '/jobs/:id/change_customer/:customer_id/' => 'jobs#customer_job', :as => :customer_job
+  patch '/jobs/:id/change_customer/:customer_id/' => 'jobs#process_customer_job', :as => :process_customer_job
 
   get '/users' => 'users#index', :as => :users
   get '/users/:id/edit_role' => 'users#edit_role', :as => :edit_user_role

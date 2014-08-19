@@ -11,8 +11,12 @@
   <br>
   <div class="btn-group">
     <% if user_signed_in? %>
+      <%= link_to 'Assign PM', assign_pm_job_path, class: "btn btn-sm btn-success" %>
+      <%= link_to 'Change Customer', change_customer_job_path(@job), class: "btn btn-sm btn-success" %>
+    </div>
+    <br>
+    <div class="btn-group">
       <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-sm btn-primary" %>
-      <%= link_to 'Assign PM', assign_pm_job_path, class: "btn btn-sm btn-primary" %>
     <% end %>
     <%= link_to 'Back', jobs_path, class: "btn btn-sm btn-primary" %>
   </div>
