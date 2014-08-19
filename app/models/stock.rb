@@ -82,20 +82,20 @@ class Stock < ActiveRecord::Base
     when "Floor Stock"
     when "New Stock"
       if job_id == "" or job_id == nil
-        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+        errors.add(:status, "Job Cannot be set as New Stock without an allocated job")
       else
         true
       end
     when "In Production"
       if job_id == "" or job_id == nil
-        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+        errors.add(:status, "Job Cannot be set as In Production without an allocated job")
       else
         true
       end
     when "Production Complete"
       #check for valid job
       if job_id == "" or job_id == nil
-        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+        errors.add(:status, "Job Cannot be set as Production Complete without an allocated job")
       else
         true
       end
@@ -104,17 +104,17 @@ class Stock < ActiveRecord::Base
       if accounts_signoff == 1 and projects_signoff == 1
         true
       else
-        errors.add(:status, "Job cannot be ready to dispatch without accounts & projects singoff.")
+        errors.add(:status, "Job cannot be set as Ready to Dispatch without accounts & projects singoff.")
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
-        errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
+        errors.add(:job_id, "#{ppsr} job cannot be Ready to Dispatch without a PPSR number.")
       else
         true
       end
       #check for valid job
       if job_id == "" or job_id == nil
-        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+        errors.add(:status, "Job Cannot be set as Ready to Dispatch without an allocated job")
       else
         true
       end
@@ -123,23 +123,23 @@ class Stock < ActiveRecord::Base
       if accounts_signoff == 1 and projects_signoff == 1
         true
       else
-        errors.add(:status, "Job cannot be ready to dispatch without accounts & projects singoff.")
+        errors.add(:status, "Job cannot be set to Dispatched without accounts & projects singoff.")
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
-        errors.add(:job_id, "#{ppsr} job cannot be ready to ship without a PPSR number.")
+        errors.add(:job_id, "#{ppsr} job cannot be set as Dispatched without a PPSR number.")
       else
         true
       end
       #check for valid job
       if job_id == "" or job_id == nil
-        errors.add(:status, "Job Cannot be set as Job Allocated without an allocated job")
+        errors.add(:status, "Job Cannot be set as Dispatched without an allocated job")
       else
         true
       end
       #check for valid shipping date
       if shipping_date == "" or shipping_date == nil
-        errors.add(:status, "Job Cannot be dispatched without a shipping date")
+        errors.add(:status, "Job Cannot be set as Dispatched without a shipping date")
       else
         true
       end
