@@ -17,6 +17,11 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def type_filter
+    @item_type = params[:item_type]
+    @items = Item.select { |item| item.stock_type == @item_type }
+  end
+
   # GET /items/new
   def new
     @item = Item.new
@@ -131,7 +136,7 @@ class ItemsController < ApplicationController
       redirect_to @item, alert: "Something went wrong."
     end
   end
-  
+
   def item_stock
     @stock = Stock.find(params[:stock_id])
     @item = Item.find(params[:id])

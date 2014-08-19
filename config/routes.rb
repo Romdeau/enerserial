@@ -35,6 +35,7 @@ Enerserial::Application.routes.draw do
   #filtered views
   get '/stocks/filter/:stock_status' => 'stocks#status_filter', :as => :filter_stock_status
   get '/orders/filter/:order_status' => 'orders#status_filter', :as => :filter_order_status
+  get '/items/filter/:item_type' => 'items#type_filter', :as => :filter_item_type
 
   resources :costings, only: [:index, :show, :edit, :update, :destroy]
 
