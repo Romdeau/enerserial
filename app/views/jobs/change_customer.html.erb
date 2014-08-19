@@ -6,7 +6,12 @@
 <div class="paragraph">
   <h4>Choose new customer</h4>
   <div class="row">
-
+    <div class="col-sm-4">
+      <input id="filter" type="text" class="form-control" placeholder="Search For...">
+    </div>
+    <div class="col-sm-4">
+      <%= link_to 'Customers', customers_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="row">
   <table class="table table-striped tablesorter" id="sorttable">
