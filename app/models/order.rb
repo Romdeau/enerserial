@@ -50,12 +50,14 @@ class Order < ActiveRecord::Base
           stock_item.update(status: "Floor Stock")
           UserMailer.jim_status_update(stock_item, current_user).deliver
         end
-      elsif stock_item.update(status: updated_order.order_status)
+      elsif stock_item.update(status: updated_order.order_status) and stock_item.job != nil
         if stock_item.job.user_id != nil
           UserMailer.status_update(stock_item.job.user, stock_item, current_user).deliver
         else
           UserMailer.jim_status_update(stock_item, current_user).deliver
         end
+      else
+        UserMailer.jim_status_update(stock_item, current_user).deliver
       end
     end
   end
