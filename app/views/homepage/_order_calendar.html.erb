@@ -1,0 +1,45 @@
+<script>
+
+  $(document).ready(function() {
+
+    $('#ordercalendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultDate: moment().format('YYYY-MM-DD'),
+      selectable: true,
+      selectHelper: true,
+      select: function(start, end) {
+        var title = prompt('Event Title:');
+        var eventData;
+        if (title) {
+          eventData = {
+            title: title,
+            start: start,
+            end: end
+          };
+          $('#ordercalendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+        }
+        $('#ordercalendar').fullCalendar('unselect');
+      },
+      weekends: false, // hides saturdays and sundays
+      editable: true,
+      events: [
+        <% @orders.each do |order| %>
+          {
+            title: '<%= order.order_number %>',
+            start: '<%= order.shipping_date%>',
+            end: '<%= order.shipping_date %>'<% if user_signed_in? %>,
+            url: '/orders/<%= order.id%>'<% end %>
+           },
+        <% end %>
+        {
+        }
+      ]
+    });
+
+  });
+
+</script>

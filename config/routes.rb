@@ -1,23 +1,27 @@
 Enerserial::Application.routes.draw do
+  root 'homepage#index'
 
+  #jobs
   get '/jobs/:id/assign_pm' => 'jobs#assign_pm', :as => :assign_pm_job
   patch '/jobs/:id/assign_pm' => 'jobs#process_pm', :as => :process_pm_job
   get '/jobs/:id/change_customer' => 'jobs#change_customer', :as => :change_customer_job
   get '/jobs/:id/change_customer/:customer_id/' => 'jobs#customer_job', :as => :customer_job
   patch '/jobs/:id/change_customer/:customer_id/' => 'jobs#process_customer_job', :as => :process_customer_job
 
+  #users
   get '/users' => 'users#index', :as => :users
   get '/users/:id/edit_role' => 'users#edit_role', :as => :edit_user_role
   patch 'users/:id/edit_role' => 'users#update_role', :as => :update_user_role
   get '/users/:id/set_admin' => 'users#set_admin', :as => :set_user_admin
   devise_for :users
 
-  root 'stocks#index'
+  #stocks
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
   get '/stocks/:id/accounts_signoff' => 'stocks#accounts_signoff', :as => :accounts_signoff
   get '/stocks/:id/projects_signoff' => 'stocks#projects_signoff', :as => :projects_signoff
 
+  #items
   get '/items/new_floor_item' => 'items#new_floor_item', :as => :new_floor_item
   post '/items' => 'items#create_floor_item', :as => :create_floor_item
   get '/items/floor_stock' => 'items#floor_stock', :as => :items_floor_stock
@@ -27,6 +31,7 @@ Enerserial::Application.routes.draw do
   patch '/items/:id/stock/:stock_id/' => 'items#process_item_stock', :as => :process_item_stock
   post '/items/:id/' => 'items#unassign_item', :as => :unassign_item
 
+  #orders
   get '/orders/:id/bulk_edit_stock' => 'stocks#bulk_edit_stock', :as => :bulk_edit_stock
   get '/orders/:id/bulk_edit_stock' => 'stocks#bulk_process_stock', :as => :bulk_process_stock
   get '/orders/:id/bulk_edit_items' => 'items#bulk_edit_items', :as => :bulk_edit_items
@@ -40,6 +45,7 @@ Enerserial::Application.routes.draw do
   #homepage
   get 'stylesheet' => 'homepage#stylesheet', :as => :view_stylesheet
 
+  #resources
   resources :costings, only: [:index, :show, :edit, :update, :destroy]
 
   resources :orders

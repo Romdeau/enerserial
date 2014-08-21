@@ -17,6 +17,8 @@
 // Loads all Boostrap javascritps
 //= require bootstrap
 //= require jquery.tablesorter.min.js
+//= require moment.min.js
+//= require fullcalendar.min.js
 // require_tree .
 
 $(document).ready(function () {

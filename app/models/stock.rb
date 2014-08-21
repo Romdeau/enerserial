@@ -184,4 +184,17 @@ class Stock < ActiveRecord::Base
       end
     end
   end
+
+  def active_stock?
+      if status == "New Stock" or status == "New Stock" or status == "In Production" or status == "Production Complete"  or status == "Ready to Dispatch" or status == "Dispatched"
+        if shipping_date != nil
+          true
+        else
+          false
+        end
+      else
+        false
+      end
+  end
+
 end
