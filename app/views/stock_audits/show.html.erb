@@ -1,29 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Audit Event Detail</h1>
+</div>
+<div class="paragraph">
+  <p>
+    <strong>Stock:</strong>
+    <% if @stock_audit.stock != nil %>
+      <%= link_to "Stock", @stock_audit.stock %>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @stock_audit.stock %>
-</p>
+  <p>
+    <strong>Item:</strong>
+    <% if @stock_audit.item != nil %>
+      <%= link_to "Item", @stock_audit.item %>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Engine:</strong>
-  <%= @stock_audit.engine %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <% if @stock_audit.user != nil %>
+      <%= @stock_audit.user.email %>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Alternator:</strong>
-  <%= @stock_audit.alternator %>
-</p>
+  <p>
+    <strong>Comment:</strong>
+    <%= @stock_audit.comment %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @stock_audit.user %>
-</p>
+  <p>
+    <strong>Parameters:</strong>
+    <%= @stock_audit.audit_params %>
+  </p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @stock_audit.comment %>
-</p>
+  <p>
+    <strong>Date Created:</strong>
+    <%= @stock_audit.created_at %>
+  </p>
 
-<%= link_to 'Edit', edit_stock_audit_path(@stock_audit) %> |
-<%= link_to 'Back', stock_audits_path %>
+  <%= link_to 'Back', stock_audits_path, class: "btn btn-sm btn-info" %>
+</div>
