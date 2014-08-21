@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821031708) do
-
-  create_table "alternators", force: true do |t|
-    t.integer  "stock_id"
-    t.string   "alternator"
-    t.string   "alternator_type"
-    t.string   "serial"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140821042036) do
 
   create_table "costings", force: true do |t|
     t.string   "foreign_cost"
@@ -36,15 +27,6 @@ ActiveRecord::Schema.define(version: 20140821031708) do
 
   create_table "customers", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "engines", force: true do |t|
-    t.integer  "stock_id"
-    t.string   "engine"
-    t.string   "engine_type"
-    t.string   "serial"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,8 +67,6 @@ ActiveRecord::Schema.define(version: 20140821031708) do
 
   create_table "stock_audits", force: true do |t|
     t.integer  "stock_id"
-    t.integer  "engine_id"
-    t.integer  "alternator_id"
     t.integer  "user_id"
     t.string   "comment"
     t.datetime "created_at"
@@ -95,8 +75,6 @@ ActiveRecord::Schema.define(version: 20140821031708) do
     t.integer  "item_id"
   end
 
-  add_index "stock_audits", ["alternator_id"], name: "index_stock_audits_on_alternator_id"
-  add_index "stock_audits", ["engine_id"], name: "index_stock_audits_on_engine_id"
   add_index "stock_audits", ["item_id"], name: "index_stock_audits_on_item_id"
   add_index "stock_audits", ["stock_id"], name: "index_stock_audits_on_stock_id"
   add_index "stock_audits", ["user_id"], name: "index_stock_audits_on_user_id"
