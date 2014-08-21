@@ -51,7 +51,7 @@ Enerserial::Application.routes.draw do
 
   resources :orders
 
-  resources :stock_audits
+  resources :stock_audits, only: [:index, :show]
 
   resources :items, only: [:index, :show, :edit, :update, :destroy]
 

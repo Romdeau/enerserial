@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
     @stock_audit = StockAudit.new
     @stock_audit.item = @item
     @stock_audit.user = current_user
-    @stock_audit.comment = "item #{@item} assigned to floor stock"
+    @stock_audit.comment = "item #{@item.id} assigned to floor stock"
     @stock_audit1 = StockAudit.new
     @stock_audit1.stock = @item.stock
     @stock_audit1.user = current_user
