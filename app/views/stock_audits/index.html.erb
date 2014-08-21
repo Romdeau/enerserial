@@ -26,8 +26,8 @@
           <tbody class="searchable">
             <% @stock_audits.each do |stock_audit| %>
               <tr>
-                <td><%= stock_audit.stock %></td>
-                <td><%= stock_audit.item %></td>
+                <td><%= link_to "Stock", stock_audit.stock %></td>
+                <td><%= link_to "Item", stock_audit.item %></td>
                 <td>
                   <% if stock_audit.user != nil %>
                     <%= stock_audit.user.email %>
