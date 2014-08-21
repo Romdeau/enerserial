@@ -64,7 +64,11 @@ class Order < ActiveRecord::Base
 
   def active_order?
     if order_status != "Arrived"
-      true
+      if shipping_date != nil
+        true
+      else
+        false
+      end
     else
       false
     end
