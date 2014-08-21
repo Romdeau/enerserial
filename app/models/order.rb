@@ -60,4 +60,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def active_order?
+    if order_status != "Arrived"
+      false
+    else
+      true
+    end
+  end
+
 end
