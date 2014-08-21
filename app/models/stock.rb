@@ -108,7 +108,7 @@ class Stock < ActiveRecord::Base
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
-        errors.add(:job_id, "#{ppsr} job cannot be Ready to Dispatch without a PPSR number.")
+        errors.add(:ppsr, "Job cannot be Ready to Dispatch without a PPSR number.")
       else
         true
       end
