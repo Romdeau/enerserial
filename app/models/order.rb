@@ -62,9 +62,9 @@ class Order < ActiveRecord::Base
 
   def active_order?
     if order_status != "Arrived"
-      false
-    else
       true
+    else
+      false
     end
   end
 
