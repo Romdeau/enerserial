@@ -69,6 +69,6 @@ class StockAuditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_audit_params
-      params.require(:stock_audit).permit(:stock, :engine, :alternator, :user, :comment)
+      params.require(:stock_audit).permit(:stock, :user, :comment)
     end
 end

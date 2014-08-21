@@ -42,8 +42,9 @@ class OrdersController < ApplicationController
     @items_to_generate = order_params[:items_to_generate].to_i
     respond_to do |format|
       if @order.save
-        @order.generate_stock(@stock_to_generate, @order)
-        @order.generate_items(@items_to_generate, @order)
+        StockAudit.create(user_id: current_user.id, comment: "created order #{@order.order_number}", audit_params: "#{order_params}")
+        @order.generate_stock(@stock_to_generate, @order, current_user)
+        @order.generate_items(@items_to_generate, @order, current_user)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -58,6 +59,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
+        StockAudit.create(user_id: current_user.id, comment: "updated status of order #{@order.order_number}", audit_params: "#{order_params}")
         @order.update_stock(@order, current_user)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }

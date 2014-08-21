@@ -21,16 +21,18 @@ class Order < ActiveRecord::Base
 
   STATUS_TYPES = %w[Ordered Acknowledged Goods\ Loaded On\ The\ Water Arrived]
 
-  def generate_stock(number_to_generate, order_object)
+  def generate_stock(number_to_generate, order_object, current_user)
     while number_to_generate > 0
-        Stock.create(status: "Ordered", detail: "Generated for order #{order_object.order_number}", order_id: order_object.id)
+        @stock = Stock.create(status: "Ordered", detail: "Generated for order #{order_object.order_number}", order_id: order_object.id)
+        StockAudit.create(user_id: current_user.id, stock_id: @stock.id, comment: "created stock #{@stock.id} for #{order_object.order_number}")
       number_to_generate -= 1
     end
   end
 
-  def generate_items(number_to_generate, order_object)
+  def generate_items(number_to_generate, order_object, current_user)
     while number_to_generate > 0
-        Item.create(item_model: "Generated for order #{order_object.order_number}", order_id: order_object.id)
+        @item = Item.create(item_model: "Generated for order #{order_object.order_number}", order_id: order_object.id)
+        StockAudit.create(user_id: current_user.id, item_id: @item.id, comment: "created item #{@item.id} for #{order_object.order_number}")
       number_to_generate -= 1
     end
   end
