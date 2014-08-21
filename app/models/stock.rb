@@ -104,7 +104,7 @@ class Stock < ActiveRecord::Base
       if accounts_signoff == 1 and projects_signoff == 1
         true
       else
-        errors.add(:status, "Job cannot be set as Ready to Dispatch without accounts & projects singoff.")
+        errors.add(:status, "Job cannot be set as Ready to Dispatch without accounts & projects signoff.")
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
@@ -123,7 +123,7 @@ class Stock < ActiveRecord::Base
       if accounts_signoff == 1 and projects_signoff == 1
         true
       else
-        errors.add(:status, "Job cannot be set to Dispatched without accounts & projects singoff.")
+        errors.add(:status, "Job cannot be set to Dispatched without accounts & projects signoff.")
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
