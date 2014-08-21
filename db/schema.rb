@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815020740) do
+ActiveRecord::Schema.define(version: 20140821031708) do
 
   create_table "alternators", force: true do |t|
     t.integer  "stock_id"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140815020740) do
     t.integer  "order_id"
     t.integer  "accounts_signoff"
     t.integer  "projects_signoff"
+    t.string   "location"
   end
 
   add_index "stocks", ["job_id"], name: "index_stocks_on_job_id"

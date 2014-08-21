@@ -46,6 +46,10 @@
     <%= f.label :vin %><br>
     <%= f.text_field :vin %>
   </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
 
   <div class="field">
     <%= f.label :ppsr %> <%if current_user.can_account? %> <%= f.check_box :needs_ppsr %> <% end %><br>

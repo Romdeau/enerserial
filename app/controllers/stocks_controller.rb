@@ -16,6 +16,10 @@ class StocksController < ApplicationController
     @stock_audits = @stock.stock_audit
   end
 
+  def stock_location
+    @stocks = Stock.all
+  end
+
   # GET /stocks/filter/Ordered
   def status_filter
     @stock_status = params[:stock_status]
@@ -190,6 +194,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date, :accounts_signoff, :projects_signoff)
+      params.require(:stock).permit(:serial_number, :job_number, :engine_id, :alternator_id, :detail, :status, :status_detail, :gesan_number, :ppsr, :needs_ppsr, :supplier_name, :vin, :shipping_date, :accounts_signoff, :projects_signoff, :location)
     end
 end

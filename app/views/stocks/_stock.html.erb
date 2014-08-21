@@ -14,24 +14,6 @@
 </p>
 
 <p>
-  <strong>Engine:</strong>
-  <% if @stock.engine != nil %>
-    <%= link_to @stock.engine.serial, engine_path(@stock.engine) %>
-  <% else %>
-    No Engine Found
-  <% end %>
-</p>
-
-<p>
-  <strong>Alternator:</strong>
-  <% if @stock.alternator != nil %>
-    <%= link_to @stock.alternator.serial, alternator_path(@stock.alternator) %>
-  <% else %>
-    No Alternator Found
-  <% end %>
-</p>
-
-<p>
   <strong>Detail:</strong>
   <%= @stock.detail %>
 </p>
@@ -59,6 +41,11 @@
 <p>
   <strong>Vin Number:</strong>
   <%= @stock.vin %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @stock.location %>
 </p>
 
 <p>

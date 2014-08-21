@@ -19,6 +19,7 @@
 #  order_id         :integer
 #  accounts_signoff :integer
 #  projects_signoff :integer
+#  location         :string(255)
 #
 
 require 'test_helper'

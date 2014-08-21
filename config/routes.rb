@@ -18,6 +18,7 @@ Enerserial::Application.routes.draw do
   #stocks
   get '/stocks/import' => 'stocks#import', :as => :import_stocks
   post '/stocks/import' => 'stocks#import_file'
+  get '/stocks/stocklocation' => 'stocks#stock_location', :as => :stock_location
   get '/stocks/:id/accounts_signoff' => 'stocks#accounts_signoff', :as => :accounts_signoff
   get '/stocks/:id/projects_signoff' => 'stocks#projects_signoff', :as => :projects_signoff
 
