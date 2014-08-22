@@ -1,0 +1,45 @@
+<script>
+
+  $(document).ready(function() {
+
+    $('#ppsrcalendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultDate: moment().format('YYYY-MM-DD'),
+      selectable: true,
+      selectHelper: true,
+      select: function(start, end) {
+        var title = prompt('Event Title:');
+        var eventData;
+        if (title) {
+          eventData = {
+            title: title,
+            start: start,
+            end: end
+          };
+          $('#ppsrcalendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+        }
+        $('#ppsrcalendar').fullCalendar('unselect');
+      },
+      weekends: false, // hides saturdays and sundays
+      editable: true,
+      events: [
+        <% @ppsr.each do |stock| %>
+          {
+            title: '<%= stock.serial_number %>',
+            start: '<%= stock.ppsr_expiry %>',
+            end: '<%= stock.ppsr_expiry %>'<% if user_signed_in? %>,
+            url: '/stocks/<%= stock.id%>'<% end %>
+           },
+        <% end %>
+        {
+        }
+      ]
+    });
+
+  });
+
+</script>

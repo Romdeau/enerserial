@@ -20,6 +20,7 @@
 #  accounts_signoff :integer
 #  projects_signoff :integer
 #  location         :string(255)
+#  ppsr_expiry      :date
 #
 
 class Stock < ActiveRecord::Base
@@ -196,4 +197,11 @@ class Stock < ActiveRecord::Base
       end
   end
 
+  def completed_ppsr?
+    if needs_ppsr == true and ppsr != nil and ppsr != '' and ppsr_expiry != nil
+      true
+    else
+      false
+    end
+  end
 end

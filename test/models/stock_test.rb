@@ -20,6 +20,7 @@
 #  accounts_signoff :integer
 #  projects_signoff :integer
 #  location         :string(255)
+#  ppsr_expiry      :date
 #
 
 require 'test_helper'

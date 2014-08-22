@@ -50,10 +50,14 @@
 
 <p>
   <strong>Ppsr:</strong>
-  <%= format_ppsr(@stock) %> 
+  <% if @stock.needs_ppsr == true %>
+    <%= format_ppsr(@stock) %>
     <% if @stock.ppsr_expiry != nil %>
       Expires on <%= @stock.ppsr_expiry %>
     <% end %>
+  <% else %>
+    PPSR not required for this product.
+  <% end %>
 </p>
 <% if current_user.can_sales? or current_user.can_manage? %>
   <p>

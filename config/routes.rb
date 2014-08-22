@@ -21,6 +21,8 @@ Enerserial::Application.routes.draw do
   get '/stocks/stocklocation' => 'stocks#stock_location', :as => :stock_location
   get '/stocks/:id/accounts_signoff' => 'stocks#accounts_signoff', :as => :accounts_signoff
   get '/stocks/:id/projects_signoff' => 'stocks#projects_signoff', :as => :projects_signoff
+  get '/stocks/:id/edit_ppsr' => 'stocks#edit_ppsr', :as => :edit_ppsr
+  patch '/stocks/:id/edit_ppsr' => 'stocks#update_ppsr', :as => :update_ppsr
 
   #items
   get '/items/new_floor_item' => 'items#new_floor_item', :as => :new_floor_item

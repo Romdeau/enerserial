@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock, only: [:show, :edit, :edit_ppsr, :update, :update_ppsr, :destroy]
 
   # GET /stocks
   # GET /stocks.json
@@ -33,6 +33,9 @@ class StocksController < ApplicationController
 
   # GET /stocks/1/edit
   def edit
+  end
+
+  def edit_ppsr
   end
 
   # GET /stocks/import
@@ -127,7 +130,24 @@ end
     end
   end
 
-
+  def update_ppsr
+    @stock.update(ppsr: stock_params[:ppsr], needs_ppsr: stock_params[:needs_ppsr], ppsr_expiry: stock_params[:ppsr_expiry])
+    @stock_audit = StockAudit.new
+    @stock_audit.user = current_user
+    @stock_audit.stock = @stock
+    @stock_audit.audit_params = "#{stock_params}"
+    @stock_audit.comment = "updated ppsr"
+    respond_to do |format|
+      if @stock.save
+        @stock_audit.save
+        format.html { redirect_to @stock, notice: 'Stock PPSR was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @stock.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /stocks/1
   # DELETE /stocks/1.json

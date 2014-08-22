@@ -1,0 +1,40 @@
+<% if current_user.can_account? or current_user.can_manage? %>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= form_for (@stock), :url => {action: "update_ppsr"}, :html => {class: "form-horizontal edit-stock"} do |f| %>
+        <% if @stock.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+            <ul>
+            <% @stock.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field form-group">
+          <%= f.label :ppsr, class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <span class="input-group-addon"><% if current_user.can_account? %> <%= f.check_box :needs_ppsr %> <% end %></span>
+              <%= f.number_field :ppsr, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="field form-group">
+          <%= f.label :ppsr_expiry, class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <div class="form-control">
+              <%= f.date_select :ppsr_expiry %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions col-sm-offset-3 col-sm-9">
+          <%= f.submit class: "btn btn-sm btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

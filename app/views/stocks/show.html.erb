@@ -74,19 +74,27 @@
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-sm btn-primary" %>
           <% if current_user.can_account? or current_user.can_manage? %>
-            <% if @stock.costing == nil %>
-              <%= link_to 'New Costing', new_stock_costing_path(@stock), class: "btn btn-sm btn-success" %>
-            <% else %>
-              <%= link_to 'Show Costing', costing_path(@stock.costing), class: "btn btn-sm btn-primary" %>
-            <% end %>
+            <%= link_to 'Edit PPSR', edit_ppsr_path(@stock), class: "btn btn-sm btn-primary" %>
           <% end %>
+          <% if current_user.can_account? or current_user.can_manage? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 btn-group">
+            <% if @stock.costing == nil %>
+                <%= link_to 'New Costing', new_stock_costing_path(@stock), class: "btn btn-sm btn-success" %>
+              <% else %>
+                <%= link_to 'Show Costing', costing_path(@stock.costing), class: "btn btn-sm btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
       <% if user_signed_in? %>
         <div class="col-sm-8 btn-group">
-            <% if current_user.can_manage? %>
-              <%= link_to 'New Item', new_stock_item_path(@stock), class: "btn btn-sm btn-success" %>
-            <% end %>
+          <% if current_user.can_manage? %>
+            <%= link_to 'New Item', new_stock_item_path(@stock), class: "btn btn-sm btn-success" %>
+          <% end %>
         </div>
       <% end %>
     </div>
