@@ -1,37 +1,55 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <%= form_for (@order), :html => {class: "form-horizontal"} do |f| %>
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :order_number %><br>
-    <%= f.text_field :order_number %>
+      <div class="field form-group">
+        <%= f.label :order_number, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :order_number, class: "form-control" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :shipping_date, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="form-control">
+            <%= f.date_select :shipping_date %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :order_status, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="form-control">
+            <%= f.collection_select :order_status, Order::STATUS_TYPES, :to_s, :humanize %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :stock_to_generate, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.number_field :stock_to_generate, class: "form-control" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :items_to_generate, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.number_field :items_to_generate, class: "form-control" %>
+        </div>
+      </div>
+      <div class="actions col-sm-offset-3 col-sm-9">
+        <%= f.submit class: "btn btn-sm btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :shipping_date %><br>
-    <%= f.date_select :shipping_date %>
-  </div>
-  <div class="field">
-    <%= f.label :order_status %><br>
-    <%= f.collection_select :order_status, Order::STATUS_TYPES, :to_s, :humanize %>
-  </div>
-  <div class="field">
-    <%= f.label :stock_to_generate %><br>
-    <%= f.number_field :stock_to_generate %>
-  </div>
-  <div class="field">
-    <%= f.label :items_to_generate %><br>
-    <%= f.number_field :items_to_generate %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-sm btn-success" %>
-  </div>
-<% end %>
+</div>

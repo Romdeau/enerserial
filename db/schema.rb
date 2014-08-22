@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821042036) do
+ActiveRecord::Schema.define(version: 20140821055239) do
 
   create_table "costings", force: true do |t|
     t.string   "foreign_cost"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20140821042036) do
     t.integer  "accounts_signoff"
     t.integer  "projects_signoff"
     t.string   "location"
+    t.date     "ppsr_expiry"
   end
 
   add_index "stocks", ["job_id"], name: "index_stocks_on_job_id"

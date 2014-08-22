@@ -1,61 +1,102 @@
-<%= form_for(@stock) do |f| %>
-  <% if @stock.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <%= form_for (@stock), :html => {class: "form-horizontal edit-stock"} do |f| %>
+      <% if @stock.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
 
-      <ul>
-      <% @stock.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @stock.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :serial_number %><br>
-    <%= f.number_field :serial_number %>
-  </div>
-  <div class="field">
-    <%= f.label :job_number %><br>
-    <%= f.text_field :job_number, :value => check_job(@stock) %>
-  </div>
-  <div class="field">
-    <%= f.label :supplier_name %><br>
-    <%= f.text_field :supplier_name %>
-  </div>
-  <div class="field">
-    <%= f.label :detail %><br>
-    <%= f.text_field :detail %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.collection_select :status, Stock::STATUS_TYPES, :to_s, :humanize %>
-  </div>
-  <div class="field">
-    <%= f.label :shipping_date %><br>
-    <%= f.date_field :shipping_date %>
-  </div>
-  <div class="field">
-    <%= f.label :status_detail %><br>
-    <%= f.text_field :status_detail %>
-  </div>
-  <div class="field">
-    <%= f.label :gesan_number, 'Supplier Serial Number' %><br>
-    <%= f.text_field :gesan_number %>
-  </div>
-  <div class="field">
-    <%= f.label :vin %><br>
-    <%= f.text_field :vin %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
+      <div class="field form-group">
+        <%= f.label :serial_number, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.number_field :serial_number, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :job_number, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :job_number, :value => check_job(@stock), class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :supplier_name, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :supplier_name, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :detail, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :detail, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :status, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="form-control">
+            <%= f.collection_select :status, Stock::STATUS_TYPES, :to_s, :humanize %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :shipping_date, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="form-control">
+            <%= f.date_select :shipping_date %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :status_detail, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :status_detail, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :gesan_number, 'Supplier Serial Number', class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :gesan_number, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :vin, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :vin, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :location, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :ppsr, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="input-group">
+            <span class="input-group-addon"><% if current_user.can_account? %> <%= f.check_box :needs_ppsr %> <% end %></span>
+            <%= f.number_field :ppsr, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label :ppsr_expiry, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <div class="form-control">
+            <%= f.date_select :ppsr_expiry %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :ppsr %> <%if current_user.can_account? %> <%= f.check_box :needs_ppsr %> <% end %><br>
-    <%= f.number_field :ppsr %>
+      <div class="actions col-sm-offset-3 col-sm-9">
+        <%= f.submit class: "btn btn-sm btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-sm btn-success" %>
-  </div>
-<% end %>
+</div>
