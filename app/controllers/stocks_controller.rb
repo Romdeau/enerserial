@@ -131,7 +131,7 @@ end
   end
 
   def update_ppsr
-    @stock.update(ppsr: stock_params[:ppsr], needs_ppsr: stock_params[:needs_ppsr], ppsr_expiry: stock_params[:ppsr_expiry])
+    @stock.update(stock_params)
     @stock_audit = StockAudit.new
     @stock_audit.user = current_user
     @stock_audit.stock = @stock
