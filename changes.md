@@ -110,4 +110,7 @@ Branch Off Engines & Alternators into a generic item spinoff.
 (foreign currency cost * exchange rate) + 7% Markup
 
   Implement a combined Calendar View
-# rename order generation label to Number of X to Generate  
+ rename order generation label to Number of X to Generate
+ costings doesnt work
+# stock audits need a longer data field
+# add costing to item  

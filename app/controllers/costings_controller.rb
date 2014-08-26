@@ -25,8 +25,10 @@ class CostingsController < ApplicationController
   # POST /costings
   # POST /costings.json
   def create
+    @stock = Stock.find(params[:stock_id])
     @costing = Costing.new(costing_params)
     @costing.landed_cost = @costing.foreign_cost.to_i * ((100 + @costing.markup.to_f ) / 100)
+    @costing.stock_id = @stock.id
     respond_to do |format|
       if @costing.save
         format.html { redirect_to @costing, notice: 'Costing was successfully created.' }
