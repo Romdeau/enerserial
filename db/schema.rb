@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821055239) do
+ActiveRecord::Schema.define(version: 20140901023543) do
 
   create_table "costings", force: true do |t|
     t.string   "foreign_cost"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140821055239) do
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "audit_params"
+    t.text     "audit_params", limit: 255
     t.integer  "item_id"
   end
 

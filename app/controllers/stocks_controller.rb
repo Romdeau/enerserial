@@ -106,6 +106,7 @@ end
     @stock_audit.user = current_user
     @stock_audit.stock = @stock
     @stock_audit.comment = "updated stock"
+    @stock_audit.audit_params = "#{stock_params}"
     respond_to do |format|
       if @stock.save
         @stock_audit.save
