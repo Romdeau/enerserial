@@ -20,20 +20,6 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Stock Serial to Assign to</h3>
-      <div class="field">
-        <strong>Stock Serial: </strong>
-        <%= f.text_field :stock_id %>
-      </div>
-      <div class="actions">
-        <%= f.submit class: "btn btn-sm btn-success" %>
-      </div>
-    <% end %>
-    </div>
-    <div class="col-sm-8">
-      <%= render 'pick_stock' %>
-    </div>
-  </div>
+  <% end %>
+  <%= render 'pick_stock' %>
 </div>
