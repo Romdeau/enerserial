@@ -117,3 +117,4 @@ Branch Off Engines & Alternators into a generic item spinoff.
 # implement new date picker from enerleave
 # add location assertion
 # paginate search railscast 240
+# link job number and customer name on stock show page
