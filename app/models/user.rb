@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :stock_audit
   has_many :job
 
-  USER_ROLES = %w[End\ User Sales Accounts Projects Purchasing Factory Managment]
+  USER_ROLES = %w[End\ User Sales Accounts Projects Purchasing Factory Management]
 
   def admin?
     admin
