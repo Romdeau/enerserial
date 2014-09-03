@@ -26,7 +26,7 @@
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
-            <%= f.text_field :shipping_date, class: "form-control", value: @order.shipping_date.strftime('%d-%m-%Y') %>
+            <%= f.text_field :shipping_date, class: "form-control", value: @formatted_shipping_date %>
           </div>
         </div>
       </div>

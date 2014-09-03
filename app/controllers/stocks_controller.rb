@@ -29,10 +29,16 @@ class StocksController < ApplicationController
   # GET /stocks/new
   def new
     @stock = Stock.new
+    if @stock.shipping_date != nil
+      @formatted_shipping_date = @stock.shipping_date.strftime('%d-%m-%Y')
+    end
   end
 
   # GET /stocks/1/edit
   def edit
+    if @stock.shipping_date != nil
+      @formatted_shipping_date = @stock.shipping_date.strftime('%d-%m-%Y')
+    end
   end
 
   def edit_ppsr

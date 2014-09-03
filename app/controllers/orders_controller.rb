@@ -25,10 +25,16 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    if @order.shipping_date != nil
+      @formatted_shipping_date = @order.shipping_date.strftime('%d-%m-%Y')
+    end
   end
 
   # GET /orders/1/edit
   def edit
+    if @order.shipping_date != nil
+      @formatted_shipping_date = @order.shipping_date.strftime('%d-%m-%Y')
+    end
   end
 
   # POST /orders
