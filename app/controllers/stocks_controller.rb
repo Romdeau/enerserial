@@ -92,7 +92,7 @@ end
       if @stock.status == stock_params[:status]
         @status_updated = false
       else
-        @project_manager = User.find(@job.user)
+        @project_manager = @job.user
         @status_updated = true
       end
     end
@@ -118,7 +118,9 @@ end
           end
           if @stock.status == "Production Complete"
             UserMailer.production_notify_accounts(@stock, current_user).deliver
-            UserMailer.production_notify_pm(@stock, current_user).deliver
+            if @project_manager != nil
+              UserMailer.production_notify_pm(@stock, current_user).deliver
+            end
           end
         end
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
