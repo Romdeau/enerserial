@@ -113,8 +113,8 @@ Branch Off Engines & Alternators into a generic item spinoff.
   rename order generation label to Number of X to Generate
   costings doesnt work
   stock audits need a longer data field
-# add costing to item  
+  add costing to item - not going to do if not asked for  
 # implement new date picker from enerleave
-# add location assertion
+  add location assertion
 # paginate search railscast 240
-# link job number and customer name on stock show page
+  link job number and customer name on stock show page
