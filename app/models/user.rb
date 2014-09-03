@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def can_purchase?
+    if role == "Purchasing" or admin
+      true
+    else
+      false
+    end
+  end
+
   def can_account?
     if role == "Accounts" or admin
       true
