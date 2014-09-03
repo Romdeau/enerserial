@@ -17,7 +17,7 @@
           <%= f.label :ppsr, class: "col-sm-3 control-label" %>
           <div class="col-sm-9">
             <div class="input-group">
-              <span class="input-group-addon"><% if current_user.can_account? %> <%= f.check_box :needs_ppsr %> <% end %></span>
+              <span class="input-group-addon"><%= f.check_box :needs_ppsr %></span>
               <%= f.number_field :ppsr, class: "form-control" %>
             </div>
           </div>
