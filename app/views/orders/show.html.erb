@@ -6,7 +6,7 @@
 </div>
 
 <div class="content">
-  <p><strong>Shipping Date:</strong> <%= @order.shipping_date.strftime("%A the %d of %B %Y") %></p>
+  <p><strong>Shipping Date:</strong> <% if @order.shipping_date != nil %><%= @order.shipping_date.strftime("%A the %d of %B %Y") %><% end %></p>
   <p><strong>Order Status:</strong> <%= @order.order_status %></p>
   <div class="paragraph">
     <div class="row">

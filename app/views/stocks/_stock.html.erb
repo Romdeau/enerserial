@@ -25,7 +25,9 @@
 
 <p>
   <strong>Shipping Date:</strong>
-  <%= @stock.shipping_date.strftime("%A the %d of %B %Y") %>
+  <% if @stock.shipping_date != nil %>
+    <%= @stock.shipping_date.strftime("%A the %d of %B %Y") %>
+  <% end %>
 </p>
 
 <p>
