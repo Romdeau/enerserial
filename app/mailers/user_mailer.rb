@@ -27,7 +27,6 @@ class UserMailer < ActionMailer::Base
     @stock = stock
     @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
     @current_user = current_user
-    @job_number = @stock.job.job_number
     mail(to: "jim.pringle@eneraque.com", subject: "Stock Item has been marked as #{@stock.status}.")
   end
 
