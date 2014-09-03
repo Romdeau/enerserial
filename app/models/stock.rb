@@ -123,7 +123,7 @@ class Stock < ActiveRecord::Base
       if accounts_signoff == 1 and projects_signoff == 1
         true
       else
-        errors.add(:status, "Job cannot be set to Dispatched without accounts & projects signoff.")
+        errors.add(:status, "Job cannot be set to Dispatched without accounts & projects signoff. These can only be set from the Ready to Dispatch Status.")
       end
       #check for valid ppsr
       if needs_ppsr == true and (ppsr == nil or ppsr == '')
