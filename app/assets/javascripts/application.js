@@ -17,7 +17,9 @@
 // Loads all Boostrap javascritps
 //= require bootstrap
 //= require jquery.tablesorter.min.js
-//= require moment.min.js
+//= require moment
+//= require moment/en-au
+//= require bootstrap-datetimepicker
 //= require fullcalendar.min.js
 // require_tree .
 

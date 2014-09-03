@@ -6,7 +6,7 @@
 </div>
 
 <div class="content">
-  <p><strong>Shipping Date:</strong> <%= @order.shipping_date %></p>
+  <p><strong>Shipping Date:</strong> <%= @order.shipping_date.strftime("%A the %d of %B %Y") %></p>
   <p><strong>Order Status:</strong> <%= @order.order_status %></p>
   <div class="paragraph">
     <div class="row">

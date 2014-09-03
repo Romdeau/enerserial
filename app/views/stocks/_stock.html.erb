@@ -25,7 +25,7 @@
 
 <p>
   <strong>Shipping Date:</strong>
-  <%= @stock.shipping_date %>
+  <%= @stock.shipping_date.strftime("%A the %d of %B %Y") %>
 </p>
 
 <p>
@@ -53,7 +53,7 @@
   <% if @stock.needs_ppsr == true %>
     <%= format_ppsr(@stock) %>
     <% if @stock.ppsr_expiry != nil %>
-      Expires on <%= @stock.ppsr_expiry %>
+      Expires on <%= @stock.ppsr_expiry.strftime("%A the %d of %B %Y") %>
     <% end %>
   <% else %>
     PPSR not required for this product.

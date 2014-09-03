@@ -22,15 +22,17 @@
             </div>
           </div>
         </div>
-        <div class="field form-group">
+        <div class="form-group">
           <%= f.label :ppsr_expiry, class: "col-sm-3 control-label" %>
           <div class="col-sm-9">
-            <div class="form-control">
-              <%= f.date_select :ppsr_expiry %>
+            <div class="input-group" id="DateTimePicker">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+              <%= f.text_field :ppsr_expiry, class: "form-control", value: @stock.shipping_date.strftime('%d-%m-%Y') %>
             </div>
           </div>
         </div>
-
         <div class="actions col-sm-offset-3 col-sm-9">
           <%= f.submit class: "btn btn-sm btn-success" %>
         </div>
@@ -38,3 +40,11 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#DateTimePicker').datetimepicker({
+      pickTime: false
+    });
+  });
+</script>
