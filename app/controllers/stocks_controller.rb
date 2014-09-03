@@ -183,7 +183,9 @@ end
       if @stock.projects_signoff == 1
         @stock.update(status: "Ready to Dispatch")
         StockAudit.create(user_id: current_user.id, stock_id: @stock.id, comment: "triggered Ready to Dispatch from Accounts Signoff")
-        UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+        if @stock.job.user != nil
+          UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+        end
       end
       redirect_to @stock, notice: "Accounts Signoff Complete"
     else
@@ -200,7 +202,9 @@ end
       if @stock.accounts_signoff == 1
         @stock.update(status: "Ready to Dispatch")
         StockAudit.create(user_id: current_user.id, stock_id: @stock.id, comment: "triggered Ready to Dispatch from Project Signoff")
-        UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+        if @stock.job.user != nil
+          UserMailer.status_update(@stock.job.user, @stock, current_user).deliver
+        end
       end
       redirect_to @stock, notice: "Projects Signoff Complete"
     else
