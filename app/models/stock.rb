@@ -144,10 +144,10 @@ class Stock < ActiveRecord::Base
         true
       end
       #check for valid location
-      if location != nil
-        true
-      else
+      if location == nil or location ==""
         errors.add(:location, "Job cannot be Dispatched without a location")
+      else
+        true
       end
     end
   end
