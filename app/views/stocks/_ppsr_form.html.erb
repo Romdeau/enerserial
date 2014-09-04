@@ -29,7 +29,11 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
+              <% if @stock.ppsr_expiry != nil %>
               <%= f.text_field :ppsr_expiry, class: "form-control", value: @formatted_date %>
+              <% else %>
+              <%= f.text_field :ppsr_expiry, class: "form-control" %>
+              <% end %>
             </div>
           </div>
         </div>
