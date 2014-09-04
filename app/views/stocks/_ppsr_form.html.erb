@@ -29,7 +29,7 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
-              <%= f.text_field :ppsr_expiry, class: "form-control", value: @stock.shipping_date.strftime('%d-%m-%Y') %>
+              <%= f.text_field :ppsr_expiry, class: "form-control", value: @formatted_date %>
             </div>
           </div>
         </div>

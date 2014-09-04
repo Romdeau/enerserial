@@ -42,6 +42,10 @@ class StocksController < ApplicationController
   end
 
   def edit_ppsr
+    @stock = Stock.find(params[:id])
+    if @stock.shipping_date != nil
+      @formatted_date = @stock.shipping_date.strftime('%d-%m-%Y')
+    end
   end
 
   # GET /stocks/import
