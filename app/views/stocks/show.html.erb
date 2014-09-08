@@ -14,7 +14,7 @@
     <% if @stock.job != nil %>
       Assigned to Job <%= link_to format_job(@stock), @stock.job %> for <%= link_to format_company(@stock), @stock.job.customer %>
     </h4>
-      <% if @stock.job.user != nil %>
+      <% if @stock.job.user_id != nil %>
         <h4>
           The PM for this stock item is <%= @stock.job.user.email %>
       <% end %>
