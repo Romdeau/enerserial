@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
     @url = stock_path(stock)
     @stock = stock
     @stock_url ="http://enerserial.eneraque.com/stocks/#{@stock.id}"
-    mail(to: 'luminita.kopf@eneraque.com', subject: "Stock Item Completed: Accounting Checkoff")
+    mail(to: 'accounts@eneraque.com', subject: "Stock Item Completed: Accounting Checkoff")
   end
 
   def production_notify_pm(stock, user)
