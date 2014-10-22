@@ -61,7 +61,11 @@
         <tr>
           <td><%= link_to format_serial(stock), stock_path(stock) %></td>
           <td><%= link_to check_job(stock), stock.job %></td>
-          <td><%= link_to stock.job.customer.name %></td>
+          <td>
+            <% if stock.job != nil && stock.job.customer != nil %>
+              <%= link_to stock.job.customer.name %>
+            <% end %>
+          </td>
           <td><%= stock.detail %></td>
           <td><%= stock.status %></td>
           <td><%= stock.status_detail %></td>
