@@ -22,4 +22,3 @@ doc/
 #ignore setup specific files
 /config/newrelic.yml
 /config/initializers/secret_token.rb
-/db/seeds.rb

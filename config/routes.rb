@@ -1,6 +1,8 @@
 Enerserial::Application.routes.draw do
   root 'homepage#index'
 
+  get 'export' => 'stocks#export', :as => :export
+
   #jobs
   get '/jobs/:id/assign_pm' => 'jobs#assign_pm', :as => :assign_pm_job
   patch '/jobs/:id/assign_pm' => 'jobs#process_pm', :as => :process_pm_job

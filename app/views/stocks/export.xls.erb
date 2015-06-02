@@ -1,0 +1,16 @@
+<table border="1">
+  <tr>
+    <th>SerialNumber</th>
+    <th>JobNumber</th>
+    <th>Customer</th>
+    <th>Detail</th>
+  </tr>
+  <% @stocks.each do |stock| %>
+    <tr>
+      <td><%= format_serial(stock) %></td>
+      <td><%= check_job(stock) %></td>
+      <td><%= stock.job.customer.name %></td>
+      <td><%= stock.detail %></td>
+    </tr>
+  <% end %>
+</table>

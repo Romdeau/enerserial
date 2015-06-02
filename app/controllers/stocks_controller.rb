@@ -48,6 +48,16 @@ class StocksController < ApplicationController
     end
   end
 
+  def export
+    @stocks = Stock.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @stocks.as_csv }
+      format.xls
+    end
+  end
+
   # GET /stocks/import
   def import
   end

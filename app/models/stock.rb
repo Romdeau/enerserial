@@ -210,4 +210,13 @@ class Stock < ActiveRecord::Base
       false
     end
   end
+
+  def self.as_csv(options = {})
+		CSV.generate do |csv|
+			csv << column_names
+			all.each do |stock|
+				csv << stock.attributes.values_at(*column_names)
+			end
+		end
+	end
 end
