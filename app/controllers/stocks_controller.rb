@@ -49,7 +49,7 @@ class StocksController < ApplicationController
   end
 
   def export
-    @stocks = Stock.all
+    @stocks = Stock.select { |stock| stock.job_id != nil }
 
     respond_to do |format|
       format.html
