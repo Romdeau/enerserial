@@ -11,7 +11,7 @@
       <td><%= check_job(stock) %></td>
       <td>
         <% if stock.job != nil && stock.job.customer != nil %>
-          <%= link_to stock.job.customer.name %>
+          <%= stock.job.customer.name %>
         <% end %>
       </td>
       <td><%= stock.detail %></td>
