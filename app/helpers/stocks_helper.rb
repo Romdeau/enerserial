@@ -7,6 +7,14 @@ module StocksHelper
     end
   end
 
+  def check_customer(stock)
+    if stock.job != nil && stock.job.customer != nil
+      stock.job.customer.name
+    else
+      ''
+    end
+  end
+
   def format_serial(stock)
     if stock.serial_number == nil
       'TBA'

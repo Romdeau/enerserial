@@ -9,9 +9,7 @@
     <tr>
       <td><%= format_serial(stock) %></td>
       <td><%= check_job(stock) %></td>
-      <td>
-        NoCustomerHere
-      </td>
+      <td><%= check_customer(stock) %></td>
       <td><%= stock.detail %></td>
     </tr>
   <% end %>
