@@ -10,9 +10,7 @@
       <td><%= format_serial(stock) %></td>
       <td><%= check_job(stock) %></td>
       <td>
-        <% if stock.job != nil && stock.job != '' && stock.job.customer != nil %>
-          <%= stock.job.customer.name %>
-        <% end %>
+        NoCustomerHere
       </td>
       <td><%= stock.detail %></td>
     </tr>
