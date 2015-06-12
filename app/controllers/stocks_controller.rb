@@ -50,7 +50,6 @@ class StocksController < ApplicationController
 
   def export
     @stocks = Stock.select { |stock| stock.job_id != nil }
-
     respond_to do |format|
       format.html
       format.csv { send_data @stocks.as_csv }
